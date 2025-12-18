@@ -1,0 +1,172 @@
+NOTE DI STILE – MALGA MONT
+(le modifiche devono rispettare sempre queste indicazioni)
+
+--------------------------------
+HERO-section
+--------------------------------
+- Testi pochi e centrali
+- Logo M protagonista (SVG)
+- CTA “ESPLORA”: piccola, uppercase, con letter-spacing
+- Nessun testo grande o invasivo
+- Video desktop / immagine statica su mobile
+- Priorità all’atmosfera, non alla leggibilità lunga
+
+--------------------------------
+intro-section
+--------------------------------
+- Testo breve, massimo 2 righe
+- Dimensione contenuta
+- Molta aria sopra e sotto
+- Serve solo a separare hero e piatti
+
+
+TITLE
+- Riferimento grafico: ~21pt
+- Ruolo: titolo comprimario
+
+SUBTITLE
+- Riferimento grafico: ~36pt
+- Ruolo: titolo importante
+- Responsive: grande su desktop, ridotto su mobile
+
+ALIGN
+- Center
+
+--------------------------------
+food-section
+--------------------------------
+SFONDO
+- Slideshow con immagini dei piatti
+- Slideshow sempre in background
+
+TESTI (fissi, non scorrono con le slide)
+- Titolo principale: riferimento grafico ~124pt
+- Testo secondario: riferimento grafico ~20pt
+- Proporzione: titolo molto dominante, testo secondario discreto
+- Dimensioni responsive (adattate al web, non fisse)
+
+ALLINEAMENTO
+- Testi allineati a destra
+- Margine destro: riferimento grafico ~100px
+
+OVERLAY
+- Overlay presente solo sotto l’area testo
+- Larghezza overlay: dal bordo destro fino a circa metà pagina
+- Overlay serve solo per migliorare la leggibilità del testo
+- Nessun overlay sul resto dello slideshow
+--------------------------------
+maps-section
+--------------------------------
+- 3 box/card con background diverso
+- Overlay leggero per leggibilità
+- Titolo semplice (es. “Il più panoramico”)
+- Eventuali icone piccole (stelle / bici / piedi)
+- Nessuna indicazione “facile/difficile” esplicita
+- Click → pagina dedicata
+
+SEZIONE maps
+
+TESTI
+- Titolo secondario (kicker): riferimento grafico ~21pt
+- Titolo principale: riferimento grafico ~30pt
+- Gerarchia chiara: titolo principale più evidente del secondario
+- Dimensioni responsive (adattate al web, non fisse)
+
+ALLINEAMENTO TESTI
+- Testi allineati al centro
+
+BOX PERCORSI
+- Numero box: 3
+- Dimensioni di riferimento: ~391px x ~394px
+- Box visivamente quasi quadrati
+- Allineamento box: centrati nella pagina
+- Spazio tra i box: riferimento grafico ~29px
+
+LAYOUT
+- Desktop: 3 box affiancati
+- Mobile: box impilati o scorrimento orizzontale (da adattare)
+- Le proporzioni dei box devono restare coerenti anche su mobile
+
+
+
+--------------------------------
+PANORAMA-section
+--------------------------------
+- Slideshow breve
+- Funzione contemplativa
+
+SEZIONE PANORAMA
+
+SLIDESHOW
+- Slideshow fullscreen orizzontale
+- Riferimento grafico: ~1280x800
+- Slideshow a tutta larghezza
+- Funzione contemplativa, ritmo lento
+
+TESTI (didascalia)
+- Titolo secondario: riferimento grafico ~21pt
+- Testo principale: riferimento grafico ~30pt
+- Gerarchia chiara: testo principale più evidente del secondario
+- Dimensioni responsive (adattate al web)
+
+POSIZIONAMENTO TESTI
+- Allineamento: sinistra
+- Posizione: isolata in basso a sinistra
+- Testo non centrato, effetto “didascalia”
+- Overlay leggero solo sotto l’area testo, se necessario
+
+--------------------------------
+Contact-section
+--------------------------------
+- Informazioni essenziali
+- Nessuna CTA aggressiva
+- Email: malgamont@gmail.com
+- Nessun social obbligatorio
+
+SEZIONE CONTATTI
+
+STRUTTURA
+- Sezione divisa in 3 paragrafi / colonne
+- Ogni paragrafo con allineamento diverso
+
+PARAGRAFO SINISTRO
+- Titolo: riferimento grafico ~26pt
+- Testo descrizione: riferimento grafico ~16pt
+- Allineamento: sinistra
+
+PARAGRAFO CENTRALE
+- Titolo: riferimento grafico ~26pt
+- Testo descrizione: riferimento grafico ~16pt
+- Allineamento: centro
+
+PARAGRAFO DESTRO
+- Titolo: riferimento grafico ~26pt
+- Email e numero di telefono subito sotto
+  - Dimensione: riferimento grafico ~26pt
+- Testo descrizione finale: riferimento grafico ~16pt
+- Allineamento: destra
+
+SFONDO
+- Immagine JPEG di background
+- Sfondo fisso della sezione contatti
+- Immagine agganciata in basso al box della sezione
+- Funzione atmosferica, non decorativa
+
+--------------------------------
+FOOTER / COPYRIGHT
+--------------------------------
+
+STRUTTURA
+- Footer ridotto al solo box copyright
+- Altezza di riferimento: ~100px
+- Nessun contenuto aggiuntivo (no menu, no link, no icone)
+
+TESTI
+- Testo centrato (orizzontale e verticale)
+- Dimensione testo: riferimento grafico ~14pt
+- Testo discreto, non protagonista
+
+STILE
+- Footer come chiusura visiva della pagina
+- Nessuna enfasi grafica
+- Funzione puramente informativa

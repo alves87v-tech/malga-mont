@@ -1,0 +1,288 @@
+/* =========================
+   BASE / RESET
+========================= */
+html, body{
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+*, *::before, *::after{ box-sizing: inherit; }
+
+nav{ display: none; }
+
+/* =========================
+   LAYOUT GENERALE
+========================= */
+main{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 0 1rem;
+  background: transparent;
+  border: none;
+}
+
+section{
+  background: rgba(255,255,255,0.97);
+  border-radius: 16px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 2rem 1.5rem;
+}
+
+h2{
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+ position: relative;
+  width: 100vw;
+  height: 100svh;      /* meglio di 100vh su mobile */
+  min-height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  background: transparent; 
+}
+
+.hero-bg-video{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-bg-video video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.hero-overlay{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hero-logo{
+  width: 180px;
+  max-width: 60vw;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.18));
+}
+
+.hero-btn{
+  padding: 0.6rem 2.5rem;
+  font-size: 1.2rem;
+  border: 2px solid #fff;
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+.hero-btn:hover{
+  background: #fff;
+  color: #b71c1c;
+  border-color: #b71c1c;
+}
+
+/* =========================
+   INTRO (stacco)
+========================= */
+.intro{
+  width: 100%;
+  height: 500px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.intro-content{ text-align: center; }
+
+.intro-title{
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+  color: #888;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.intro-quote{
+  font-size: 1.7rem;
+  font-style: italic;
+  color: #888;
+  font-weight: 400;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.3;
+}
+
+/* Fix: elimina bordo bianco tra hero e main */
+main > section:first-child{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* =========================
+   FOOD (Slideshow full screen)
+   Se #food è dentro main, lo "sganciamo" a 100vw e lo centriamo.
+========================= */
+#food{
+  position: relative;
+  width: 100vw;                 /* full viewport width */
+  height: 100vh;                /* full viewport height */
+  margin-left: calc(50% - 50vw);/* esce dal max-width del main */
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  overflow: hidden;
+
+  /* annulla lo stile generale delle section */
+  margin-bottom: 2.5rem;
+}
+
+/* contenitore slideshow: deve coprire tutto */
+.slideshow-container{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* slide */
+.slide{
+  position: absolute;
+  inset: 0;
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 0;
+}
+
+/* nav arrows */
+.prev, .next{
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px 18px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 22px;
+  transition: 0.3s;
+  border-radius: 50%;
+  user-select: none;
+  background: rgba(60,60,60,0.25);
+  border: 1px solid #eee;
+  z-index: 2;
+}
+.prev{ left: 20px; }
+.next{ right: 20px; }
+
+/* dots */
+.dot{
+  cursor: pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.4s;
+}
+.active, .dot:hover{ background-color: #b71c1c; }
+
+.fade{ animation: fade 1.2s; }
+
+@keyframes fade{
+  from{ opacity: .4; }
+  to{ opacity: 1; }
+}
+
+/* =========================
+   MAPS (placeholder tuo)
+========================= */
+#maps .percorso{
+  margin-bottom: 2.2rem;
+  text-align: center;
+}
+#maps .percorso img{
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  margin-top: 0.7rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+  background: rgba(255,255,255,0.92);
+  border-top: 1px solid #eee;
+  margin-top: 2rem;
+  padding: 1.5rem 0 0.5rem 0;
+  text-align: center;
+  color: #888;
+}
+
+.main-footer{ margin-bottom: 0.7rem; }
+
+.copyright{
+  font-size: 0.95rem;
+  color: #aaa;
+}
