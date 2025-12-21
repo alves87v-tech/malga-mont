@@ -116,14 +116,15 @@ h2{
    INTRO (stacco)
 ========================= */
 .intro{
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
   height: 500px;
   min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin: 0;
   padding: 0;
   background: transparent;
   border: none;
@@ -131,7 +132,9 @@ h2{
   border-radius: 0;
 }
 
-.intro-content{ text-align: center; }
+.intro-content{ text-align: center;
+  width: min(900px, 92vw);
+  margin: 0 auto; }
 
 .intro-title{
   font-size: 1.3rem;
@@ -199,9 +202,14 @@ main > section:first-child{
 .slide{
   position: absolute;
   inset: 0;
-  display: none;
   opacity: 0;
   transition: opacity 1s;
+  pointer-events: none;
+}
+
+.slide.active{
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .slide img{
@@ -257,7 +265,6 @@ main > section:first-child{
   font-size: clamp(14px, 2vw, 20px);
   opacity: 0.9;
   max-width: 52ch;         /* opzionale: evita righe troppo lunghe */
-}
 }
 
 /* frecce sopra overlay/testo */

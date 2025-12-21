@@ -1,40 +1,58 @@
-let slideIndex = 1;
-
+let slideIndex = 0;
 let slideInterval = null;
-showSlides(slideIndex);
-startAutoplay();
 
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("slide");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.transition = "opacity 1s";
-        slides[i].style.opacity = 0;
-        slides[i].style.zIndex = 1;
-    }
-    slides[slideIndex-1].style.zIndex = 2;
-    slides[slideIndex-1].style.display = "block";
-    setTimeout(function(){
-        slides[slideIndex-1].style.opacity = 1;
-        for (let j = 0; j < slides.length; j++) {
-            if (j !== (slideIndex-1)) {
-                setTimeout(function(){
-                    slides[j].style.display = "none";
-                }, 1000);
-            }
-        }
-    }, 10);
+const slides = document.getElementsByClassName("slide");
+
+function showSlide(index) {
+  if (!slides.length) return; // sicurezza: se non ci sono slide, non fa nulla
+
+  slideIndex = (index + slides.length) % slides.length;
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].classList.remove("is-active");
+  }
+
+  slides[slideIndex].classList.add("is-active");
+}
+
+function nextSlide() {
+  showSlide(slideIndex + 1);
+}
+
+function prevSlide() {
+  showSlide(slideIndex - 1);
 }
 
 function startAutoplay() {
-    slideInterval = setInterval(function() {
-        showSlides(++slideIndex);
-    }, 4000);
+  stopAutoplay();
+  slideInterval = setInterval(nextSlide, 4000);
+}
+
+function stopAutoplay() {
+  if (slideInterval) clearInterval(slideInterval);
+  slideInterval = null;
 }
 
 function restartAutoplay() {
-    clearInterval(slideInterval);
-    startAutoplay();
+  startAutoplay();
 }
+
+// init slideshow
+showSlide(0);
+startAutoplay();
+
+// --- VIDEO: loop “morbido” per evitare lo scatto ---
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("heroVideo");
+  if (!video) return;
+
+  // IMPORTANTE: togli "loop" dal tag video in HTML
+  video.addEventListener("timeupdate", () => {
+    const cut = 0.08;   // quanto prima del fine tagliare
+    const restart = 0.03; // da dove ripartire
+    if (video.duration && video.currentTime >= video.duration - cut) {
+      video.currentTime = restart;
+      video.play();
+    }
+  });
+});
