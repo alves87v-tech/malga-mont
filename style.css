@@ -132,7 +132,8 @@ h2{
   border-radius: 0;
 }
 
-.intro-content{ text-align: center;
+.intro-content{ 
+  text-align: center;
   width: min(900px, 92vw);
   margin: 0 auto; }
 
@@ -323,7 +324,116 @@ main > section:first-child{
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   margin-top: 0.7rem;
 }
+.is-hidden{
+  display: none !important;
+}
+/* =========================
+   CONTATTI “EDITORIAL”
+========================= */
+.contact-hero{
+  .contact-hero{
+  background: #f3f3f3;
+  color: #222;
+    min-height: clamp(420px, 60vh, 500px);
+}
+.contact-hero-inner{
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding: 3.2rem 0 0 0;
 
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+/* TOP: 3 colonne */
+.contact-top{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.25fr;
+  gap: 3.2rem;
+  align-items: start;
+}
+
+.c-title{
+  margin: 0 0 1rem 0;
+  font-size: 1.15rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.c-title-center{ text-align: left; }
+
+.c-strong{
+  font-size: 1.05rem;
+  font-weight: 900;
+  margin: .35rem 0;
+}
+
+.c-strong a{
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(0,0,0,0.18);
+}
+
+.c-strong a:hover{
+  border-bottom-color: rgba(0,0,0,0.45);
+}
+
+.c-line{
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.c-subtitle{
+  margin: 1.2rem 0 .6rem 0;
+  font-size: .95rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.c-status{
+  font-weight: 900;
+  margin: 0 0 .8rem 0;
+}
+
+.c-status-closed{ color: #e65b3a; } /* arancio come screenshot */
+
+.c-note{
+  margin: 0;
+  max-width: 40ch;
+  color: #666;
+  line-height: 1.5;
+  font-size: .95rem;
+}
+
+/* MAPPA */
+.c-map{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.c-map img{
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+}
+
+/* immagine “colline” sotto - FULL SCREEN */
+.contact-land{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 1.8rem;
+}
+
+.contact-land img{
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: .85;
+}
 /* =========================
    FOOTER
 ========================= */
@@ -341,4 +451,50 @@ footer{
 .copyright{
   font-size: 0.95rem;
   color: #aaa;
+}
+
+/* --- RESPONSIVE (override) --- */
+@media (max-width: 768px){
+
+  /* INTRO */
+  .intro{
+    height: auto;
+    min-height: 40vh;
+    padding: 4vh 0;
+  }
+  .intro-content{ padding: 0 16px; }
+  .intro-title{ font-size: 1.1rem; letter-spacing: 0.12em; }
+  .intro-quote{ font-size: 1.4rem; line-height: 1.35; }
+
+  /* CONTATTI */
+  .contact-hero{
+    min-height: 420px;
+  }
+
+  /* la grid diventa una colonna e centra i figli */
+  .contact-top{
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 2rem; /* opzionale: se vuoi mantenere lo spazio */
+  }
+
+  /* la colonna mappa NON deve auto-allinearsi a destra */
+  .c-map{
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+  }
+
+ .c-map img{
+ display: block;
+  width: min(80vw, 420px);
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  transform: translateX(-8px); /* compensazione visiva mobile */
+}
+  .c-note{
+    max-width: none;
+  }
+}
 }
