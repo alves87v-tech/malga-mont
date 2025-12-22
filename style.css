@@ -1,5 +1,21 @@
 /* =========================
-   BASE / RESET
+   RESET / BASE
+========================= */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   VARIABILI GLOBALI
+========================= */
+:root{
+  --font-main: 'Montserrat', sans-serif;
+}
+
+/* =========================
+   STILE BASE
 ========================= */
 html, body{
   margin: 0;
@@ -7,6 +23,8 @@ html, body{
   background: #fff;
   box-sizing: border-box;
   overflow-x: hidden;
+  font-family: var(--font-main);
+  color: #222;
 }
 *, *::before, *::after{ box-sizing: inherit; }
 
@@ -23,7 +41,7 @@ main{
   border: none;
 }
 
-section{
+section:not(#contatti){
   background: rgba(255,255,255,0.97);
   border-radius: 16px;
   margin-bottom: 2.5rem;
@@ -110,6 +128,14 @@ h2{
   background: #fff;
   color: #b71c1c;
   border-color: #b71c1c;
+}
+.lavori-corso{
+  margin-top: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
 }
 
 /* =========================
@@ -330,27 +356,59 @@ main > section:first-child{
 /* =========================
    CONTATTI “EDITORIAL”
 ========================= */
-.contact-hero{
-  .contact-hero{
-  background: #f3f3f3;
-  color: #222;
-    min-height: clamp(420px, 60vh, 500px);
+#contatti{
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  margin-top: 100px;   /* ✅ RIPRISTINATO */
 }
-.contact-hero-inner{
-  width: min(1200px, 92vw);
-  margin: 0 auto;
-  padding: 3.2rem 0 0 0;
+/* sfondo colline full-width dietro */
+#contatti::after{
+ content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -60px;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 340px;   /* regola qui */
+  background: url("Asset/main/contact-section/sfondo-art.jpg")
+              center bottom / cover no-repeat;
+  opacity: .75;
+  z-index: 0;
+  pointer-events: none;
+}
 
-  background: transparent;
-  box-shadow: none;
-  border-radius: 0;
+/* contenuti sopra lo sfondo */
+#contatti .contact-hero-inner{
+  position: relative;
+  z-index: 1;
+  padding-bottom: 220px;
 }
+ .contact-hero{
+  position: relative;
+  color: #222;
+  min-height: 700px;
+  overflow: hidden;           /* taglia solo lo sfondo se esce */
+  background: transparent;   /* ✅ IMPORTANTISSIMO */
+}
+
+/* contenuti sopra */
+.contact-hero-inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
 /* TOP: 3 colonne */
 .contact-top{
   display: grid;
   grid-template-columns: 1fr 1fr 1.25fr;
   gap: 3.2rem;
   align-items: start;
+  background: transparent; /* ✅ lascia vedere lo sfondo */
 }
 
 .c-title{
@@ -419,21 +477,6 @@ main > section:first-child{
   height: auto;
   display: block;
 }
-
-/* immagine “colline” sotto - FULL SCREEN */
-.contact-land{
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  margin-top: 1.8rem;
-}
-
-.contact-land img{
-  width: 100%;
-  height: auto;
-  display: block;
-  opacity: .85;
-}
 /* =========================
    FOOTER
 ========================= */
@@ -452,49 +495,63 @@ footer{
   font-size: 0.95rem;
   color: #aaa;
 }
+/* NASCONDI SEZIONI (toggle temporaneo) */
+.is-hidden{
+  display: none !important;
+}
 
 /* --- RESPONSIVE (override) --- */
 @media (max-width: 768px){
 
-  /* INTRO */
-  .intro{
-    height: auto;
-    min-height: 40vh;
-    padding: 4vh 0;
-  }
-  .intro-content{ padding: 0 16px; }
-  .intro-title{ font-size: 1.1rem; letter-spacing: 0.12em; }
-  .intro-quote{ font-size: 1.4rem; line-height: 1.35; }
-
-  /* CONTATTI */
-  .contact-hero{
-    min-height: 420px;
+  /* CONTATTI: padding laterale + contenuto centrato */
+  #contatti .contact-hero-inner{
+    width: min(1100px, 92vw);
+    margin: 0 auto;
+    padding: 2.2rem 0 0;     /* niente padding laterale qui: lo dà il 92vw */
+    position: relative;
+    z-index: 1;
   }
 
-  /* la grid diventa una colonna e centra i figli */
-  .contact-top{
+  /* la griglia diventa 1 colonna */
+  #contatti .contact-top{
     grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 2rem; /* opzionale: se vuoi mantenere lo spazio */
+    gap: 1.6rem;
+    justify-items: center;   /* centra i blocchi */
+    text-align: center;      /* centra i testi */
   }
 
-  /* la colonna mappa NON deve auto-allinearsi a destra */
-  .c-map{
-    justify-self: center;
+  /* testi: evita che stiano “a sinistra” */
+  #contatti .c-col{
     width: 100%;
-    text-align: center;
+    max-width: 38rem;        /* look editorial */
   }
 
- .c-map img{
- display: block;
-  width: min(80vw, 420px);
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-  transform: translateX(-8px); /* compensazione visiva mobile */
-}
-  .c-note{
+  /* note: libera il max-width rigido desktop */
+  #contatti .c-note{
     max-width: none;
   }
-}
+
+  /* mappa centrata e responsive */
+  #contatti .c-map{
+    justify-content: center;
+    width: 100%;
+  }
+
+  #contatti .c-map img{
+    width: min(92vw, 520px);
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* sfondo: alza/abbassa e riduci altezza in mobile */
+  #contatti::after{
+    height: 380px;           /* prova 340-420 */
+    opacity: .75;            /* un filo più soft sotto ai testi */
+  }
+
+  /* opzionale: più aria sotto la sezione */
+  #contatti{
+    padding-bottom: 1.2rem;
+  }
 }
