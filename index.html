@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgriMalga - Promo</title>
-    <link rel="stylesheet" href="style.css">
+    <title>MalgaMont - Promo</title>
+<link rel="stylesheet" href="./style.v2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,900;1,14..32,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -25,6 +29,7 @@
             <div class="hero-overlay">
                 <img src="Asset/Header/hero-section/logo/PNG/Risorsa 1.png" alt="Logo Malga Mont" class="hero-logo">
                 <button class="hero-btn">ESPLORA</button>
+                <p class="lavori-corso">Lavori in corso</p>
             </div>
         </section>
     </header>
@@ -40,8 +45,10 @@
         </section>
 
 <!-- Sezione food -------------------------------------------->
-<section id="food">
+ <!-- Sezione nascosta -------------------------------------------->
+ <section id="food" class="is-hidden">
   <div class="slideshow-container">
+   <div class="slideshow-container">
     <div class="slide active">
       <img src="Asset/main/food-section/slideshow/_DSC0084.jpg" alt="Piatto 1">
     </div>
@@ -82,8 +89,8 @@
     <span class="dot" onclick="currentSlide(4)"></span>
   </div>
   -->
+  </section>
 </section>
-
 <!-- Sezione maps -------------------------------------------->
         <section id="maps" class="is-hidden">
             <h2>Percorsi per Raggiungere la Malga</h2>
@@ -103,7 +110,7 @@
 
 <!-- Sezione contatti -------------------------------------------->
  <section id="slideshow-piatti" class="is-hidden">
-       <!-- <section id="contatti" class="contact-hero"> -->
+      <section id="contatti" class="contact-hero">
 
   <div class="contact-hero-inner">
     <div class="contact-top">
@@ -137,22 +144,21 @@
 
     </div> <!-- /.contact-top -->
   </div> <!-- /.contact-hero-inner -->
- <!-- </section> -->
+ </section>
 </section>
     </main>
 
 <!-- Sezione footer -------------------------------------------->
-<sectionid="slideshow-piatt" class="is-hidden">
-    <!-- <footer> -->
+<section id="main-footer" class="is-hidden">
+    <footer>
         <div class="main-footer">
             <!-- Footer principale, aggiungi qui info o link -->
         </div>
         <div class="copyright">
             &copy; 2025 AgriMalga. Tutti i diritti riservati.
         </div>
-    <!-- </footer> -->
-
-    <script src="script.js"></script>
-    </section>
+    </footer>
+   <script src="./script.v2.js" defer></script>
+  </section>
 </body>
 </html>
