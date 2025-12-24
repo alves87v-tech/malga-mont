@@ -20,30 +20,31 @@
 
 <!-- Sezione hero -------------------------------------------->
 <section class="hero">
-  <div class="hero-bg-video" id="heroMedia">
-  <!-- poster sempre visibile subito -->
-  <img
-    src="Asset/Header/hero-section/video/img_video.jpg"
-    alt=""
-    aria-hidden="true"
-    id="heroPoster"
-    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.7);"
-  >
+  <div class="hero-bg-video">
+    <video
+      id="heroVideo"
+      src="Asset/Header/hero-section/video/promo_hero_1080.mp4"
+      poster="Asset/Header/hero-section/video/img_video.jpg"
+      autoplay
+      muted
+      playsinline
+      loop
+      preload="auto"
+    ></video>
+  </div>
 
-  <video
-    id="heroVideo"
-    autoplay
-    muted
-    playsinline
-    loop
-    preload="metadata"
-    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.7);opacity:0;transition:opacity .35s ease;"
-  >
-    <source src=" Asset/Header/hero-section/video/promo_hero_1080.mp4" type="video/mp4">
-  </video>
-</div>
- </section>
-    </header>
+  <div class="hero-overlay">
+    <img src="Asset/Header/hero-section/logo/PNG/Risorsa 1.png"
+         alt="Logo Malga Mont"
+         class="hero-logo">
+    <button class="hero-btn">ESPLORA</button>
+    <p class="lavori-corso">Lavori in corso</p>
+    <img src="Asset/Header/hero-section/logo/PNG/wip2.png"
+         alt="Icona lavori in corso"
+         style="display:block;margin:8px auto 0;max-width:40px;">
+  </div>
+</section>
+</header>
     <main>
 
 <!-- Sezione intro -------------------------------------------->
