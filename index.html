@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Preload hero poster -->
+  <link rel="preload" as="image" href="Asset/Header/hero-section/video/img_video.jpg">
     <title>MalgaMont - Promo</title>
 <link rel="stylesheet" href="./style.v2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,25 +18,31 @@
             <!-- Nav bar opzionale, lasciata vuota -->
         </nav>
 
-        <!-- Sezione hero -------------------------------------------->
-        <section class="hero">
-            <div class="hero-bg-video">
-                <video id="heroVideo"
-  src="Asset/Header/hero-section/video/promo web 2.mp4"
-  autoplay
-  muted
-  playsinline
-  preload="auto"></video>
-            </div>
-            <div class="hero-overlay">
-                <img src="Asset/Header/hero-section/logo/PNG/Risorsa 1.png" alt="Logo Malga Mont" class="hero-logo">
-                <button class="hero-btn">ESPLORA</button>
-                <p class="lavori-corso">Lavori in corso</p>
-                  <img src="Asset/Header/hero-section/logo/PNG/wip2.png" alt="Icona lavori in corso" style="display:block;margin:8px auto 0;max-width:40px;" />
-            </div>
-        </section>
-    </header>
+<!-- Sezione hero -------------------------------------------->
+<section class="hero">
+  <div class="hero-bg-video">
+    <video
+      id="heroVideo"
+      autoplay
+      muted
+      playsinline
+      loop
+      preload="metadata"
+      poster="Asset/Header/hero-section/video/img_video.jpg"
+    >
+      <source src="Asset/Header/hero-section/video/promo web 2.mp4" type="video/mp4">
+    </video>
+  </div>
 
+  <div class="hero-overlay">
+    <img src="Asset/Header/hero-section/logo/PNG/Risorsa 1.png" alt="Logo Malga Mont" class="hero-logo">
+    <button class="hero-btn">ESPLORA</button>
+    <p class="lavori-corso">Lavori in corso</p>
+    <img src="Asset/Header/hero-section/logo/PNG/wip2.png" alt="Icona lavori in corso"
+         style="display:block;margin:8px auto 0;max-width:40px;">
+  </div>
+ </section>
+    </header>
     <main>
 
 <!-- Sezione intro -------------------------------------------->
