@@ -22,15 +22,16 @@
 <section class="hero">
   <div class="hero-bg-video">
     <video
-      id="heroVideo"
-      src="Asset/Header/hero-section/video/promo_hero_1080.mp4"
-      poster="Asset/Header/hero-section/video/img_video.jpg"
-      autoplay
-      muted
-      playsinline
-      loop
-      preload="auto"
-    ></video>
+  id="heroVideo"
+  autoplay
+  muted
+  playsinline
+  loop
+  preload="auto"
+>
+  <source src="Asset/Header/hero-section/video/hero_mobile.mp4" media="(max-width: 768px)">
+  <source src="Asset/Header/hero-section/video/promo_hero_1080.mp4" media="(min-width: 769px)">
+</video>
   </div>
 
   <div class="hero-overlay">
