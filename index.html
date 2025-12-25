@@ -20,30 +20,65 @@
 
 <!-- Sezione hero -------------------------------------------->
 <section class="hero">
-  <div class="hero-bg-video">
-    <video
-  id="heroVideo"
-  autoplay
-  muted
-  playsinline
-  loop
-  preload="auto"
->
-  <source src="Asset/Header/hero-section/video/hero_mobile.mp4" media="(max-width: 768px)">
-  <source src="Asset/Header/hero-section/video/promo_hero_1080.mp4" media="(min-width: 769px)">
-</video>
+
+  <!-- ✅ Fallback statico: appare subito -->
+  <div class="hero-fallback">
+    <img
+      src="Asset/Header/hero-section/video/img_video.jpg"
+      alt=""
+      loading="eager">
   </div>
 
-  <div class="hero-overlay">
-    <img src="Asset/Header/hero-section/logo/PNG/Risorsa 1.png"
-         alt="Logo Malga Mont"
-         class="hero-logo">
-    <button class="hero-btn">ESPLORA</button>
-    <p class="lavori-corso">Lavori in corso</p>
-    <img src="Asset/Header/hero-section/logo/PNG/wip2.png"
-         alt="Icona lavori in corso"
-         style="display:block;margin:8px auto 0;max-width:40px;">
+  <!-- 🎬 Video di sfondo -->
+  <div class="hero-bg-video">
+    <video
+      id="heroVideo"
+      autoplay
+      muted
+      playsinline
+      loop
+      preload="auto"
+    >
+      <source src="Asset/Header/hero-section/video/hero_mobile.mp4" media="(max-width: 768px)">
+      <source src="Asset/Header/hero-section/video/promo_hero_1080.mp4" media="(min-width: 769px)">
+    </video>
   </div>
+
+  <!-- 🔝 Overlay contenuti -->
+ <div class="hero-overlay">
+
+  <!-- SFONDO NERO (img piccola) -->
+  <img
+    src="Asset/Header/hero-section/logo/PNG/BG_black.jpg"
+    alt=""
+    aria-hidden="true"
+    style="
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      display: block;
+      pointer-events: none;
+    "
+  >
+
+  <!-- LOGO E CONTENUTI -->
+  <img
+    src="Asset/Header/hero-section/logo/PNG/Risorsa 1.png"
+    alt="Logo Malga Mont"
+    class="hero-logo">
+
+  <button class="hero-btn">ESPLORA</button>
+
+  <p class="lavori-corso">Lavori in corso</p>
+
+  <img
+    src="Asset/Header/hero-section/logo/PNG/wip2.png"
+    alt="Icona lavori in corso"
+    style="display:block;margin:8px auto 0;max-width:40px;">
+</div>
 </section>
 </header>
     <main>
