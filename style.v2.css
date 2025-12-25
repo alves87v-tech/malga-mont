@@ -6,10 +6,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 /* =========================
-   VARIABILI GLOBALI
+   GLOBAL STYLES
 ========================= */
+
 :root{
   --font-main: 'Montserrat', sans-serif;
 }
@@ -20,16 +20,16 @@
 html, body{
   margin: 0;
   padding: 0;
-  background: #fff;
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: var(--font-main);
-  color: #222;
+  background: #000;   /* 👈 nero definitivo */
+  color: #fff;
 }
-*, *::before, *::after{ box-sizing: inherit; }
 
-nav{ display: none; }
-
+*, *::before, *::after{
+  box-sizing: inherit;
+}
 /* =========================
    LAYOUT GENERALE
 ========================= */
