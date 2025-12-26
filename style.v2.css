@@ -23,8 +23,8 @@ html, body{
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: var(--font-main);
-  background: #000;   /* 👈 nero definitivo */
-  color: #fff;
+  background: #fff;   /* bianco per tutto il sito */
+  color: #222;        /* testo scuro */
 }
 
 *, *::before, *::after{
