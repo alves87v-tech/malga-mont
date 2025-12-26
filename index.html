@@ -21,13 +21,6 @@
 <!-- Sezione hero -------------------------------------------->
 <section class="hero">
 
-  <!-- ✅ Fallback statico: appare subito -->
-  <div class="hero-fallback">
-    <img
-      src="Asset/Header/hero-section/video/img_video.jpg"
-      alt=""
-      loading="eager">
-  </div>
 
   <!-- 🎬 Video di sfondo -->
   <div class="hero-bg-video">
@@ -44,41 +37,39 @@
     </video>
   </div>
 
+  <!-- SFONDO NERO (fallback sotto al video) -->
+  <div class="hero-fallback">
+    <img
+      src="Asset/Header/hero-section/logo/PNG/BG_black.jpg"
+      alt=""
+      aria-hidden="true"
+      style="
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      "
+    >
+  </div>
+
   <!-- 🔝 Overlay contenuti -->
- <div class="hero-overlay">
+  <div class="hero-overlay">
+    <!-- LOGO E CONTENUTI -->
+    <img
+      src="Asset/Header/hero-section/logo/PNG/Risorsa 1.png"
+      alt="Logo Malga Mont"
+      class="hero-logo">
 
-  <!-- SFONDO NERO (img piccola) -->
-  <img
-    src="Asset/Header/hero-section/logo/PNG/BG_black.jpg"
-    alt=""
-    aria-hidden="true"
-    style="
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      display: block;
-      pointer-events: none;
-    "
-  >
+    <button class="hero-btn">ESPLORA</button>
 
-  <!-- LOGO E CONTENUTI -->
-  <img
-    src="Asset/Header/hero-section/logo/PNG/Risorsa 1.png"
-    alt="Logo Malga Mont"
-    class="hero-logo">
+    <p class="lavori-corso">Lavori in corso</p>
 
-  <button class="hero-btn">ESPLORA</button>
+    <img
+      src="Asset/Header/hero-section/logo/PNG/wip2.png"
+      alt="Icona lavori in corso"
+      style="display:block;margin:8px auto 0;max-width:40px;">
+  </div>
 
-  <p class="lavori-corso">Lavori in corso</p>
-
-  <img
-    src="Asset/Header/hero-section/logo/PNG/wip2.png"
-    alt="Icona lavori in corso"
-    style="display:block;margin:8px auto 0;max-width:40px;">
-</div>
 </section>
 </header>
     <main>
