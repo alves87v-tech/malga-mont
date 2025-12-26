@@ -75,31 +75,28 @@ h2{
   padding: 0;
   background: #000;
   color: #fff;
+  z-index: 0;        /* 👈 aggiungi questo */
 }
-
-/* nuovo: fallback sotto al video */
-.hero-fallback{
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-
 .hero-fallback img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-
 /* video */
 .hero-bg-video{
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 1;        /* 👈 video sopra al fallback */
   overflow: hidden;
 }
-
+/* fallback SOTTO tutti */
+.hero-fallback{
+  position: absolute;
+  inset: 0;
+  z-index: -1;       /* 👈 mettilo NEGATIVO */
+  overflow: hidden;
+}
 .hero-bg-video video{
   width: 100%;
   height: 100%;
@@ -110,7 +107,7 @@ h2{
 /* overlay */
 .hero-overlay{
   position: relative;
-  z-index: 2;
+  z-index: 2;        /* 👈 overlay sopra al video */
   width: 100%;
   display: flex;
   flex-direction: column;
