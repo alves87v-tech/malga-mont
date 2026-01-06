@@ -82,53 +82,112 @@
             </div>
         </section>
 
-<!-- Sezione food -------------------------------------------->
- <!-- Sezione nascosta -------------------------------------------->
- <section id="food" class="is-hidden">
-  <div class="slideshow-container">
-   <div class="slideshow-container">
-    <div class="slide active">
-      <img src="Asset/main/food-section/slideshow/_DSC0084.jpg" alt="Piatto 1">
-    </div>
-    <div class="slide">
-      <img src="Asset/main/food-section/slideshow/_DSC0090.jpg" alt="Piatto 2">
-    </div>
-    <div class="slide">
-      <img src="Asset/main/food-section/slideshow/_DSC1246.jpg" alt="Piatto 3">
-    </div>
-    <div class="slide">
-      <img src="Asset/main/food-section/slideshow/_DSC1273.jpg" alt="Piatto 4">
+<!-- Sezione FOOD -------------------------------------------->
+<section id="food" class="food-section">
+  <div class="food-inner">
+
+    <!-- Testo introduttivo -->
+    <div class="food-header">
+      <p class="food-eyebrow">Dalla nostra cucina</p>
+      <h2 class="food-title">I piatti più richiesti in malga</h2>
+      <p class="food-subtitle">
+        Un piccolo assaggio dei piatti che trovi su al Mont:
+        porzioni generose, ingredienti locali e ricette curate da Andrea e Paola.
+      </p>
+
+      <a href="menu.html" class="food-menu-btn">
+        Vai al menù digitale
+      </a>
     </div>
 
-    <!-- opzionale -->
-    <!--
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    -->
+    <!-- Slideshow piatti -->
+    <div class="food-slider">
+
+      <!-- Frecce -->
+      <button class="food-arrow food-arrow-prev" aria-label="Piatto precedente">‹</button>
+      <button class="food-arrow food-arrow-next" aria-label="Piatto successivo">›</button>
+
+      <div class="food-frame">
+        <!-- SLIDE 1 -->
+        <article class="food-slide is-active">
+          <div class="food-img-wrap">
+            <img
+              src="Asset/main/food-section/slideshow/_DSC0084.jpg"
+              alt="Gnocchi di malga con speck"
+            >
+          </div>
+          <div class="food-text-wrap">
+            <h3>Gnocchi di malga con speck</h3>
+            <p>
+              Gnocchi di patate fatti a mano, con burro fuso, salvia e speck croccante.
+              Uno dei piatti più scelti dopo una giornata sui sentieri.
+            </p>
+          </div>
+        </article>
+
+        <!-- SLIDE 2 -->
+        <article class="food-slide">
+          <div class="food-img-wrap">
+            <img
+              src="Asset/main/food-section/slideshow/_DSC0090.jpg"
+              alt="Tagliere di formaggi e affettati"
+            >
+          </div>
+          <div class="food-text-wrap">
+            <h3>Tagliere Mont</h3>
+            <p>
+              Formaggi di produzione propria, salumi locali e pane caldo:
+              il modo migliore per iniziare il pranzo in malga.
+            </p>
+          </div>
+        </article>
+
+        <!-- SLIDE 3 -->
+        <article class="food-slide">
+          <div class="food-img-wrap">
+            <img
+              src="Asset/main/food-section/slideshow/_DSC1246.jpg"
+              alt="Spezzatino con polenta"
+            >
+          </div>
+          <div class="food-text-wrap">
+            <h3>Spezzatino con polenta</h3>
+            <p>
+              Cottura lenta, carne tenera e polenta fumante:
+              un piatto da malga come si faceva una volta.
+            </p>
+          </div>
+        </article>
+
+        <!-- SLIDE 4 -->
+        <article class="food-slide">
+          <div class="food-img-wrap">
+            <img
+              src="Asset/main/food-section/slideshow/_DSC1273.jpg"
+              alt="Dolce della casa"
+            >
+          </div>
+          <div class="food-text-wrap">
+            <h3>Dolci della casa</h3>
+            <p>
+              Torte e dessert preparati da Paola,
+              con ingredienti semplici e stagionali.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Pallini -->
+      <div class="food-dots" aria-label="Seleziona il piatto">
+        <button class="food-dot is-active" data-index="0"></button>
+        <button class="food-dot" data-index="1"></button>
+        <button class="food-dot" data-index="2"></button>
+        <button class="food-dot" data-index="3"></button>
+      </div>
+    </div>
   </div>
-
-  <!-- Overlay UNA SOLA VOLTA -->
-  <div class="food-overlay" aria-hidden="true"></div>
-
-  <!-- Testo UNA SOLA VOLTA -->
-  <div class="food-content">
-    <h2 class="food-title">I sapori del territorio</h2>
-    <p class="food-subtitle">
-      Andrea e Paola vi accolgono con la passione e la cura di chi conosce e ama questa malga da più di 12 anni.
-    </p>
-  </div>
-
-  <!-- opzionale dots -->
-  <!--
-  <div class="dots">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-    <span class="dot" onclick="currentSlide(4)"></span>
-  </div>
-  -->
-  </section>
 </section>
+
 <!-- Sezione maps -------------------------------------------->
         <section id="maps" class="is-hidden">
             <h2>Percorsi per Raggiungere la Malga</h2>
