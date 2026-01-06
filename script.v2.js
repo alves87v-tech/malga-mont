@@ -1,58 +1,87 @@
-let slideIndex = 0;
-let slideInterval = null;
+// --- FOOD: slideshow piatti ------------------------------------
+(function(){
+  // prendi tutti gli elementi della sezione food
+  const slides = document.querySelectorAll('.food-slide');
+  const dots   = document.querySelectorAll('.food-dot');
+  const prev   = document.querySelector('.food-arrow-prev');
+  const next   = document.querySelector('.food-arrow-next');
 
-const slides = document.getElementsByClassName("slide");
+  // se la sezione non c'è, esci senza errori
+  if (!slides.length) return;
 
-function showSlide(index) {
-  if (!slides.length) return; // sicurezza: se non ci sono slide, non fa nulla
+  let current = 0;
 
-  slideIndex = (index + slides.length) % slides.length;
+  function showSlide(index){
+    // loop avanti/indietro
+    current = (index + slides.length) % slides.length;
 
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].classList.remove("is-active");
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('is-active', i === current);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === current);
+    });
   }
 
-  slides[slideIndex].classList.add("is-active");
-}
+  // Freccia precedente
+  if (prev) {
+    prev.addEventListener('click', () => {
+      showSlide(current - 1);
+    });
+  }
 
-function nextSlide() {
-  showSlide(slideIndex + 1);
-}
+  // Freccia successiva
+  if (next) {
+    next.addEventListener('click', () => {
+      showSlide(current + 1);
+    });
+  }
 
-function prevSlide() {
-  showSlide(slideIndex - 1);
-}
-
-function startAutoplay() {
-  stopAutoplay();
-  slideInterval = setInterval(nextSlide, 4000);
-}
-
-function stopAutoplay() {
-  if (slideInterval) clearInterval(slideInterval);
-  slideInterval = null;
-}
-
-function restartAutoplay() {
-  startAutoplay();
-}
-
-// init slideshow
-showSlide(0);
-startAutoplay();
-
-// --- VIDEO: loop “morbido” per evitare lo scatto ---
-document.addEventListener("DOMContentLoaded", () => {
-  const video = document.getElementById("heroVideo");
-  if (!video) return;
-
-  // IMPORTANTE: togli "loop" dal tag video in HTML
-  video.addEventListener("timeupdate", () => {
-    const cut = 0.08;   // quanto prima del fine tagliare
-    const restart = 0.03; // da dove ripartire
-    if (video.duration && video.currentTime >= video.duration - cut) {
-      video.currentTime = restart;
-      video.play();
-    }
+  // Pallini
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = Number(dot.getAttribute('data-index')) || 0;
+      showSlide(idx);
+    });
   });
+
+  // Auto-play ogni 7 secondi
+  let auto = setInterval(() => {
+    showSlide(current + 1);
+  }, 7000);
+
+  // Se l’utente interagisce, resetta il timer
+  const resetAuto = () => {
+    clearInterval(auto);
+    auto = setInterval(() => showSlide(current + 1), 7000);
+  };
+
+  [prev, next, ...dots].forEach(el => {
+    if (!el) return;
+    el.addEventListener('click', resetAuto);
+  });
+
+  // mostra la prima slide all’inizio
+  showSlide(0);
+})();
+
+
+// --- VIDEO: loop “morbido” per evitare lo scatto ----------------
+document.addEventListener("DOMContentLoaded", () => {
+  const v = document.getElementById("heroVideo");
+  const poster = document.getElementById("heroPoster");
+  if (!v || !poster) return;
+
+  const showVideo = () => {
+    v.style.opacity = "1";
+    poster.style.opacity = "0";
+    poster.style.transition = "opacity .35s ease";
+  };
+
+  v.addEventListener("canplay", showVideo, { once: true });
+  v.addEventListener("loadeddata", showVideo, { once: true });
+
+  // fallback: se il browser fa il difficile, dopo 1.5s mostra comunque
+  setTimeout(showVideo, 1500);
 });
