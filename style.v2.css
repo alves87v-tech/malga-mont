@@ -205,151 +205,235 @@ main > section:first-child{
   box-shadow: none !important;
 }
 
-/* =========================
-   FOOD (Slideshow full screen)
-   Se #food è dentro main, lo "sganciamo" a 100vw e lo centriamo.
-========================= */
-#food{
+/* SEZIONE FOOD ------------------------------------------------- */
+.food-section{
   position: relative;
-  width: 100vw;                 /* full viewport width */
-  height: 100vh;                /* full viewport height */
-  margin-left: calc(50% - 50vw);/* esce dal max-width del main */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
-  background: transparent;
+  padding: 72px 16px;
+  background: #f3ebe0;
   overflow: hidden;
-
-  /* annulla lo stile generale delle section */
-  margin-bottom: 2.5rem;
 }
 
-/* contenitore slideshow: deve coprire tutto */
-.slideshow-container{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+.food-inner{
+  position: relative;
   z-index: 1;
-  overflow: hidden;
-  border-radius: 0;
-  box-shadow: none;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
-/* slide */
-.slide{
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 1s;
-  pointer-events: none;
+/* Header */
+.food-header{
+  max-width: 640px;
+  margin: 0 auto 40px;
+  text-align: center;
 }
 
-.slide.active{
-  opacity: 1;
-  pointer-events: auto;
+.food-eyebrow{
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .78rem;
+  margin-bottom: 6px;
+  color: #8b5a2b;
 }
 
-.slide img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  border-radius: 0;
-}
-/* Overlay per leggibilità testo */
-#food .food-overlay{
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(
-    to left,
-    rgba(0,0,0,0.55) 0%,
-    rgba(0,0,0,0.35) 35%,
-    rgba(0,0,0,0.15) 55%,
-    rgba(0,0,0,0) 70%
-  );
+.food-title{
+  font-size: 2rem;
+  margin: 0 0 10px;
 }
 
-/* Testo sopra lo slideshow */
-#food .food-content{
-  position: absolute;
-  z-index: 3;
-  right: 100px;
-  bottom: 80px;
-  width: min(760px, calc(100vw - 200px));
+.food-subtitle{
+  font-size: .95rem;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;   /* ✅ ancora TUTTO a destra */
-  gap: 0.8rem;
+.food-menu-btn{
+  display: inline-block;
+  padding: 9px 24px;
+  border-radius: 999px;
+  border: 1px solid #8b5a2b;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #8b5a2b;
+  background: transparent;
+  transition: background .15s ease, color .15s ease,
+              transform .12s ease, box-shadow .12s ease;
+}
 
+.food-menu-btn:hover{
+  background: #8b5a2b;
   color: #fff;
-  text-align: right;       /* ok per le righe interne */
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
 }
 
-#food .food-title{
+/* --- SLIDER BASE (MOBILE / TABLET) --------------------------- */
+.food-slider{
+  position: relative;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.food-frame{
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.08);
+  overflow: hidden;
+  padding: 18px 22px;
+  min-height: 260px;
+}
+
+/* tutte le slide nascoste di default */
+.food-slide{
+  display: none;
+}
+
+/* solo quella attiva visibile: LAYOUT A 1 COLONNA (img sopra, testo sotto) */
+.food-slide.is-active{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);  /* UNA SOLA COLONNA */
+  gap: 24px;
+  align-items: center;
+}
+
+.food-img-wrap{
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.food-img-wrap img{
+  display: block;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.food-text-wrap h3{
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.food-text-wrap p{
   margin: 0;
-  line-height: 0.95;
-  font-size: clamp(42px, 6vw, 124px);
-  text-wrap: balance;
-  text-align: right;
+  font-size: .92rem;
+  line-height: 1.6;
 }
 
-#food .food-subtitle{
-  margin: 0;
-  font-size: clamp(14px, 2vw, 20px);
-  opacity: 0.9;
-  max-width: 52ch;         /* opzionale: evita righe troppo lunghe */
-}
-
-/* frecce sopra overlay/testo */
-#food .prev, #food .next{ z-index: 4; }
-/* nav arrows */
-.prev, .next{
-  cursor: pointer;
+/* Frecce */
+.food-arrow{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  padding: 12px 18px;
-  color: #fff;
-  font-weight: bold;
-  font-size: 22px;
-  transition: 0.3s;
-  border-radius: 50%;
-  user-select: none;
-  background: rgba(60,60,60,0.25);
-  border: 1px solid #eee;
-  z-index: 2;
-}
-.prev{ left: 20px; }
-.next{ right: 20px; }
-
-/* dots */
-.dot{
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 8px 20px rgba(0,0,0,.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  height: 13px;
-  width: 13px;
-  margin: 0 3px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.4s;
-}
-.active, .dot:hover{ background-color: #b71c1c; }
-
-.fade{ animation: fade 1.2s; }
-
-@keyframes fade{
-  from{ opacity: .4; }
-  to{ opacity: 1; }
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0;
+  z-index: 3;
+  transition: transform .1s ease, box-shadow .1s ease, background .1s ease;
 }
 
+.food-arrow:hover{
+  transform: translateY(-50%) translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.28);
+  background: #fff;
+}
+
+.food-arrow-prev{ left: -18px; }
+.food-arrow-next{ right: -18px; }
+
+/* Pallini */
+.food-dots{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.food-dot{
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: 1px solid #8b5a2b;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.food-dot.is-active{
+  background: #8b5a2b;
+  transform: scale(1.15);
+}
+
+/* DESKTOP: 4 card in linea, niente effetto slider ----------------- */
+@media (min-width: 1024px){
+
+  /* contenitore centrato e ampio */
+  .food-slider{
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  /* 4 colonne flessibili: NON imponiamo più 260px minimi */
+  .food-frame{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1.1fr)); /* ⬅️ QUI LA MODIFICA */
+    gap: 28px;                                       /* leggermente meno */
+    padding: 32px;
+    min-height: auto;
+  }
+
+  .food-slide,
+  .food-slide.is-active{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    background: #fff;
+  }
+
+  .food-img-wrap{
+    width: 100%;
+  }
+
+  .food-img-wrap img{
+    width: 100%;
+    height: 500px;   /* puoi alzare a 280 se ti piace */
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .food-text-wrap h3{
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .food-text-wrap p{
+    font-size: .95rem;
+    line-height: 1.55;
+  }
+
+  .food-arrow,
+  .food-dots{
+    display: none;
+  }
+}
 /* =========================
    MAPS (placeholder tuo)
 ========================= */

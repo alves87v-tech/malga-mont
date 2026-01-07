@@ -1,18 +1,16 @@
 // --- FOOD: slideshow piatti ------------------------------------
 (function(){
-  // prendi tutti gli elementi della sezione food
   const slides = document.querySelectorAll('.food-slide');
   const dots   = document.querySelectorAll('.food-dot');
   const prev   = document.querySelector('.food-arrow-prev');
   const next   = document.querySelector('.food-arrow-next');
 
-  // se la sezione non c'è, esci senza errori
+  // se non c'è la sezione esco
   if (!slides.length) return;
 
   let current = 0;
 
   function showSlide(index){
-    // loop avanti/indietro
     current = (index + slides.length) % slides.length;
 
     slides.forEach((slide, i) => {
@@ -24,21 +22,11 @@
     });
   }
 
-  // Freccia precedente
-  if (prev) {
-    prev.addEventListener('click', () => {
-      showSlide(current - 1);
-    });
-  }
+  // frecce
+  if (prev) prev.addEventListener('click', () => showSlide(current - 1));
+  if (next) next.addEventListener('click', () => showSlide(current + 1));
 
-  // Freccia successiva
-  if (next) {
-    next.addEventListener('click', () => {
-      showSlide(current + 1);
-    });
-  }
-
-  // Pallini
+  // pallini
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
       const idx = Number(dot.getAttribute('data-index')) || 0;
@@ -46,12 +34,11 @@
     });
   });
 
-  // Auto-play ogni 7 secondi
+  // autoplay
   let auto = setInterval(() => {
     showSlide(current + 1);
   }, 7000);
 
-  // Se l’utente interagisce, resetta il timer
   const resetAuto = () => {
     clearInterval(auto);
     auto = setInterval(() => showSlide(current + 1), 7000);
@@ -62,10 +49,9 @@
     el.addEventListener('click', resetAuto);
   });
 
-  // mostra la prima slide all’inizio
+  // prima slide
   showSlide(0);
 })();
-
 
 // --- VIDEO: loop “morbido” per evitare lo scatto ----------------
 document.addEventListener("DOMContentLoaded", () => {
