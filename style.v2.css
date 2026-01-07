@@ -317,7 +317,7 @@ main > section:first-child{
 }
 
 .food-text-wrap h3{
-  margin: 0 auto;
+  margin: 0 auto 10px;
   font-size: 1.15rem;
   line-height: 1.6;
   max-width: 500px;
