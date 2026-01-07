@@ -292,6 +292,7 @@ main > section:first-child{
 /* tutte le slide nascoste di default */
 .food-slide{
   display: none;
+  background: transparent;
 }
 
 /* solo quella attiva visibile: LAYOUT A 1 COLONNA (img sopra, testo sotto) */
@@ -300,10 +301,11 @@ main > section:first-child{
   grid-template-columns: minmax(0, 1fr);  /* UNA SOLA COLONNA */
   gap: 24px;
   align-items: center;
+  background: transparent;
 }
 
 .food-img-wrap{
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -315,14 +317,19 @@ main > section:first-child{
 }
 
 .food-text-wrap h3{
-  margin: 0 0 8px;
+  margin: 0 auto;
   font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 500px;
+  text-align: center;
 }
 
 .food-text-wrap p{
-  margin: 0;
+  margin: 0 auto;
   font-size: .92rem;
   line-height: 1.6;
+  max-width: 500px;
+  text-align: center;
 }
 
 /* Frecce */
@@ -405,7 +412,7 @@ main > section:first-child{
     align-items: center;
     text-align: center;
     gap: 14px;
-    background: #fff;
+    background: transparent;
   }
 
   .food-img-wrap{
@@ -416,7 +423,7 @@ main > section:first-child{
     width: 100%;
     height: 500px;   /* puoi alzare a 280 se ti piace */
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 0;
   }
 
   .food-text-wrap h3{
