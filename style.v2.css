@@ -384,6 +384,15 @@ main > section:first-child{
   transform: scale(1.15);
 }
 
+/* Testi slider vs categorie */
+.food-text-detailed{
+  display: block;   /* mobile/tablet: testo completo visibile */
+}
+
+.food-text-category{
+  display: none;    /* mobile/tablet: categoria nascosta */
+}
+
 /* DESKTOP: 4 card in linea, niente effetto slider ----------------- */
 @media (min-width: 1200px){
 
@@ -436,6 +445,21 @@ main > section:first-child{
   .food-arrow,
   .food-dots{
     display: none;
+  }
+   /* Desktop: mostra solo le categorie, nascondi i testi lunghi */
+  .food-text-detailed{
+    display: none;
+  }
+
+  .food-text-category{
+    display: block;
+  }
+
+  .food-text-category h3{
+    margin: 10px 0 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-align: center;
   }
 }
 /* =========================
