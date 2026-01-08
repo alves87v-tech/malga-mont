@@ -472,20 +472,18 @@ main > section:first-child{
 
   .food-text-category{
    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 20px 20px 20px;
-    color: #ffffff;
-    text-align: left;
-    background: linear-gradient(to top,
-    rgba(0,0,0,.78) 0%,
-    rgba(0,0,0,.55) 35%,
-    rgba(0,0,0,.25) 60%,
-    rgba(0,0,0,0) 100%
-    );
-    z-index: 2;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 18px 22px;
+  box-sizing: border-box;
+
+background: rgba(156, 152, 170, 0.90);
+color: #ffffff;
+
+box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   }
 
   .food-text-category h3{
@@ -509,27 +507,24 @@ main > section:first-child{
 }
 @media (min-width: 430px) and (max-width: 1199px){
 
-  .food-text-detailed{
+   .food-text-detailed{
     position: absolute;
-    inset: 0;                 /* copre tutta l’immagine */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-    padding: 24px 64px 26px 36px; /* testo più verso destra */
-    text-align: left;
+    padding: 24px 64px 26px 36px;
     color: #fff;
 
     background: linear-gradient(
       to top,
-      rgba(0,0,0,.55) 0%,
-      rgba(0,0,0,.35) 30%,
-      rgba(0,0,0,.18) 55%,
-      rgba(0,0,0,.08) 75%,
+      rgba(0,0,0,.70) 0%,
+      rgba(0,0,0,.45) 35%,
+      rgba(0,0,0,.20) 60%,
       rgba(0,0,0,0) 100%
     );
-  }
-  
+ }
+
 .food-text-detailed h3{
     margin: 0 0 6px 0;
     font-size: 1.35rem;
