@@ -507,6 +507,41 @@ main > section:first-child{
     overflow: hidden;
   }
 }
+@media (min-width: 430px) and (max-width: 1199px){
+
+  .food-text-detailed{
+    position: absolute;
+    inset: 0;                 /* copre tutta l’immagine */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 24px 64px 26px 36px; /* testo più verso destra */
+    text-align: left;
+    color: #fff;
+
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,.55) 0%,
+      rgba(0,0,0,.35) 30%,
+      rgba(0,0,0,.18) 55%,
+      rgba(0,0,0,.08) 75%,
+      rgba(0,0,0,0) 100%
+    );
+  }
+  
+.food-text-detailed h3{
+    margin: 0 0 6px 0;
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+
+  .food-text-detailed p{
+    margin: 0;
+    max-width: 520px; /* evita righe troppo lunghe */
+    line-height: 1.55;
+  }
+}
 /* =========================
    MAPS (placeholder tuo)
 ========================= */
