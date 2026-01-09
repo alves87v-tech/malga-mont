@@ -36,7 +36,7 @@ html, body{
 main{
   max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem 1rem 0 1rem;
+  padding: 0 1rem;  
   background: transparent;
   border: none;
 }
@@ -164,10 +164,10 @@ h2{
   min-height: 0;       /* ← FONDAMENTALE */
 
   display: flex;
-  align-items: center; /* puoi anche cambiare in flex-start */
+  align-items: flex-start; /* puoi anche cambiare in flex-start */
   justify-content: center;
 
-  padding: 50px 50px;  /* QUI controlli lo stacco */
+  padding: 100px 20px;  /* QUI controlli lo stacco */
   background: #fff !important;
   color: #222 !important;
   border: none;
@@ -186,7 +186,7 @@ h2{
   color: #888;
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.0rem;
 }
 
 .intro-quote{
@@ -197,15 +197,6 @@ h2{
   max-width: 900px;
   margin: 0 auto;
   line-height: 1.3;
-}
-
-/* Fix: elimina bordo bianco tra hero e main */
-main > section:first-child{
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
 }
 
 /* SEZIONE FOOD ------------------------------------------------- */
@@ -543,7 +534,7 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 /* Intro usata come sezione di continuità (no box, no ombre) */
 .intro-flat{
   background: #fff;
-  padding: 64px 20px;   /* regola qui l’aria */
+  padding: 100px 20px;   /* regola qui l’aria */
 }
 
 .intro-flat .intro-content{
