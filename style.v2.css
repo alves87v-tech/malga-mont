@@ -41,14 +41,6 @@ main{
   border: none;
 }
 
-section:not(#contatti){
-  background: rgba(255,255,255,0.97);
-  border-radius: 0;
-  margin-bottom: 2.5rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  padding: 2rem 1.5rem;
-}
-
 h2{
   font-size: 1.6rem;
   text-transform: uppercase;
@@ -57,6 +49,15 @@ h2{
   font-weight: 600;
   margin-bottom: 1.5rem;
   text-align: center;
+}
+
+/* Sezioni a card */
+.card-section{
+  background: rgba(255,255,255,0.97);
+  border-radius: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 2rem 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 /* =========================
@@ -159,12 +160,14 @@ h2{
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 
-  height: 500px;
-  min-height: 300px;
+  height: auto;        /* ← FONDAMENTALE */
+  min-height: 0;       /* ← FONDAMENTALE */
+
   display: flex;
-  align-items: center;
+  align-items: center; /* puoi anche cambiare in flex-start */
   justify-content: center;
-  padding: 0;
+
+  padding: 50px 50px;  /* QUI controlli lo stacco */
   background: #fff !important;
   color: #222 !important;
   border: none;
@@ -187,7 +190,7 @@ h2{
 }
 
 .intro-quote{
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   font-style: italic;
   color: #888;
   font-weight: 400;
@@ -536,6 +539,18 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     max-width: 520px; /* evita righe troppo lunghe */
     line-height: 1.55;
   }
+}
+/* Intro usata come sezione di continuità (no box, no ombre) */
+.intro-flat{
+  background: #fff;
+  padding: 64px 20px;   /* regola qui l’aria */
+}
+
+.intro-flat .intro-content{
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0;
+  border-radius: 0;
 }
 /* =========================
    MAPS (placeholder tuo)
