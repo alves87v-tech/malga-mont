@@ -34,9 +34,9 @@ html, body{
    LAYOUT GENERALE
 ========================= */
 main{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1rem;  
+   max-width: none;
+  margin: 0;
+  padding: 0;          /* se vuoi padding lo gestiamo nelle sezioni */
   background: transparent;
   border: none;
 }
@@ -65,8 +65,8 @@ h2{
 ========================= */
 .hero{
   position: relative;
-  width: 100vw;
-  height: 100svh;
+  width: 100%;
+  height: auto;
   min-height: 400px;
   overflow: hidden;
   display: flex;
@@ -76,7 +76,7 @@ h2{
   padding: 0;
   background: #000;
   color: #fff;
-  z-index: 0;        /* 👈 aggiungi questo */
+  z-index: 0;
   border-radius: 0 !important;
 }
 .hero-fallback img{
@@ -104,6 +104,7 @@ h2{
   height: 100%;
   object-fit: cover;
   filter: brightness(0.7);
+  display: block;
 }
 
 /* overlay */
@@ -156,9 +157,8 @@ h2{
    INTRO (stacco)
 ========================= */
 .intro{
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin: 0;
 
   height: auto;        /* ← FONDAMENTALE */
   min-height: 0;       /* ← FONDAMENTALE */
@@ -202,9 +202,8 @@ h2{
 /* SEZIONE FOOD ------------------------------------------------- */
 .food-section{
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin: 0;
   padding: 72px 16px;
   background: rgb(255, 255, 255);
   overflow: hidden;
@@ -952,5 +951,53 @@ footer{
     /* solo per test visivo:
     border: 4px solid red !important;
     */
+  }
+}
+/* =========================
+   DESKTOP FRAME (Jeep-style)
+========================= */
+@media (min-width: 1200px){
+  body{
+    background: #262626; /* grigio scuro, non nero */
+  }
+
+  .page-wrap{
+    max-width: 1280px;
+    margin: 0 auto;
+    background: #f3ede4; /* il tuo background chiaro */
+    min-height: 100vh;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  }
+}
+/* =========================
+   HERO dentro page-wrap (desktop)
+========================= */
+@media (min-width: 1200px){
+  .hero{
+    width: 100%;          /* rientra nel container */
+    height: auto;         /* niente full-screen forzato */
+    min-height: 560px;    /* scegli tu: 520–650 */
+    border-radius: 0 !important;
+  }
+
+  /* assicura che il video continui a riempire l'area hero */
+  .hero-bg-video,
+  .hero-bg-video video,
+  #heroVideo{
+    width: 100%;
+    height: 100%;
+  }
+
+  /* se usi il fallback */
+  .hero-fallback img{
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (max-width: 1199px){
+  .hero{
+    width: 100vw;
+    height: 100svh;
+    min-height: 100svh;
   }
 }
