@@ -66,8 +66,8 @@ h2{
 .hero{
   position: relative;
   width: 100%;
-  height: auto;
-  min-height: 400px;
+  height: 72vh;
+  min-height: 560px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -77,7 +77,13 @@ h2{
   background: #000;
   color: #fff;
   z-index: 0;
-  border-radius: 0 !important;
+}
+
+/* immagine di fallback (foto) */
+.hero-fallback{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 .hero-fallback img{
   width: 100%;
@@ -85,18 +91,26 @@ h2{
   object-fit: cover;
   display: block;
 }
+.hero-bg-base img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* video */
 .hero-bg-video{
   position: absolute;
   inset: 0;
-  z-index: 1;        /* 👈 video sopra al fallback */
+  z-index: 2;        /* 👈 video sopra al fallback */
   overflow: hidden;
 }
-/* fallback SOTTO tutti */
-.hero-fallback{
+
+/* Base nera sotto*/
+.hero-bg-base{
   position: absolute;
   inset: 0;
-  z-index: -1;       /* 👈 mettilo NEGATIVO */
+  z-index: 0;
   overflow: hidden;
 }
 .hero-bg-video video{
@@ -109,7 +123,7 @@ h2{
 
 /* overlay */
 .hero-overlay{
-  position: relative;
+  position: absolute;
   z-index: 2;        /* 👈 overlay sopra al video */
   width: 100%;
   display: flex;
@@ -151,6 +165,11 @@ h2{
   opacity: 0.6;
    color: #fff;
   opacity: 0.85;
+}
+.hero-wip-icon{
+  display: block;
+  margin: 8px auto 0;
+  max-width: 40px;
 }
 
 /* =========================
@@ -414,14 +433,13 @@ h2{
 ========================= */
 
 .context-section{
-  margin: 80px 0;
+  margin: 0px 0;
 }
 
 .context-slider{
   position: relative;
   width: 100%;
-  height: 520px;              /* desktop */
-  border-radius: 24px;
+  height: 520px; 
   overflow: hidden;
 }
 
@@ -675,6 +693,7 @@ h2{
   height: auto;
   display: block;
 }
+
 /* =========================
    FOOTER
 ========================= */
@@ -693,6 +712,7 @@ footer{
   font-size: 0.95rem;
   color: #aaa;
 }
+
 /* NASCONDI SEZIONI (toggle temporaneo) */
 .is-hidden{
   display: none !important;
@@ -701,6 +721,11 @@ footer{
 .food-arrow{
   display:none !important;
 }
+.lavori-corso,
+.hero-wip-icon{
+  display: none;
+}
+
 /* =========================
    RESPONSIVE (tutto in fondo)
 ========================= */
@@ -728,11 +753,10 @@ footer{
 @media (min-width: 1200px){
   .hero{
     width: 100%;          /* rientra nel container */
-    height: auto;         /* niente full-screen forzato */
+    height: 800px;         /* niente full-screen forzato */
     min-height: 560px;    /* scegli tu: 520–650 */
     border-radius: 0 !important;
   }
-
   /* assicura che il video continui a riempire l'area hero */
   .hero-bg-video,
   .hero-bg-video video,
@@ -740,18 +764,20 @@ footer{
     width: 100%;
     height: 100%;
   }
-
-  /* se usi il fallback */
+  /* 👉 DESKTOP: usa immagine, spegni video */
+  .hero-bg-video{
+    display: none;
+  }
+  .hero-fallback,
+  .hero-bg-base{
+    display: block;
+  }
+  /* (opzionale ma pulito) l'immagine riempie la hero */
   .hero-fallback img{
     width: 100%;
     height: 100%;
-  }
-}
-@media (max-width: 1199px){
-  .hero{
-    width: 100vw;
-    height: 100svh;
-    min-height: 100svh;
+    object-fit: cover;
+    display: block;
   }
 }
 
@@ -851,6 +877,68 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   }
 }
 
+/* HERO full-screen (tablet/mobile) */
+@media (max-width: 1199px){
+
+  .hero{
+    width: 100vw;
+    height: 100svh;
+    min-height: 100svh;
+  }
+}
+
+/* =========================
+   TABLET (430px–1199px)
+========================= */
+@media (min-width: 430px) and (max-width: 1199px){
+
+   .food-text-detailed{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 24px 64px 26px 36px;
+    color: #fff;
+
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,.70) 0%,
+      rgba(0,0,0,.45) 35%,
+      rgba(0,0,0,.20) 60%,
+      rgba(0,0,0,0) 100%
+    );
+ }
+
+.food-text-detailed h3{
+    margin: 0 0 6px 0;
+    font-size: 1.35rem;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .food-text-detailed p{
+    margin: 0;
+    max-width: 520px; /* evita righe troppo lunghe */
+    line-height: 1.55;
+  }
+}
+
+/* =========================
+   TABLET ORIZZONTALE
+========================= */
+@media (orientation: landscape) and (max-width: 1199px) {
+  .food-img-wrap img{
+    height: 500px !important;     /* alza/abbassa da qui */
+    object-fit: cover !important; /* riempie lo spazio senza deformarsi */
+    width: 100% !important;
+    display: block;
+    /* solo per test visivo:
+    border: 4px solid red !important;
+    */
+  }
+}
+
 /* =========================
    MOBILE (≤1024x)
 ========================= */
@@ -920,57 +1008,7 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   } 
 }
 
-/* =========================
-   TABLET (430px–1199px)
-========================= */
-@media (min-width: 430px) and (max-width: 1199px){
 
-   .food-text-detailed{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    padding: 24px 64px 26px 36px;
-    color: #fff;
-
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,.70) 0%,
-      rgba(0,0,0,.45) 35%,
-      rgba(0,0,0,.20) 60%,
-      rgba(0,0,0,0) 100%
-    );
- }
-
-.food-text-detailed h3{
-    margin: 0 0 6px 0;
-    font-size: 1.35rem;
-    font-weight: 600;
-    text-align: left;
-  }
-
-  .food-text-detailed p{
-    margin: 0;
-    max-width: 520px; /* evita righe troppo lunghe */
-    line-height: 1.55;
-  }
-}
-
-/* =========================
-   TABLET ORIZZONTALE
-========================= */
-@media (orientation: landscape) and (max-width: 1199px) {
-  .food-img-wrap img{
-    height: 500px !important;     /* alza/abbassa da qui */
-    object-fit: cover !important; /* riempie lo spazio senza deformarsi */
-    width: 100% !important;
-    display: block;
-    /* solo per test visivo:
-    border: 4px solid red !important;
-    */
-  }
-}
 
 /* =========================
    MOBILE (≤430px)
