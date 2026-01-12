@@ -583,22 +583,157 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   padding: 0;
   border-radius: 0;
 }
+
+/* =========================
+   SLIDESHOW CONTESTO
+========================= */
+
+.context-section{
+  margin: 80px 0;
+}
+
+.context-slider{
+  position: relative;
+  width: 100%;
+  height: 520px;              /* desktop */
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* immagine */
+.context-slider img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* singola slide */
+.context-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+.context-slide.is-active{
+  opacity: 1;
+}
+
+/* didascalia leggera (opzionale) */
+.context-caption{
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  max-width: 420px;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  background: rgba(0,0,0,.35);
+  padding: 12px 16px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+}
+
+/* frecce (opzionali) */
+.context-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,.45);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.context-prev{ left: 16px; }
+.context-next{ right: 16px; }
+
+/* dots (opzionali) */
+.context-dots{
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.context-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.4);
+  border: none;
+}
+
+.context-dot.is-active{
+  background: #fff;
+}
 /* =========================
    MAPS (placeholder tuo)
 ========================= */
-#maps .percorso{
-  margin-bottom: 2.2rem;
-  text-align: center;
+/* Griglia */
+.maps-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 18px;
 }
-#maps .percorso img{
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  margin-top: 0.7rem;
+
+/* Card */
+.map-card{
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0,0,0,.10);
+  display: flex;
+  flex-direction: column;
 }
-.is-hidden{
-  display: none !important;
+
+/* Area mappa */
+.map-frame{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #eee;
+}
+.map-frame iframe{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Testo */
+.map-card-body{
+  padding: 18px 18px 20px;
+}
+.map-card-body h3{
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+.map-card-body p{
+  margin: 0;
+  line-height: 1.45;
+  opacity: .9;
+}
+
+/* Responsive */
+@media (max-width: 1024px){
+  .maps-grid{
+    grid-template-columns: 1fr;
+  }
+  .map-frame{
+    aspect-ratio: 16 / 9;
+  }
 }
 /* =========================
    CONTATTI “EDITORIAL”
