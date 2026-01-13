@@ -6,6 +6,7 @@
   const next   = document.querySelector('.food-arrow-next');
 
   // se non c'è la sezione esco
+
   if (!slides.length) return;
 
   let current = 0;
@@ -53,7 +54,66 @@
   showSlide(0);
 })();
 
-// --- VIDEO: loop “morbido” per evitare lo scatto ----------------
+// --- GENERIC SLIDER (riusabile) --------------------------------
+function initSlider({
+  slideSelector,
+  dotSelector,
+  prevSelector,
+  nextSelector,
+  activeClass = "is-active",
+  intervalMs = 7000
+}) {
+  const slides = document.querySelectorAll(slideSelector);
+  if (!slides.length) return; // se non c'è, esci
+
+  const dots = document.querySelectorAll(dotSelector);
+  const prev = document.querySelector(prevSelector);
+  const next = document.querySelector(nextSelector);
+
+  let current = 0;
+
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+
+    slides.forEach((s, i) => s.classList.toggle(activeClass, i === current));
+    dots.forEach((d, i) => d.classList.toggle(activeClass, i === current));
+  }
+
+  if (prev) prev.addEventListener("click", () => showSlide(current - 1));
+  if (next) next.addEventListener("click", () => showSlide(current + 1));
+
+  // pallini: se manca data-index uso l'ordine dei bottoni
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      const idxAttr = dot.getAttribute("data-index");
+      const idx = (idxAttr !== null) ? Number(idxAttr) : i;
+      showSlide(isNaN(idx) ? i : idx);
+    });
+  });
+
+  // autoplay (solo se ha senso)
+  let auto = setInterval(() => showSlide(current + 1), intervalMs);
+
+  const resetAuto = () => {
+    clearInterval(auto);
+    auto = setInterval(() => showSlide(current + 1), intervalMs);
+  };
+
+  [prev, next, ...dots].forEach(el => el && el.addEventListener("click", resetAuto));
+
+  showSlide(0);
+}
+
+// --- CONTESTO: slideshow territorio ----------------------------
+initSlider({
+  slideSelector: ".context-slide",
+  dotSelector: ".context-dot",
+  prevSelector: ".context-prev",
+  nextSelector: ".context-next",
+  intervalMs: 6000
+});
+    
+// --- VIDEO HERO: loop “morbido” per evitare lo scatto ----------------
 document.addEventListener("DOMContentLoaded", () => {
   const v = document.getElementById("heroVideo");
   const poster = document.getElementById("heroPoster");

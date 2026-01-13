@@ -725,6 +725,9 @@ footer{
 .hero-wip-icon{
   display: none;
 }
+.context-caption{
+  display: none;
+}
 
 /* =========================
    RESPONSIVE (tutto in fondo)
@@ -753,9 +756,8 @@ footer{
 @media (min-width: 1200px){
   .hero{
     width: 100%;          /* rientra nel container */
-    height: 800px;         /* niente full-screen forzato */
-    min-height: 560px;    /* scegli tu: 520–650 */
-    border-radius: 0 !important;
+    height: 900px;         /* niente full-screen forzato */
+    min-height: 560px;    /* scegli tu: 520–650 */;
   }
   /* assicura che il video continui a riempire l'area hero */
   .hero-bg-video,
@@ -779,6 +781,15 @@ footer{
     object-fit: cover;
     display: block;
   }
+  .intro-quote{
+  font-size: 2rem;
+  font-style: italic;
+  color: #888;
+  font-weight: 400;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.3;
+}
 }
 
 /* DESKTOP: 4 card in linea, niente effetto slider ----------------- */
@@ -1007,8 +1018,6 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     padding-bottom: 1.2rem;
   } 
 }
-
-
 
 /* =========================
    MOBILE (≤430px)
