@@ -415,8 +415,70 @@ h2{
 .food-text-category{
   display: none;    /* mobile/tablet: categoria nascosta */
 }
+/* =====================================================
+   FOOD — BASE (0–429): rail ON, slider OFF
+   (serve per evitare il “collasso” sotto i 430px)
+===================================================== */
 
+.food-slider{ display: none; }         /* mobile-first */
+.food-arrow{ display: none; }          /* non servono senza slider */
+
+/* rail */
+.food-rail{
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 6px 2px 4px;
+}
+
+.food-rail .food-card{
+  flex: 0 0 86%;
+  max-width: 420px;
+  scroll-snap-align: start;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* riuso la tua .food-img-wrap, ma dentro rail la rendo “card” */
+.food-rail .food-img-wrap{
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+}
+
+.food-rail .food-img-wrap img{
+  width: 100%;
+  height: clamp(320px, 52vh, 520px);
+  object-fit: cover;
+  display: block;
+}
+
+/* overlay visibile in rail */
+.food-rail .food-text-category{
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 16px;
+}
+
+/* testo sotto nascosto in rail */
+.food-rail .food-text-detailed{ display: none; }
 /* Intro usata come sezione di continuità (no box, no ombre) */
+
+/* Rail: nascondi tutto il testo "sotto" */
+.food-rail .food-text-detailed{
+  display: none;
+}
+.food-rail .food-text-category h3{
+  display: none;
+}
+/* Rail: se vuoi anche nascondere il paragrafo dell’overlay (lascia solo h3) */
+.food-rail .food-text-category p{
+  display: none;
+}
 .intro-flat{
   background: #fff;
   padding: 100px 20px;   /* regola qui l’aria */
@@ -520,56 +582,64 @@ h2{
 .context-dot.is-active{
   background: #fff;
 }
+
 /* =========================
    MAPS (placeholder tuo)
 ========================= */
 /* Griglia */
-.maps-grid{
+.arrivare-grid{
   display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 
-/* Card */
-.map-card{
+.arrivare-card{
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 28px rgba(0,0,0,.10);
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: #222;
 }
 
-/* Area mappa */
-.map-frame{
+/* media */
+.arrivare-media{
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 260px;              /* base */
+  overflow: hidden;
   background: #eee;
 }
-.map-frame iframe{
-  position: absolute;
-  inset: 0;
+
+.arrivare-media > img:not(.arrivare-icon){
   width: 100%;
   height: 100%;
-  border: 0;
+  object-fit: cover;
+  display: block;
 }
 
-/* Testo */
-.map-card-body{
+/* icona sopra la foto */
+.arrivare-icon{
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 46px;
+  height: 46px;
+}
+
+/* testo */
+.arrivare-text{
   padding: 18px 18px 20px;
-}
-.map-card-body h3{
-  margin: 0 0 8px;
-  font-size: 1.15rem;
-  line-height: 1.2;
-}
-.map-card-body p{
-  margin: 0;
-  line-height: 1.45;
-  opacity: .9;
+  display: flex;
+  flex-direction: column;
 }
 
+.arrivare-cta{
+  margin-top: auto;
+  font-weight: 600;
+}
 /* =========================
    CONTATTI “EDITORIAL”
 ========================= */
@@ -735,11 +805,11 @@ footer{
 ========================= */
 
 /* =========================
-   DESKTOP (≥1200px)
+   DESKTOP (≥1024px)
 ========================= */
 
 /* DESKTOP FRAME (Jeep-style) */
-@media (min-width: 1200px){
+@media (min-width: 1025px){
   body{
     background: #262626; /* grigio scuro, non nero */
   }
@@ -754,11 +824,11 @@ footer{
 }
 
 /* HERO dentro page-wrap (desktop) */
-@media (min-width: 1200px){
+@media (min-width: 1025px){
   .hero{
     width: 100%;          /* rientra nel container */
-    height: 900px;         /* niente full-screen forzato */
-    min-height: 560px;    /* scegli tu: 520–650 */;
+    height: 900px;        /* niente full-screen forzato */
+    min-height: 560px;    /* scegli tu: 520–650 */
   }
   /* assicura che il video continui a riempire l'area hero */
   .hero-bg-video,
@@ -791,92 +861,15 @@ footer{
   margin: 0 auto;
   line-height: 1.3;
 }
-/* Sezione mappe----------------------------*/
-.arrivare-grid{
- display: grid;
-  grid-template-columns: repeat(2, minmax(0, 320px)); /* card più piccole */
-  justify-content: center;                             /* centra il blocco */
-  gap: 100px;                                           /* meno spazio */
-}
 
-/* card */
-.arrivare-card{
-  border-radius: 18px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,.10);
-  max-width: 320px;     /* limita la larghezza */
-  color: #222;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  transition: transform .18s ease, box-shadow .18s ease;
-  will-change: transform;
-}
-/* MTB – verde/grigio bosco */
-.arrivare-card.arrivare-mtb:hover .arrivare-text{
-  background: #a1f4af;
-}
+/* Sezione food ----------------------------*/
+  .food-rail{
+    display: none !important;
+  }
 
-/* A piedi – beige caldo */
-.arrivare-card.arrivare-piedi:hover .arrivare-text{
-  background: #f9c684;
-}
-
-/* box immagine con altezza controllata */
-.arrivare-card .card-media{
-  height: 280px;        /* alza/abbassa qui */
-  background: #f2f2f2;  /* colore bande */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* immagine: NON taglia */
-.arrivare-card .card-media img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;  /* <-- niente tagli */
-  display: block;
-  transition: transform .35s ease;
-}
-
-.arrivare-card:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0,0,0,.18);
-}
-
-.arrivare-media img{
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  display: block;
-}
-
-.arrivare-text{
-  padding: 22px 24px 26px;
-  transition: background .25s ease;
-}
-
-.arrivare-text h3{
-  margin: 0 0 10px;
-  font-size: 1.25rem;
-}
-
-.arrivare-text p{
-  margin: 0 0 14px;
-  line-height: 1.55;
-}
-
-.arrivare-cta{
-  font-weight: 600;
-  letter-spacing: .02em;
-}
-}
-
-/* DESKTOP: 4 card in linea, niente effetto slider ----------------- */
-@media (min-width: 1200px){
-
+  .food-slider{
+    display: block;
+  }
   /* contenitore centrato e ampio */
   .food-slider{
     max-width: 1500px;
@@ -886,9 +879,9 @@ footer{
   /* 4 colonne flessibili: NON imponiamo più 260px minimi */
   .food-frame{
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1.1fr)); /* ⬅️ QUI LA MODIFICA */
-    gap: 28px;                                       /* leggermente meno */
-    padding: 32px;
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* ⬅️ QUI LA MODIFICA */
+    gap: clamp(16px, 2vw, 28px);        /* leggermente meno */
+    padding: clamp(16px, 2.5vw, 32px);
     min-height: auto;
   }
 
@@ -908,9 +901,9 @@ footer{
 
   .food-img-wrap img{
     width: 100%;
-    height: 500px;   /* puoi alzare a 280 se ti piace */
     object-fit: cover;
     border-radius: 0;
+    height: clamp(360px, 38vw, 500px);
   }
 
   .food-text-wrap h3{
@@ -968,6 +961,110 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+/* Sezione maps ----------------------------*/
+
+.arrivare-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+/* card */
+.arrivare-card{
+  height: 400px;
+  width: 280px;          /* uguale alla colonna */
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  display: flex;
+  flex-direction: column;
+  color: #222;
+  text-decoration: none;
+  justify-self: center;   /* centra la card dentro la cella grid */
+}
+
+/* MTB – verde/grigio bosco */
+.arrivare-card.arrivare-mtb:hover .arrivare-text{
+  background: #a1f4af;
+}
+
+/* A piedi – beige caldo */
+.arrivare-card.arrivare-piedi:hover .arrivare-text{
+  background: #f9c684;
+}
+
+/* box immagine con altezza controllata */
+.arrivare-card .card-media{
+  flex: 0 0 250px;   
+  height: 200px;    /* alza/abbassa qui */
+  background: #f2f2f2;  /* colore bande */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* immagine: NON taglia */
+.arrivare-card .card-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* <-- niente tagli */
+  display: block;
+  transition: transform .35s ease;
+  object-position: center;
+}
+
+.arrivare-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+}
+
+.arrivare-media img{
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.arrivare-text{
+  flex: 1;
+  padding: 12px 18px 12px;  /* meno di 24, altrimenti mangia troppo */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: background .25s ease;
+}
+
+.arrivare-text h3{
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+.arrivare-text p{
+  margin: 0 0 14px;
+  line-height: 1.55;
+   display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;     /* 2 righe uguali per tutti */
+  overflow: hidden;
+}
+
+.arrivare-cta{
+  font-weight: 600;
+  letter-spacing: .02em;
+  margin-top: auto;
+}
+
+ /* NASCONDE LE ICONE */
+.arrivare-icon{
+    display: none !important;
+  }
+   /*frecce slideshow contesto------------------------- */
+ .context-nav{
+   display: none;
+  }
 }
 
 /* HERO full-screen (tablet/mobile) */
@@ -978,145 +1075,125 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     height: 100svh;
     min-height: 100svh;
   }
-  
 }
 
 /* =========================
-   TABLET (430px–1199px)
+   TABLET (430px–1024px)
 ========================= */
-@media (min-width: 430px) and (max-width: 1199px){
+@media (min-width: 430px) and (max-width: 1024px){
 
-   .food-text-detailed{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+   /* spegne lo slider */
+  .food-slider{ display: none; }
 
-    padding: 24px 64px 26px 36px;
-    color: #fff;
+  /* accende la rail */
+  .food-rail{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(220px, 42vw, 320px);
+    gap: 18px;   
 
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,.70) 0%,
-      rgba(0,0,0,.45) 35%,
-      rgba(0,0,0,.20) 60%,
-      rgba(0,0,0,0) 100%
-    );
- }
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 
-.food-text-detailed h3{
-    margin: 0 0 6px 0;
-    font-size: 1.35rem;
-    font-weight: 600;
-    text-align: left;
+    padding: 0 18px 12px;
+}
+ .food-rail > .food-card{
+    scroll-snap-align: start;
+    text-decoration: none;
+    color: inherit;
+    display: block;
   }
 
-  .food-text-detailed p{
-    margin: 0;
-    max-width: 520px; /* evita righe troppo lunghe */
-    line-height: 1.55;
+  /* card compatta: niente testo sotto */
+  .food-rail .food-text-detailed{
+    display: none;
   }
-   .arrivare-grid{
+
+  /* immagine: altezza "card" */
+  .food-rail .food-img-wrap img{
+    width: 100%;
+    height: clamp(240px, 36vw, 360px);
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+  }
+
+  /* barra sotto = scrollbar stilizzata */
+  .food-rail{
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,.35) transparent;
+  }
+  .food-rail::-webkit-scrollbar{ height: 8px; }
+  .food-rail::-webkit-scrollbar-track{
+    background: rgba(0,0,0,.10);
+    border-radius: 999px;
+  }
+  .food-rail::-webkit-scrollbar-thumb{
+    background: rgba(0,0,0,.35);
+    border-radius: 999px;
+  }
+  /*frecce slideshow contesto------------------------- */
+ .context-nav{
+   display: none;
+  }
+  /* Maps ------------------------- */
+.arrivare-grid{
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-    justify-content: center;
+    gap: 22px;
+    max-width: 720px;
+    margin: 0 auto;
   }
 
   .arrivare-card{
-    max-width: 100%;        /* lascia respirare */
+    width: 100%;
+    max-width: 320px;
+    justify-self: center;
+    height: auto;              /* IMPORTANTISSIMO */
+    display: flex;
+    flex-direction: column;
   }
 
   .arrivare-card .card-media{
-    height: 240px;          /* un filo più bassa */
+    flex: 0 0 180px;            /* più basse che desktop */
+    height: 180px;
+  }
+
+  .arrivare-text{
+    flex: 1;
+    padding: 14px 14px 16px;
+  }
+
+  .arrivare-text h3{
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .arrivare-text p{
+    font-size: .9rem;
+    line-height: 1.45;
+
+    /* opzionale ma consigliato */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .arrivare-cta{
+    margin-top: auto;
+    font-size: .9rem;
+  }
+
+  .arrivare-icon{
+    display: none;
   }
 }
 
 /* =========================
-   TABLET ORIZZONTALE
-========================= */
-@media (orientation: landscape) and (max-width: 1199px) {
-  .food-img-wrap img{
-    height: 500px !important;     /* alza/abbassa da qui */
-    object-fit: cover !important; /* riempie lo spazio senza deformarsi */
-    width: 100% !important;
-    display: block;
-    /* solo per test visivo:
-    border: 4px solid red !important;
-    */
-  }
-}
-
-/* =========================
-   MOBILE (≤1024x)
-========================= */
-@media (max-width: 1024px){
-  .maps-grid{
-    grid-template-columns: 1fr;
-  }
-  .map-frame{
-    aspect-ratio: 16 / 9;
-  }
-}
-
-/* =========================
-   MOBILE (≤768px)
-========================= */
-  @media (max-width: 768px){
-  /* CONTATTI: padding laterale + contenuto centrato */
-  #contatti .contact-hero-inner{
-    width: min(1100px, 92vw);
-    margin: 0 auto;
-    padding: 2.2rem 0 0;     /* niente padding laterale qui: lo dà il 92vw */
-    position: relative;
-    z-index: 1;
-  }
-
-  /* la griglia diventa 1 colonna */
-  #contatti .contact-top{
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-    justify-items: center;   /* centra i blocchi */
-    text-align: center;      /* centra i testi */
-  }
-
-  /* testi: evita che stiano “a sinistra” */
-  #contatti .c-col{
-    width: 100%;
-    max-width: 38rem;        /* look editorial */
-  }
-
-  /* note: libera il max-width rigido desktop */
-  #contatti .c-note{
-    max-width: none;
-  }
-
-  /* mappa centrata e responsive */
-  #contatti .c-map{
-    justify-content: center;
-    width: 100%;
-  }
-
-  #contatti .c-map img{
-    width: min(92vw, 520px);
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-
-  /* sfondo: alza/abbassa e riduci altezza in mobile */
-  #contatti::after{
-    height: 380px;           /* prova 340-420 */
-    opacity: .75;            /* un filo più soft sotto ai testi */
-  }
-
-  /* opzionale: più aria sotto la sezione */
-  #contatti{
-    padding-bottom: 1.2rem;
-  } 
-}
-
-/* =========================
-   MOBILE (≤430px)
+   MOBILE (430px)
 ========================= */
 @media (max-width: 430px){
 
@@ -1161,31 +1238,35 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 
   z-index: 2;
   }
- 
+  /*frecce slideshow contesto------------------------- */
+ .context-nav{
+   display: none;
+  }
+   /* griglia: 2 colonne anche su mobile------------------------- */
   .arrivare-grid{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-    justify-items: center; /* centra le card */
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 22px;
   }
-
-  .arrivare-card{
-    width: 100%;
-    max-width: 340px;      /* card più compatta */
-    color: #222;
-    text-decoration: none;
-  }
-
+   /* FOTO un po’ più bassa */
   .arrivare-media{
-    height: 500px;         /* altezza mobile */
-    overflow: hidden;
+    height: 220px;   /* prima era ~260 */
   }
-
-  .arrivare-media img{
-    width: 100%;
-    height: 100%;          /* <<< sovrascrive il 500px */
-    object-fit: cover;     /* oppure contain se NON vuoi tagli */
-    display: block;
+  .arrivare-text h3{
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  }
+  /* testo basico, massimo 2 righe */
+  .arrivare-text p{
+    display: none;
+  }
+  /* icone spente */
+ .arrivare-icon{
+    display: none;
+  }
+    /* CTA sempre visibile e in basso */
+ .arrivare-cta{
+    margin-top: auto;
+    font-weight: 600;
   }
 }
 
