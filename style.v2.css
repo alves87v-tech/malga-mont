@@ -640,14 +640,37 @@ h2{
 /* =========================
    CONTATTI “EDITORIAL”
 ========================= */
+.contact-brand{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  text-align: center;
+}
+
+.contact-logo{
+  width: 180px;
+  max-width: 70%;
+  display: inline-block;
+}
+
+.contact-footer{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .contact-section{
-  padding: 72px 16px;
-  background: #5a9652;
+  padding: 0px;
+  background: #d6c280;
 }
 
 .contact-inner{
   max-width: 1100px;
   margin: 0 auto;
+  padding: 64px 16px;
 }
 
 .contact-title{
@@ -656,13 +679,7 @@ h2{
   letter-spacing: .06em;
 }
 
-.contact-grid{
-  display: grid;
-  grid-template-columns: 1fr;      /* mobile: 1 colonna */
-  gap: 18px;
-}
-
-/* blocchi */
+/* blocchi --------------------------------*/
 .contact-block{
   background: transparent;             /* puoi cambiare: es. #fff + bordo */
   border-radius: 18px;
@@ -672,9 +689,9 @@ h2{
 
 .contact-block h3{
   margin: 0 0 12px;
-  font-size: 1.05rem;
+  font-size: 1.5rem;
 }
-
+/* tipografia interna-----------------------*/
 .contact-strong{
   font-weight: 700;
   margin: 0 0 6px;
@@ -693,6 +710,7 @@ h2{
   opacity: .9;
 }
 
+/* link e contatti-----------------------*/
 .contact-link{
   display: inline-block;
   margin-top: 14px;
@@ -701,7 +719,6 @@ h2{
   color: #222;
 }
 
-/* contatti */
 .contact-mainlink{
   display: block;
   text-decoration: none;
@@ -721,6 +738,9 @@ h2{
   gap: 14px;
   margin-top: 14px;
 }
+.contact-title {
+      display: none;
+  }
 
 /* =========================
    FOOTER
@@ -734,10 +754,10 @@ footer{
   color: #888;
 }
 
-.main-footer{ margin-bottom: 0.7rem; }
+.main-footer{ margin-bottom: 0; }
 
 .copyright{
-  padding: 25px 25px;     /* <- qui decidi tu quanto */
+  padding: 30px;     /* <- qui decidi tu quanto */
   font-size: .95rem;
   color: #aaa;
   margin: 0;           /* <- evita margini default */
@@ -1021,14 +1041,39 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   /* contact -------------------------------------- */
   .contact-title{ text-align: center; }
 
-  .contact-grid{
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
+   .contact-inner{
+    gap: 64px;
     align-items: start;
   }
-    .contact-social{
+
+  .contact-brand{
+    grid-column: 1;
+    margin: 0;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .contact-logo{
+    width: 220px;
+    max-width: 220px;
+    display: block;
+  }
+
+  .contact-footer{
+    grid-column: 3;
+    display: grid;              /* <-- QUESTA È LA CHIAVE */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 56px;
+    align-items: start;
+  }
+
+  .contact-social{
       display: none;
-    }
+  }
+
+  .contact-title {
+      display: none;
+  }
 }
 
 /* HERO full-screen (tablet/mobile) */
@@ -1062,7 +1107,7 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     -webkit-overflow-scrolling: touch;
 
     padding: 0 18px 12px;
-}
+  }
  .food-rail > .food-card{
     scroll-snap-align: start;
     text-decoration: none;
@@ -1155,13 +1200,20 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   .contact-title{ text-align: center; }
 
   .contact-grid{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
     align-items: start;
   }
+
    .contact-social{
     display: none;
   }
+
+   .contact-logo{
+    width: 190px;
+    max-width: 240px;
+  }
+
 }
 
 /* =========================
