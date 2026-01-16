@@ -587,6 +587,10 @@ h2{
    MAPS (placeholder tuo)
 ========================= */
 /* Griglia */
+.card-section{
+  margin: 0px 0;
+}
+
 .arrivare-grid{
   display: grid;
   grid-template-columns: 1fr;
@@ -621,13 +625,6 @@ h2{
 }
 
 /* icona sopra la foto */
-.arrivare-icon{
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
-  width: 46px;
-  height: 46px;
-}
 
 /* testo */
 .arrivare-text{
@@ -643,136 +640,96 @@ h2{
 /* =========================
    CONTATTI “EDITORIAL”
 ========================= */
-#contatti{
-  position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  overflow: hidden;
-  margin-top: 100px;   /* ✅ RIPRISTINATO */
-}
-/* sfondo colline full-width dietro */
-#contatti::after{
- content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -60px;
-  transform: translateX(-50%);
-  width: 100vw;
-  height: 340px;   /* regola qui */
-  background: url("Asset/main/contact-section/sfondo-art.jpg")
-              center bottom / cover no-repeat;
-  opacity: .75;
-  z-index: 0;
-  pointer-events: none;
+.contact-section{
+  padding: 72px 16px;
+  background: #5a9652;
 }
 
-/* contenuti sopra lo sfondo */
-#contatti .contact-hero-inner{
-  position: relative;
-  z-index: 1;
-  padding-bottom: 220px;
-}
- .contact-hero{
-  position: relative;
-  color: #222;
-  min-height: 700px;
-  overflow: hidden;           /* taglia solo lo sfondo se esce */
-  background: transparent;   /* ✅ IMPORTANTISSIMO */
-}
-
-/* contenuti sopra */
-.contact-hero-inner{
+.contact-inner{
   max-width: 1100px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
 }
 
-/* TOP: 3 colonne */
-.contact-top{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1.25fr;
-  gap: 3.2rem;
-  align-items: start;
-  background: transparent; /* ✅ lascia vedere lo sfondo */
-}
-
-.c-title{
-  margin: 0 0 1rem 0;
-  font-size: 1.15rem;
+.contact-title{
+  text-align: center;
+  margin: 0 0 26px;
   letter-spacing: .06em;
-  text-transform: uppercase;
-  font-weight: 900;
 }
 
-.c-title-center{ text-align: left; }
+.contact-grid{
+  display: grid;
+  grid-template-columns: 1fr;      /* mobile: 1 colonna */
+  gap: 18px;
+}
 
-.c-strong{
+/* blocchi */
+.contact-block{
+  background: transparent;             /* puoi cambiare: es. #fff + bordo */
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0;
+}
+
+.contact-block h3{
+  margin: 0 0 12px;
   font-size: 1.05rem;
-  font-weight: 900;
-  margin: .35rem 0;
 }
 
-.c-strong a{
-  color: inherit;
+.contact-strong{
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.contact-row{
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: start;
+}
+
+.contact-label{
+  font-weight: 700;
+  opacity: .9;
+}
+
+.contact-link{
+  display: inline-block;
+  margin-top: 14px;
+  font-weight: 700;
   text-decoration: none;
-  border-bottom: 2px solid rgba(0,0,0,0.18);
+  color: #222;
 }
 
-.c-strong a:hover{
-  border-bottom-color: rgba(0,0,0,0.45);
-}
-
-.c-line{
-  margin: 0 0 1rem 0;
-  color: #333;
-}
-
-.c-subtitle{
-  margin: 1.2rem 0 .6rem 0;
-  font-size: .95rem;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  color: #333;
-}
-
-.c-status{
-  font-weight: 900;
-  margin: 0 0 .8rem 0;
-}
-
-.c-status-closed{ color: #e65b3a; } /* arancio come screenshot */
-
-.c-note{
-  margin: 0;
-  max-width: 40ch;
-  color: #666;
-  line-height: 1.5;
-  font-size: .95rem;
-}
-
-/* MAPPA */
-.c-map{
-  display: flex;
-  justify-content: flex-end;
-}
-
-.c-map img{
-  width: 100%;
-  max-width: 520px;
-  height: auto;
+/* contatti */
+.contact-mainlink{
   display: block;
+  text-decoration: none;
+  font-weight: 800;
+  margin: 8px 0;
+  color: #222;
+}
+
+.contact-note{
+  margin: 12px 0 0;
+  opacity: .85;
+  line-height: 1.5;
+}
+
+.contact-social{
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
 }
 
 /* =========================
    FOOTER
 ========================= */
 footer{
-  background: rgba(255,255,255,0.92);
+ background: rgba(255,255,255,0.92);
   border-top: 1px solid #eee;
-  margin-top: 2rem;
-  padding: 1.5rem 0 0.5rem 0;
+  margin: 0;
+  padding: 0;          /* <- via lo spazio */
   text-align: center;
   color: #888;
 }
@@ -780,14 +737,12 @@ footer{
 .main-footer{ margin-bottom: 0.7rem; }
 
 .copyright{
-  font-size: 0.95rem;
+  padding: 25px 25px;     /* <- qui decidi tu quanto */
+  font-size: .95rem;
   color: #aaa;
+  margin: 0;           /* <- evita margini default */
 }
 
-/* NASCONDI SEZIONI (toggle temporaneo) */
-.is-hidden{
-  display: none !important;
-}
  /* ULTIMA COSA */
 .food-arrow{
   display:none !important;
@@ -1057,14 +1012,23 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   margin-top: auto;
 }
 
- /* NASCONDE LE ICONE */
-.arrivare-icon{
-    display: none !important;
-  }
+
    /*frecce slideshow contesto------------------------- */
  .context-nav{
    display: none;
   }
+
+  /* contact -------------------------------------- */
+  .contact-title{ text-align: center; }
+
+  .contact-grid{
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+    .contact-social{
+      display: none;
+    }
 }
 
 /* HERO full-screen (tablet/mobile) */
@@ -1187,7 +1151,15 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     font-size: .9rem;
   }
 
-  .arrivare-icon{
+ /* contact -------------------------------------- */
+  .contact-title{ text-align: center; }
+
+  .contact-grid{
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+   .contact-social{
     display: none;
   }
 }
@@ -1260,13 +1232,14 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     display: none;
   }
   /* icone spente */
- .arrivare-icon{
-    display: none;
-  }
     /* CTA sempre visibile e in basso */
  .arrivare-cta{
     margin-top: auto;
     font-weight: 600;
+  }
+  /* contact -------------------------------------- */
+  .contact-social{
+    display: none;
   }
 }
 
