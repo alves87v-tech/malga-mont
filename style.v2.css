@@ -898,6 +898,9 @@ footer{
   }
 
   /* contact -------------------------------------- */
+.contact-inner{
+  padding-inline: 40px;   /* margine fisso mobile + tablet */
+}
 
 .contact-block{
   background: transparent;             /* puoi cambiare: es. #fff + bordo */
@@ -912,7 +915,6 @@ footer{
 }
   .contact-social{
     display: none;
-}
 }
 
 /* =========================
