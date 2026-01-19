@@ -899,7 +899,7 @@ footer{
 
   /* contact -------------------------------------- */
 .contact-inner{
-  padding-inline: 40px;   /* margine fisso mobile + tablet */
+  padding-inline: min(40px, 8vw);  /* margine fisso mobile + tablet */
 }
 
 .contact-block{
@@ -1051,7 +1051,9 @@ footer{
   .arrivare-intro {
     display: none;
   }
+
 /* contatti---------------------------------------- */
+
 .contact-footer{
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -1066,13 +1068,16 @@ footer{
   .contact-hours{ grid-area: hours; }
   .contact-booking{ grid-area: booking; }
 
-  .contact-block{ max-width: none; }
+  .contact-block{ max-width: none; 
+                 text-align: left;
+  }
 
   .contact-link{
     text-align: left;
     padding: 12px 0 0;        /* evita “spazi strani” */
   }
 
+}
 /* =========================
    DESKTOP (≥1024px)
 ========================= */
