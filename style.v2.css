@@ -771,7 +771,7 @@ h2{
 }
 .contact-title {
       display: none;
-  }
+}
 
 /* =========================
    FOOTER
@@ -900,7 +900,7 @@ footer{
   /* contact -------------------------------------- */
 .contact-inner{
   padding-inline: min(40px, 8vw);  /* margine fisso mobile + tablet */
-}
+  }
 
 .contact-block{
   background: transparent;             /* puoi cambiare: es. #fff + bordo */
@@ -909,13 +909,15 @@ footer{
   box-shadow: 0;
    margin: 0;
   text-align: center;
-}
+  }
+
 .contact-link{
   margin: 0;
-}
+  }
+
   .contact-social{
     display: none;
-}
+  }
 
 /* =========================
    TABLET (430px–1024px)
@@ -1062,22 +1064,31 @@ footer{
     align-items: start;
     justify-items: stretch;   /* le colonne riempiono */
     text-align: left;         /* da qui in su torna left */
-    gap: 40px 56px;
+    gap: 32px 32px;
   }
-  .contact-brand{ grid-area: brand; justify-content: center; }
-  .contact-hours{ grid-area: hours; }
-  .contact-booking{ grid-area: booking; }
 
-  .contact-block{ max-width: none; 
-                 text-align: left;
+  .contact-brand{ grid-area: brand; justify-content: center; }
+  .contact-hours{ grid-area: hours; 
+                  max-width: 420px; 
+                  justify-self: end;
+  }
+
+  .contact-booking{ grid-area: booking; 
+                    max-width: 100px; 
+                    justify-self: start;
+  }
+
+  .contact-block{ max-width: 300px; 
+                  text-align: left;
+
   }
 
   .contact-link{
-    text-align: left;
-    padding: 12px 0 0;        /* evita “spazi strani” */
+                text-align: left;
+                padding: 12px 0 0;        /* evita “spazi strani” */
   }
-
 }
+
 /* =========================
    DESKTOP (≥1024px)
 ========================= */
@@ -1139,7 +1150,7 @@ footer{
   max-width: 900px;
   margin: 0 auto;
   line-height: 1.3;
-}
+  }
 
 /* Sezione food ----------------------------*/
   .food-rail{
@@ -1154,6 +1165,8 @@ footer{
   .food-slider{
     max-width: 1500px;
     margin: 0 auto;
+     height: auto;      /* 🔑 elimina il vuoto sotto */
+     min-height: 0;
   }
 
   /* 4 colonne flessibili: NON imponiamo più 260px minimi */
@@ -1201,6 +1214,7 @@ footer{
   .food-dots{
     display: none;
   }
+
    /* Desktop: mostra solo le categorie, nascondi i testi lunghi */
   .food-text-detailed{
     display: none;
@@ -1242,6 +1256,10 @@ footer{
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  .food-text-wrap.food-text-detailed{
+  display: none;
+}
 
 /* Sezione maps ----------------------------*/
 .arrivare-layout{
@@ -1321,7 +1339,7 @@ footer{
 /* testo-------------------------------------- */
  .arrivare-intro{
     display: block; /* oppure flex, a seconda di come lo impagini */
-  }
+}
 
 .arrivare-text{
   flex: 1;
@@ -1390,7 +1408,7 @@ footer{
    /*frecce slideshow contesto------------------------- */
  .context-nav{
    display: none;
-  }
+}
 
   /* contact -------------------------------------- */
   /* footer = griglia a 3 colonne */
@@ -1402,7 +1420,7 @@ footer{
     align-items: start;
     max-width: 1100px;
     margin: 0 auto;
-  }
+}
 
   /* logo a sinistra e in alto */
   .contact-brand{
@@ -1412,12 +1430,12 @@ footer{
     align-items: flex-start;
     text-align: left;
     margin: 0;
-  }
+}
 
   .contact-brand,
   .contact-block{
     align-self: start; /* 👈 stessa linea */
-  }
+}
 
 .contact-block h3{
   margin-top: 0;      /* 👈 OBBLIGATORIO */
@@ -1427,7 +1445,7 @@ footer{
     width: 200px;
     max-width: 200px;
     display: block;
-  }
+}
 
   /* metti i blocchi nelle colonne giuste */
   .contact-hours{ grid-column: 2; }
