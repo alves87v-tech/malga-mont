@@ -815,6 +815,12 @@ footer{
    MOBILE (430px)
 ========================= */
 @media (max-width: 430px){
+  .hero{
+    height: 100svh;     /* mobile safe viewport */
+    height: 100dvh;     /* browser moderni */
+    min-height: 0;      /* IMPORTANTISSIMO: toglie il vincolo 560px */
+  }
+}
 
   /* 2. la slide diventa il contenitore dell’overlay */
   .food-slider{
