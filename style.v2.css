@@ -1044,7 +1044,26 @@ footer{
     display: none;
   }
 /* contatti---------------------------------------- */
+.contact-footer{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "brand brand"
+      "hours booking";
+    align-items: start;
+    justify-items: stretch;   /* le colonne riempiono */
+    text-align: left;         /* da qui in su torna left */
+    gap: 40px 56px;
+  }
+  .contact-brand{ grid-area: brand; justify-content: center; }
+  .contact-hours{ grid-area: hours; }
+  .contact-booking{ grid-area: booking; }
 
+  .contact-block{ max-width: none; }
+
+  .contact-link{
+    text-align: left;
+    padding: 12px 0 0;        /* evita “spazi strani” */
+  }
 
 /* =========================
    DESKTOP (≥1024px)
@@ -1361,19 +1380,35 @@ footer{
   }
 
   /* contact -------------------------------------- */
-  .contact-title{ text-align: center; }
-
-   .contact-inner{
-    gap: 64px;
+  /* footer = griglia a 3 colonne */
+  .contact-footer{
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr; /* logo | orari | contatti */
+    grid-template-areas: "brand hours booking";
+    gap: 56px;
     align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
+  /* logo a sinistra e in alto */
   .contact-brand{
-    grid-column: 1;
+    grid-area: brand;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
     margin: 0;
-    text-align: center;
-    justify-content: center;
   }
+
+  .contact-brand,
+  .contact-block{
+    align-self: start; /* 👈 stessa linea */
+  }
+
+.contact-block h3{
+  margin-top: 0;      /* 👈 OBBLIGATORIO */
+}
 
   .contact-logo{
     width: 200px;
@@ -1381,26 +1416,20 @@ footer{
     display: block;
   }
 
-  .contact-footer{
-    grid-column: 3;
-    display: grid;              /* <-- QUESTA È LA CHIAVE */
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 56px;
-    align-items: start;
-  }
+  /* metti i blocchi nelle colonne giuste */
+  .contact-hours{ grid-column: 2; }
+  .contact-booking{ grid-column: 3; }
 
-  .contact-social{
-      display: none;
-  }
+  /* cleanup */
+  .contact-social{ display: none; }
+  .contact-title{ display: none; }
 
-  .contact-title {
-      display: none;
-  }
   .contact-link{
-   display: inline-block;   /* evita centrature strane */
-   text-align: left;
-   margin-left: 0;
-}
+    display: inline-block;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0; /* nel caso ti rimanga qualche padding ereditato */
+  }
 }
 
 /* HERO full-screen (tablet/mobile) */
