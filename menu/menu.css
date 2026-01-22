@@ -34,11 +34,16 @@ html, body{
 /* ============ MENU LANG PAGE ============ */
 /* pagina a tutta altezza */
 .menu-lang-page{
-  min-height: 100svh;
-  position: relative;
-  overflow: hidden;
+ position: relative;
+  z-index: 1;
+
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  align-items: center;       /* centro orizzontale */
+  justify-content: center;   /* centro verticale */
+  padding: 24px;
 }
 
 /* hero come sfondo */
@@ -181,6 +186,7 @@ html, body{
     grid-template-columns: 1fr 1fr;
   }
 }
+
 /* ============ MENU IT/EN (stile “PDF”) ============ */
 
 .menu-page{
@@ -195,6 +201,14 @@ html, body{
   margin: 0 auto 18px;
 }
 
+.menu-img{
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
 .menu-back{
   display: inline-block;
   text-decoration: none;
@@ -203,6 +217,7 @@ html, body{
   background: rgba(255,255,255,0.6);
   padding: 10px 12px;
   border-radius: 12px;
+
 }
 
 .menu-title{
@@ -237,6 +252,160 @@ html, body{
   gap: 26px;
   max-width: 1100px;
   margin: 0 auto;
+}
+
+/* ============ FOTO PER SEZIONE (metodo 3) ============ */
+
+.menu-section{
+  padding: 18px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.menu-section h2{
+  margin: 0 0 12px;
+  font-size: 1.55rem;
+}
+
+.menu-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+/* ============ FOTO PER PIATTO (toggle) ============ */
+
+.menu-item{
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
+.menu-item-row{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.menu-item-name{
+  font-weight: 700;
+  color: rgba(0,0,0,.85);
+}
+
+.menu-item-note{
+  font-size: 13px;
+  color: rgba(0,0,0,.55);
+  font-style: italic;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.menu-item-photo{
+  margin-top: 8px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,.35);
+  max-width: 620px;
+}
+
+.menu-item-photo summary{
+  cursor: pointer;
+  font-weight: 700;
+  color: rgba(0,0,0,.75);
+}
+
+.menu-item-photo[open]{
+  background: rgba(255,255,255,.5);
+}
+
+.menu-item-photo img{
+  margin-top: 10px;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.menu-back-wrap{
+  text-align: left;
+}
+
+.menu-section-title{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: -0.02em; /* icona */
+  color: #cb955a;   /* marrone caldo da malga */
+}
+
+.menu-section-title h2{
+  color: rgba(0,0,0,0.75);
+}
+
+.menu-section::after{
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  width: 44px;
+  height: 44px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* icona */
+.menu-section-title::after{
+  content: "";
+  width: 26px;
+  height: 26px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.menu-section.antipasti::after{
+  content: "";
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.menu-section.antipasti .menu-section-title::after{
+  background-image: url("/menu/img/icone/cheese-board.png");
+}
+.menu-section.primi .menu-section-title::after{
+  background-image: url("/menu/img/icone/spaghetti.png");
+}
+
+.menu-section.secondi .menu-section-title::after{
+  background-image: url("/menu/img/icone/sandwich.png");
+}
+
+.menu-section.dolci .menu-section-title::after{
+  background-image: url("/menu/img/icone/cake.png");
+}
+
+.menu-section.bevande .menu-section-title::after{
+  background-image: url("/menu/img/icone/wine-bottle.png");
+}
+
+@media (min-width: 900px){
+  .menu-item-photo img{ height: 260px; }
 }
 
 /* da tablet/desktop: 2 colonne */
