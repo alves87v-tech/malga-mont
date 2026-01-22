@@ -1,0 +1,241 @@
+/* =========================
+   RESET / BASE
+========================= */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+:root{
+  --font-main: 'Montserrat', sans-serif;
+}
+
+/* =========================
+   STILE BASE
+========================= */
+html, body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: var(--font-main);
+  background: #fff;   /* bianco per tutto il sito */
+  color: #222;        /* testo scuro */
+}
+
+*, *::before, *::after{
+  box-sizing: inherit;
+}
+:root{
+  --maps-bg: #f5efe2;
+  --maps-ink: #1f1f1f;
+  --maps-muted: rgba(31,31,31,.65);
+  --maps-card: rgba(255,255,255,.55);
+  --maps-border: rgba(31,31,31,.12);
+  --maps-accent: #c99a4a; /* oro malga */
+}
+
+.maps-page{
+  background: var(--maps-bg);
+  color: var(--maps-ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.maps-back{
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 50;
+  background: rgba(255,255,255,.7);
+  border: 1px solid var(--maps-border);
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--maps-ink);
+  backdrop-filter: blur(10px);
+}
+
+.maps-hero{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 20px 18px;
+  text-align: center;
+}
+
+.maps-eyebrow{
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--maps-muted);
+}
+
+.maps-title{
+  margin: 0 0 10px;
+  font-family: Montserrat, Inter, system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.maps-lead{
+  margin: 0 auto 18px;
+  max-width: 720px;
+  color: var(--maps-muted);
+  line-height: 1.5;
+}
+
+.maps-tabs{
+  display: inline-flex;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 999px;
+  border: 1px solid var(--maps-border);
+  background: rgba(255,255,255,.35);
+  backdrop-filter: blur(10px);
+}
+
+.maps-tab{
+  border: 0;
+  background: transparent;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--maps-muted);
+}
+
+.maps-tab.is-active{
+  background: var(--maps-accent);
+  color: #fff;
+}
+
+.maps-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 20px 60px;
+}
+
+.maps-panel{ display: none; }
+.maps-panel.is-active{ display: grid; gap: 22px; }
+
+.route-card{
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--maps-border);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--maps-card);
+  box-shadow: 0 18px 40px rgba(0,0,0,.08);
+}
+
+.route-media{
+  background: rgba(0,0,0,.05);
+  min-height: 220px;
+}
+.route-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.route-body{
+  padding: 18px 18px 20px;
+}
+
+.route-head{
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.route-num{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(201,154,74,.18);
+  border: 1px solid rgba(201,154,74,.35);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: var(--maps-accent);
+}
+
+.route-title{
+  margin: 0 0 4px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-family: Montserrat, Inter, system-ui, sans-serif;
+  font-weight: 800;
+}
+
+.route-meta{
+  margin: 0;
+  color: var(--maps-muted);
+  font-size: 14px;
+}
+
+.route-icons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 10px;
+}
+
+.route-pill{
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--maps-border);
+  background: rgba(255,255,255,.55);
+}
+
+.route-text{
+  margin: 0 0 14px;
+  color: var(--maps-ink);
+  line-height: 1.6;
+}
+
+.route-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.route-btn{
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--maps-accent);
+  color: #fff;
+}
+
+.route-link{
+  text-decoration: none;
+  color: var(--maps-ink);
+  font-weight: 700;
+  opacity: .85;
+}
+
+.maps-footer{
+  text-align: center;
+  color: rgba(31,31,31,.45);
+  padding: 18px 12px 34px;
+}
+
+/* Desktop: card “come nell’esempio” con mappa a sinistra */
+@media (min-width: 900px){
+  .route-card{
+    grid-template-columns: 1.1fr .9fr;
+  }
+  .route-media{ min-height: 380px; }
+  .route-body{ padding: 26px 26px 28px; }
+}

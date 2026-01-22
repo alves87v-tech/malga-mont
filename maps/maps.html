@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mappe e percorsi – Malga Mont</title>
+
+  <!-- opzionale: riusa i font del sito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS sito (se ti serve navbar/vars) -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- CSS pagina mappe -->
+  <link rel="stylesheet" href="./maps.css">
+</head>
+
+<body class="maps-page">
+  <!-- Back semplice (puoi sostituire con la tua navbar) -->
+  <a class="maps-back" href="../index.html">← Torna al sito</a>
+
+  <header class="maps-hero">
+    <p class="maps-eyebrow">Percorsi</p>
+    <h1 class="maps-title">Mappe e itinerari</h1>
+    <p class="maps-lead">
+      I migliori percorsi a piedi e in MTB, per raggiungere la Malga.
+    </p>
+
+    <nav class="maps-tabs" aria-label="Selezione categoria percorsi">
+      <button class="maps-tab is-active" type="button" data-tab="walk">A piedi</button>
+      <button class="maps-tab" type="button" data-tab="mtb">MTB</button>
+    </nav>
+  </header>
+
+  <main class="maps-wrap">
+    <!-- ===== A PIEDI ===== -->
+    <section class="maps-panel is-active" id="walk" data-panel="walk" aria-label="Percorsi a piedi">
+
+      <article class="route-card">
+        <div class="route-media">
+          <img src="./img/route-01.jpg" alt="Mappa percorso 1" loading="lazy">
+        </div>
+
+        <div class="route-body">
+          <div class="route-head">
+            <div class="route-num">1</div>
+            <div>
+              <h2 class="route-title">Sentiero panoramico da Troi de cavai</h2>
+              <p class="route-meta">Facile • Famiglie • 60–90 min</p>
+            </div>
+          </div>
+
+          <div class="route-icons" aria-label="Attività e caratteristiche">
+            <span class="route-pill">🚶 A piedi</span>
+            <span class="route-pill">👨‍👩‍👧 Famiglie</span>
+            <span class="route-pill">🌲 Natura</span>
+          </div>
+
+          <p class="route-text">
+            Percorso semplice e accessibile, ideale per una passeggiata nella natura.
+            In base al ritmo si arriva in circa un’ora/un’ora e mezza.
+          </p>
+
+        </div>
+      </article>
+
+      <article class="route-card">
+        <div class="route-media">
+          <img src="./img/route-02.jpg" alt="Mappa percorso 2" loading="lazy">
+        </div>
+
+        <div class="route-body">
+          <div class="route-head">
+            <div class="route-num">2</div>
+            <div>
+              <h2 class="route-title">Salita da Miane</h2>
+              <p class="route-meta">Medio/Impegnativo</p>
+            </div>
+          </div>
+
+          <div class="route-icons">
+            <span class="route-pill">🚶 A piedi</span>
+            <span class="route-pill">⛰️ Dislivello</span>
+          </div>
+
+          <p class="route-text">
+            Anello più lungo con tratti nel bosco e aperture panoramiche.
+            Perfetto per chi vuole un giro completo prima di fermarsi in malga.
+          </p>
+
+        </div>
+      </article>
+
+       <article class="route-card">
+        <div class="route-media">
+          <img src="./img/route-02.jpg" alt="Mappa percorso MTB 2" loading="lazy">
+        </div>
+
+        <div class="route-body">
+          <div class="route-head">
+            <div class="route-num">3</div>
+            <div>
+              <h2 class="route-title">Giro panoramico da Passo Praderadego</h2>
+              <p class="route-meta">Medio/Impegnativo • Panorami</p>
+            </div>
+          </div>
+
+          <div class="route-icons">
+            <span class="route-pill">🚶 A piedi</span>
+            <span class="route-pill">⛰️ Dislivello</span>
+          </div>
+
+          <p class="route-text">
+            Giro più lungo e panoramico. Consigliato a chi ha un minimo di allenamento.
+          </p>
+
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ===== MTB ===== -->
+    <section class="maps-panel" id="mtb" data-panel="mtb" aria-label="Percorsi MTB">
+
+      <article class="route-card">
+        <div class="route-media">
+          <img src="./img/route-01.jpg" alt="Mappa percorso MTB 1" loading="lazy">
+        </div>
+
+        <div class="route-body">
+          <div class="route-head">
+            <div class="route-num">1</div>
+            <div>
+              <h2 class="route-title">Salita da Troi de cavai</h2>
+              <p class="route-meta">Medio • Sterrato • E-bike friendly</p>
+            </div>
+          </div>
+
+          <div class="route-icons">
+            <span class="route-pill">🚵 MTB</span>
+            <span class="route-pill">⚡ E-bike</span>
+            <span class="route-pill">🪨 Sterrato</span>
+          </div>
+
+          <p class="route-text">
+            Percorso consigliato per MTB: fondo sterrato e tratti nel bosco.
+            Ideale anche con assistenza elettrica.
+          </p>
+
+        </div>
+      </article>
+
+      <article class="route-card">
+        <div class="route-media">
+          <img src="./img/route-02.jpg" alt="Mappa percorso MTB 2" loading="lazy">
+        </div>
+
+        <div class="route-body">
+          <div class="route-head">
+            <div class="route-num">2</div>
+            <div>
+              <h2 class="route-title">Giro panoramico collinare da Miane</h2>
+              <p class="route-meta">Medio/Impegnativo • Panorami</p>
+            </div>
+          </div>
+
+          <div class="route-icons">
+            <span class="route-pill">🚵 MTB</span>
+            <span class="route-pill">⛰️ Dislivello</span>
+          </div>
+
+          <p class="route-text">
+            Giro più lungo e panoramico. Consigliato a chi ha un minimo di allenamento.
+          </p>
+
+        </div>
+      </article>
+
+       <article class="route-card">
+        <div class="route-media">
+          <img src="./img/route-02.jpg" alt="Mappa percorso MTB 2" loading="lazy">
+        </div>
+
+        <div class="route-body">
+          <div class="route-head">
+            <div class="route-num">3</div>
+            <div>
+              <h2 class="route-title">Giro da Cison di Valmarino</h2>
+              <p class="route-meta">Medio/Impegnativo • Panorami</p>
+            </div>
+          </div>
+
+          <div class="route-icons">
+            <span class="route-pill">🚵 MTB⚡ E-bike</span>
+            <span class="route-pill">⛰️ Dislivello</span>
+          </div>
+
+          <p class="route-text">
+            Giro più lungo e panoramico. Consigliato a chi ha un minimo di allenamento. Fondo sconnesso con pietraie.
+          </p>
+
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="maps-footer">© 2026 MalgaMont</footer>
+
+  <script>
+    // Toggle leggero tabs
+    const tabs = document.querySelectorAll('.maps-tab');
+    const panels = document.querySelectorAll('.maps-panel');
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+
+        tabs.forEach(t => t.classList.toggle('is-active', t === btn));
+        panels.forEach(p => p.classList.toggle('is-active', p.dataset.panel === target));
+
+        // scroll lieve in alto alla lista (utile su mobile)
+        document.querySelector('.maps-wrap')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
