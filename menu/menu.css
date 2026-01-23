@@ -1,38 +1,6 @@
-/* =========================
-   RESET / BASE
-========================= */
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-/* =========================
-   GLOBAL STYLES
-========================= */
-
-:root{
-  --font-main: 'Montserrat', sans-serif;
-}
-
-/* =========================
-   STILE BASE
-========================= */
-html, body{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  font-family: var(--font-main);
-  background: #fff;   /* bianco per tutto il sito */
-  color: #222;        /* testo scuro */
-}
-
-*, *::before, *::after{
-  box-sizing: inherit;
-}
-
 /* ============ MENU LANG PAGE ============ */
 /* pagina a tutta altezza */
+
 .menu-lang-page{
  position: relative;
   z-index: 1;
@@ -161,7 +129,9 @@ html, body{
   margin-top: auto;
   padding: 22px 12px;
   text-align: center;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  border: none;
 }
 
 /* bottone torna al sito */

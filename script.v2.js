@@ -131,3 +131,52 @@ document.addEventListener("DOMContentLoaded", () => {
   // fallback: se il browser fa il difficile, dopo 1.5s mostra comunque
   setTimeout(showVideo, 1500);
 });
+
+function initHeroSlideshow() {
+  const mq = window.matchMedia('(min-width: 1024px)');
+  const wrap = document.querySelector('.hero-bg-slideshow');
+  if (!wrap) return;
+
+  const slides = Array.from(wrap.querySelectorAll('.hero-slide'));
+  if (slides.length < 2) return;
+
+  let i = 0;
+  let timer = null;
+
+  function show(idx) {
+    slides.forEach((el, k) => el.classList.toggle('is-active', k === idx));
+  }
+
+  function start() {
+    if (!mq.matches || timer) return;
+    timer = setInterval(() => {
+      i = (i + 1) % slides.length;
+      show(i);
+    }, 4500);
+  }
+
+  function stop() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  function sync() {
+    if (mq.matches) start();
+    else { stop(); i = 0; show(0); }
+  }
+
+  show(0);
+  sync();
+
+  // breakpoint change
+  if (mq.addEventListener) mq.addEventListener('change', sync);
+  else mq.addListener(sync);
+
+  // pausa quando tab non visibile
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else start();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initHeroSlideshow);

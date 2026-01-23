@@ -1,31 +1,4 @@
-/* =========================
-   RESET / BASE
-========================= */
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-/* =========================
-   GLOBAL STYLES
-========================= */
 
-:root{
-  --font-main: 'Montserrat', sans-serif;
-}
-
-/* =========================
-   STILE BASE
-========================= */
-html, body{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  font-family: var(--font-main);
-  background: #fff;   /* bianco per tutto il sito */
-  color: #222;        /* testo scuro */
-}
 
 *, *::before, *::after{
   box-sizing: inherit;
