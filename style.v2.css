@@ -9,9 +9,38 @@
 /* =========================
    GLOBAL STYLES
 ========================= */
+/* ================= FONT: MONTSERRAT ================= */
 
-:root{
-  --font-main: 'Montserrat', sans-serif;
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/Montserrat-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* =========================
@@ -22,9 +51,10 @@ html, body{
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: var(--font-main);
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: #fff;   /* bianco per tutto il sito */
-  color: #222;        /* testo scuro */
+  color: #222; 
+  scroll-behavior: smooth;  /* testo scuro */
 }
 
 *, *::before, *::after{
@@ -78,7 +108,39 @@ h2{
   color: #fff;
   z-index: 0;
 }
+/* layer full-bleed */
+.hero-fallback,
+.hero-bg-video,
+.hero-bg-slideshow{
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
 
+.hero-fallback img,
+.hero-bg-video video,
+.hero-bg-slideshow img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* slideshow: fade */
+.hero-bg-slideshow .hero-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 900ms ease;
+  will-change: opacity;
+}
+
+.hero-bg-slideshow .hero-slide.is-active{
+  opacity: 1;
+}
+
+/* DEFAULT: mobile/tablet -> fallback ON, slideshow OFF  */
+.hero-bg-slideshow{ display: none; }
 /* immagine di fallback (foto) */
 .hero-fallback{
   position: absolute;
@@ -691,7 +753,7 @@ h2{
 
 .contact-section{
   padding: 0px;
-  background: #d6c280;
+  background: #dcd7c5;
 }
 
 .contact-inner{
@@ -1115,6 +1177,11 @@ footer{
     height: 900px;        /* niente full-screen forzato */
     min-height: 560px;    /* scegli tu: 520–650 */
   }
+/* DESKTOP: slideshow ON, fallback OFF, video OFF */
+  .hero-bg-slideshow{ display: block;  z-index: 2;
+  }
+  .hero-fallback{ display: none; }
+  .hero-bg-video{ display: none; }
 
   /* assicura che il video continui a riempire l'area hero */
   .hero-bg-video,
@@ -1141,6 +1208,8 @@ footer{
     object-fit: cover;
     display: block;
   }
+  .hero-content{ position: relative; z-index: 10; }
+
 
   .intro-quote{
   font-size: 2rem;
