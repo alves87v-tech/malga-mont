@@ -212,6 +212,7 @@ h2{
   letter-spacing: 1px;
   transition: background 0.2s, color 0.2s, border 0.2s;
   box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  text-decoration: none;
 }
 .hero-btn:hover{
   background: #fff;
@@ -643,6 +644,236 @@ h2{
 
 .context-dot.is-active{
   background: #fff;
+}
+
+/* =========================
+   MAPS SECTION
+========================= */
+.maps{
+  padding: 56px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.maps-header{
+  margin-bottom: 20px;
+}
+
+.maps-title{
+  margin: 0 0 8px 0;
+}
+
+.maps-subtitle{
+  margin: 0;
+  opacity: .85;
+  max-width: 70ch;
+}
+
+.maps-grid{
+  display: grid;
+  gap: 18px;
+}
+
+@media (min-width: 1025px){
+  .maps-grid{
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+  }
+}
+
+/* MAP */
+.maps-map{
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0,0,0,.03);
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+.maps-svgwrap{
+  width: 100%;
+  height: auto;
+}
+
+/* IMPORTANT: SVG responsive */
+.maps-svgwrap svg{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* LEGEND overlay */
+.maps-legend{
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+.legend-btn{
+  border: 1px solid rgba(0,0,0,.15);
+  background: white;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.legend-btn--reset{
+  font-weight: 600;
+  opacity: .9;
+}
+
+/* LIST */
+.maps-list{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(0,0,0,.02);
+}
+
+.route-card{
+  border-top: 1px solid rgba(0,0,0,.08);
+}
+
+.route-card:first-child{
+  border-top: none;
+}
+
+.route-head{
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  padding: 14px 14px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  align-items: center;
+}
+
+.route-name{
+  font-weight: 800;
+}
+
+.route-meta{
+  grid-column: 2 / 3;
+  font-size: .9rem;
+  opacity: .75;
+  margin-top: 2px;
+  display: block;
+}
+
+.route-toggle{
+  font-size: 18px;
+  opacity: .7;
+}
+
+.route-body{
+  display: none;
+  padding: 0 14px 14px 14px;
+  opacity: .95;
+}
+
+.route-card.is-open .route-body{
+  display: block;
+}
+
+.route-card.is-open .route-toggle{
+  transform: rotate(45deg);
+}
+
+/* pill */
+.route-pill{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: #111;
+  font-weight: 900;
+  border: 1px solid rgba(0,0,0,.12);
+}
+
+.route-pill--yellow{ background: #f3d44b; }
+.route-pill--blue{ background: #4fb2ff; }
+/* aggiungi gli altri colori */
+
+/* =========================
+   SVG INTERACTION (KEY PART)
+========================= */
+
+/* === SVG routes: base === */
+#svgWrap svg .route-path{
+  fill: none;                 /* <<<<< fondamentale */
+  stroke: #000;               /* default, poi lo sovrascriviamo per route */
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke; /* opzionale ma consigliato */
+}
+/* Stato base: tutti i percorsi "spenti" */
+#svgWrap svg [id^="route-"] .route-path{
+  opacity: .22;
+  filter: none;
+}
+
+/* Stato attivo */
+#svgWrap svg [id^="route-"].is-active .route-path{
+  opacity: 1;
+  stroke-width: 8;
+}
+
+/* Colori per route (decidi tu i codici) */
+#svgWrap svg #route-1  .route-path{ stroke: #f2c400; }  /* giallo */
+#svgWrap svg #route-2  .route-path{ stroke: #2aa7ff; }  /* blu */
+#svgWrap svg #route-3  .route-path{ stroke: #28a745; }  /* verde */
+#svgWrap svg #route-3a .route-path{ stroke: #8bc34a; }  /* verde chiaro */
+#svgWrap svg #route-4  .route-path{ stroke: #ff2aa6; }  /* fucsia */
+#svgWrap svg #route-5  .route-path{ stroke: #ffffff; }  /* bianco */
+#svgWrap svg #route-1a .route-path{ stroke: #ff9800; }  /* arancio */
+
+/* Icone route (se hai icon-bg / icon-label) */
+#svgWrap svg .icon-bg{ fill: #fff; }
+#svgWrap svg .icon-label{ fill: #111; }
+
+/* default: tutti visibili */
+#sentieri_colori g[id^="route-"]{
+  opacity: 1;
+  transition: opacity .25s ease, filter .25s ease;
+}
+
+/* quando c'è un attivo: tutti muted */
+#sentieri_colori.is-filtering g[id^="route-"]{
+  opacity: .12;
+}
+
+/* attivo */
+#sentieri_colori.is-filtering g[id^="route-"].is-active{
+  opacity: 1;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.15));
+}
+
+/* rendo cliccabile */
+#sentieri_colori g[id^="route-"] .route-path,
+#sentieri_colori g[id^="route-"] .route-icon{
+  cursor: pointer;
+}
+
+/* hover */
+#sentieri_colori g[id^="route-"]:hover{
+  opacity: 1;
 }
 
 /* =========================
@@ -1151,6 +1382,16 @@ footer{
   }
 }
 
+@media (min-width: 600px) and (max-width: 1024px){
+  .menu-photo{ 
+    width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #eee;
+    aspect-ratio: 4 / 3; 
+  }
+}
+
 /* =========================
    DESKTOP (≥1024px)
 ========================= */
@@ -1177,16 +1418,18 @@ footer{
     height: 900px;        /* niente full-screen forzato */
     min-height: 560px;    /* scegli tu: 520–650 */
   }
+
 /* DESKTOP: slideshow ON, fallback OFF, video OFF */
   .hero-bg-slideshow{ display: block;  z-index: 2;
   }
+  
   .hero-fallback{ display: none; }
   .hero-bg-video{ display: none; }
 
   /* assicura che il video continui a riempire l'area hero */
   .hero-bg-video,
   .hero-bg-video video,
-  #heroVideo{
+   #heroVideo{
     width: 100%;
     height: 100%;
   }

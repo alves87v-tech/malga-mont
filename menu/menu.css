@@ -103,17 +103,60 @@
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.02em;
+  transition:
+    background-color .18s ease,
+    color .18s ease,
+    border-color .18s ease,
+    transform .12s ease,
+    box-shadow .12s ease;
 }
 
+/* PRIMARY */
 .menu-lang-btn--primary{
-  background: #c8933e; /* oro caldo */
+  background: transparent;
+  border: 2px solid rgba(0,0,0,0.2);
+  color: rgba(0,0,0,0.8);
+}
+
+.menu-lang-btn--primary:hover{
+  background: #b88433; /* oro leggermente più scuro */
+  border-color: #b88433;
   color: #fff;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+
+.menu-lang-btn--primary:active{
+  background: #a9782d;
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
 }
 
 .menu-lang-btn--ghost{
   background: transparent;
   border: 2px solid rgba(0,0,0,0.2);
   color: rgba(0,0,0,0.8);
+}
+
+/* GHOST */
+.menu-lang-btn--ghost:hover{
+  background: #c8933e;
+  border-color: #c8933e;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+
+.menu-lang-btn--ghost:active{
+  background: #b88433;
+  border-color: #b88433;
+  transform: translateY(0);
+}
+
+/* accessibilità tastiera */
+.menu-lang-btn:focus-visible{
+  outline: 3px solid rgba(200,147,62,.45);
+  outline-offset: 3px;
 }
 
 .menu-lang-note{
@@ -291,12 +334,16 @@
 
 .menu-item-photo[open]{
   background: rgba(255,255,255,.5);
+   width: 100%;
+  aspect-ratio: 4 / 3;   /* più naturale per il cibo */
+  overflow: hidden;
+  border-radius: 14px;
 }
 
 .menu-item-photo img{
   margin-top: 10px;
   width: 100%;
-  height: 220px;
+  height: 100%;
   object-fit: cover;
   border-radius: 10px;
   display: block;
@@ -463,4 +510,21 @@
   border-radius: 14px;
   background: rgba(255,255,255,0.6);
   color: rgba(0,0,0,0.75);
+}
+
+.menu-item-photo[open]{
+  background: rgba(255,255,255,.5);
+   width: 100%;
+  aspect-ratio: 4 / 3;   /* più naturale per il cibo */
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.menu-item-photo img{
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
 }

@@ -178,5 +178,77 @@ function initHeroSlideshow() {
     else start();
   });
 }
-
 document.addEventListener('DOMContentLoaded', initHeroSlideshow);
+
+/* ============================
+   MAPS – Percorsi interattivi
+============================ */
+
+(() => {
+  const svgWrap = document.getElementById("svgWrap");
+  if (!svgWrap) return;
+
+  const svg = svgWrap.querySelector("svg");
+  if (!svg) return;
+
+  const routeGroups = Array.from(svg.querySelectorAll('g[id^="route-"]'));
+  const chips = Array.from(document.querySelectorAll(".map-chip[data-route]"));
+  const cards = Array.from(document.querySelectorAll(".route-card[data-route]"));
+
+  const STATE = {
+    dimOpacity: 0.15,
+    dimStroke: 2.5,
+    activeStroke: 5,
+  };
+
+  function setGroupStyle(group, active) {
+    group.querySelectorAll(".route-path").forEach(p => {
+      p.style.opacity = active ? "1" : STATE.dimOpacity;
+      p.style.strokeWidth = active ? STATE.activeStroke : STATE.dimStroke;
+      p.style.transition = "opacity .2s ease, stroke-width .2s ease";
+    });
+
+    group.querySelectorAll(".route-icon").forEach(i => {
+      i.style.opacity = active ? "1" : STATE.dimOpacity;
+      i.style.transition = "opacity .2s ease";
+    });
+  }
+
+  function highlightRoute(route) {
+    if (route === "all") {
+      routeGroups.forEach(g => setGroupStyle(g, true));
+      setActiveUI("all");
+      return;
+    }
+
+    routeGroups.forEach(g => {
+      setGroupStyle(g, g.id === `route-${route}`);
+    });
+
+    setActiveUI(route);
+  }
+
+  function setActiveUI(route) {
+    chips.forEach(c =>
+      c.classList.toggle("is-active", c.dataset.route === route)
+    );
+
+    cards.forEach(card =>
+      card.classList.toggle("is-active", card.dataset.route === route)
+    );
+  }
+
+  chips.forEach(c =>
+    c.addEventListener("click", () =>
+      highlightRoute(c.dataset.route)
+    )
+  );
+
+  routeGroups.forEach(g =>
+    g.addEventListener("click", () =>
+      highlightRoute(g.id.replace("route-", ""))
+    )
+  );
+
+  highlightRoute("all");
+})();
