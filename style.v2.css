@@ -772,12 +772,38 @@ h2{
 /* icone-------------------equivalenti ai vecchi cls */
 .street-bg { 
   fill: #639df3; stroke: none; 
-} 
+}
+
 .text-street { 
   fill: #ffffff; stroke: none; 
-} 
+}
 
-/* frecce---------------------------------- */
+.park-bg { 
+  fill: #639df3; stroke: none; 
+}
+
+.park-text { 
+  fill: #ffffff; stroke: none; 
+}
+
+.icon-malga { 
+  display: inline-block; width: 44px; height: 44px; 
+}
+
+.icon-malga__svg {
+   width: 100%; height: 100%; 
+  }
+
+.malga-shape { 
+  fill: #df0606; 
+}
+
+.malga-label { 
+  fill: #fff; font: 700 18px/1 Arial, sans-serif; 
+}
+
+
+/* frecce--------------------------------- */
 .arrow-bg {
   fill: #ffd413; stroke: none;
 }
