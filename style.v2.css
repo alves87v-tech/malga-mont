@@ -681,7 +681,7 @@ h2{
   }
 }
 
-/* MAP */
+/* MAP --------------------------------------------------*/
 .maps-map{
   position: relative;
   border-radius: 16px;
@@ -706,7 +706,7 @@ h2{
 .maps-legend{
   position: absolute;
   left: 12px;
-  bottom: 12px;
+  top: 12px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -717,6 +717,82 @@ h2{
   border: 1px solid rgba(0,0,0,.08);
 }
 
+/* città ------------------------------------- */
+.city{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.city--large{
+  font-size: 40px;
+  fill: #3d3d3c;
+}
+
+.city--small{
+  font-size: 40px;
+  fill: #3d3d3c;
+}
+
+.city--medium{
+  font-size: 50px;
+  fill: #3d3d3c;
+}
+
+.poi{
+  font-size: 22px;
+  font-weight: 700;
+  fill: #1d1d1b;
+  inline-size: 0px;
+}
+
+/* Strade principali-------------------equivalenti ai vecchi cls */
+.road{
+  fill: none;
+  stroke: #70706f;
+}
+
+.road--sm{
+  stroke-width: 20px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.road--md{
+  stroke-width: 20px;
+  stroke-miterlimit: 10;
+}
+
+.road--lg{
+  stroke-width: 15px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* icone-------------------equivalenti ai vecchi cls */
+.street-bg { 
+  fill: #639df3; stroke: none; 
+} 
+.text-street { 
+  fill: #ffffff; stroke: none; 
+} 
+
+/* frecce---------------------------------- */
+.arrow-bg {
+  fill: #ffd413; stroke: none;
+}
+
+.text-arrow {
+
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  pointer-events: none;  /* opzionale per mappe */
+  fill: #000000; stroke: none;
+}
+
+
+/* legenda---------------------------------- */
 .legend-btn{
   border: 1px solid rgba(0,0,0,.15);
   background: white;
