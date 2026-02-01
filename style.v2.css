@@ -684,7 +684,7 @@ h2{
 /* MAP --------------------------------------------------*/
 .maps-map{
   position: relative;
-  border-radius: 16px;
+  border-radius: 0px;
   overflow: hidden;
   background: rgba(0,0,0,.03);
   border: 1px solid rgba(0,0,0,.08);
@@ -700,6 +700,7 @@ h2{
   display: block;
   width: 100%;
   height: auto;
+  padding: 15px 15px;
 }
 
 /* LEGEND overlay */
@@ -717,7 +718,7 @@ h2{
   border: 1px solid rgba(0,0,0,.08);
 }
 
-/* città ------------------------------------- */
+/* testo città ------------------------------------- */
 .city{
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -744,12 +745,13 @@ h2{
   font-weight: 700;
   fill: #1d1d1b;
   inline-size: 0px;
+  text-align: left;
 }
 
 /* Strade principali-------------------equivalenti ai vecchi cls */
 .road{
   fill: none;
-  stroke: #70706f;
+  stroke: #cecece;
 }
 
 .road--sm{
@@ -771,7 +773,7 @@ h2{
 
 /* icone-------------------equivalenti ai vecchi cls */
 .street-bg { 
-  fill: #639df3; stroke: none; 
+  fill: #c6c6c6; stroke: none; 
 }
 
 .text-street { 
@@ -805,18 +807,16 @@ h2{
 
 /* frecce--------------------------------- */
 .arrow-bg {
-  fill: #ffd413; stroke: none;
+  fill: #dedede; stroke: none;
 }
 
 .text-arrow {
-
   font-family: Arial, sans-serif;
   font-weight: 700;
   font-size: 24px;
   pointer-events: none;  /* opzionale per mappe */
   fill: #000000; stroke: none;
 }
-
 
 /* legenda---------------------------------- */
 .legend-btn{
@@ -835,147 +835,167 @@ h2{
 }
 
 /* LIST */
+/* ROUTE CARD - container principale */
 .maps-list{
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,.08);
-  background: rgba(0,0,0,.02);
+  position: relative;
+  background: #fafafa;
+  border-radius: 0px;
+  margin-bottom: 1rem;
 }
 
-.route-card{
+/* LIST card ----------------------------------------------------- */
+
+ .route-card {
+  display:grid;
+  grid-template-columns: 25px 1fr;
+  gap: 0;
   border-top: 1px solid rgba(0,0,0,.08);
+  border-radius: 0px;
+  overflow: hidden;            /* barra “tagliata” bene */
+  background: #fff;
 }
 
-.route-card:first-child{
-  border-top: none;
+.route-card.is-active{ background: rgba(0,0,0,.035); }
+
+.route-bar{
+  background: var(--route-color);
 }
 
+.route-content{ 
+ grid-column:2;
+  padding:18px;
+}
+
+.route-main {
+ text-align: left;
+ padding: 0 0 18px 0;
+}
+
+
+/* header come già ce l’hai (puoi tenere quasi tutto) */
 .route-head{
   width: 100%;
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 10px;
-  padding: 14px 14px;
-  border: 0;
+  grid-template-columns: 1fr 28px;
+  grid-template-rows: auto auto;
+  column-gap: 19px;
+  row-gap: 6px;
+  align-items: center;
   background: transparent;
-  text-align: left;
+  border: 0;
   cursor: pointer;
+  text-align: left;
+  padding: 0;  /* ora padding lo fa route-content */
+}
+
+.route-name{ grid-column:1; grid-row:1; font-weight:800;  font-size: 1.2rem; }
+.route-meta{ grid-column:1; grid-row:2; opacity:.75; }
+.route-toggle{ grid-column:2; grid-row:1 / span 2; justify-self:end; font-size:22px; opacity:.6; }
+
+
+/* BODY */
+.route-body {
+
+  margin-top: 14px;
+  padding: 12px 18px 18px 0px;
+  background: transparent;
+}
+
+.route-desc{
+  margin: 0;
+  max-width: 70ch;
+  text-align: left;
+}
+
+
+/* selezionato (quando il percorso è attivo sulla mappa) */
+.route-card.is-active{
+  background: rgba(0,0,0,.035);
+  border-radius: 0px; /* se vuoi “card” evidenziata */
+}
+
+.route-card.is-open .route-toggle{ transform: rotate(45deg); opacity: .9; }
+
+.variant-btn{
+ display: inline-flex;
   align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.25);
+  background: transparent;
 }
 
-.route-name{
-  font-weight: 800;
+.route-variants{
+  position: relative;
+  padding-left: 0px;
+  margin-top: 16px;
 }
 
-.route-meta{
-  grid-column: 2 / 3;
-  font-size: .9rem;
-  opacity: .75;
-  margin-top: 2px;
+/* pill variante posizionata rispetto al box "Alternative" in modo che si allinei con la pill principale */
+.route-variants .route-pill--variant{
+  position: absolute;
+  left: -38px; /* = padding-left del contenuto (50px) - left della pill principale (12px) */
+  top: 0px;    /* aggiusta per centrare verticalmente rispetto al titolo/elemento */
+  width: 12px;
+  height: 48px;
+  border-radius: 4px;
+  background: var(--variant-color, #62ffc0);
   display: block;
 }
 
-.route-toggle{
-  font-size: 18px;
-  opacity: .7;
+/* titolino Alternative */
+.route-variants-title{
+  font-weight: 700;
+   margin: 0 0 10px 0;  
+  opacity: .85;
 }
 
-.route-body{
-  display: none;
-  padding: 0 14px 14px 14px;
-  opacity: .95;
-}
+/* Colori per route (decidi tu i codici) */
+.route-icon  {display: none;}
+.route-icon-2 {display: none;}
+.route-icon-3 {display: none;}
+.route-icon-4 {display: none;}
+.route-icon-5 {display: none;}
+.route-icon-6 {display: none;}
+.route-icon-7 {display: none;}
 
-.route-card.is-open .route-body{
-  display: block;
-}
-
-.route-card.is-open .route-toggle{
-  transform: rotate(45deg);
-}
-
-/* pill */
-.route-pill{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 34px;
-  height: 34px;
-  padding: 0 10px;
-  border-radius: 999px;
-  color: #111;
-  font-weight: 900;
-  border: 1px solid rgba(0,0,0,.12);
-}
-
-.route-pill--yellow{ background: #f3d44b; }
-.route-pill--blue{ background: #4fb2ff; }
+.route-pill--giallo{ background: #f3d44b; }
+.route-pill--blu{ background: #2aa7ff; }
+.route-pill--fucsia{ background: #ff2aa6; }
+.route-pill--verde{ background: #28a745; }
+.route-pill--marrone{ background: #c28502; }
+.route-pill--rosso{ background: #c20202; }
+.route-pill--marrone-chiaro{ background: #ff9800;}
+.route-pill--violetto{ background: #2e00a3;}
 /* aggiungi gli altri colori */
 
 /* =========================
    SVG INTERACTION (KEY PART)
 ========================= */
 
-/* === SVG routes: base === */
-#svgWrap svg .route-path{
-  fill: none;                 /* <<<<< fondamentale */
-  stroke: #000;               /* default, poi lo sovrascriviamo per route */
-  stroke-width: 6;
+/* base path */
+#svgWrap svg .route-path{ 
+  fill: none;
+  stroke: var(--route-color);
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  vector-effect: non-scaling-stroke; /* opzionale ma consigliato */
-}
-/* Stato base: tutti i percorsi "spenti" */
-#svgWrap svg [id^="route-"] .route-path{
-  opacity: .22;
-  filter: none;
+  vector-effect: non-scaling-stroke;
+  transition: stroke .2s ease, filter .25s ease;
 }
 
-/* Stato attivo */
-#svgWrap svg [id^="route-"].is-active .route-path{
-  opacity: 1;
-  stroke-width: 8;
+
+/* neutro e filtro: tutti grigi */
+#tracciati.is-filtering .route-path{
+  stroke: #cfcfcf;
 }
 
-/* Colori per route (decidi tu i codici) */
-#svgWrap svg #route-1  .route-path{ stroke: #f2c400; }  /* giallo */
-#svgWrap svg #route-2  .route-path{ stroke: #2aa7ff; }  /* blu */
-#svgWrap svg #route-3  .route-path{ stroke: #28a745; }  /* verde */
-#svgWrap svg #route-3a .route-path{ stroke: #8bc34a; }  /* verde chiaro */
-#svgWrap svg #route-4  .route-path{ stroke: #ff2aa6; }  /* fucsia */
-#svgWrap svg #route-5  .route-path{ stroke: #ffffff; }  /* bianco */
-#svgWrap svg #route-1a .route-path{ stroke: #ff9800; }  /* arancio */
-
-/* Icone route (se hai icon-bg / icon-label) */
-#svgWrap svg .icon-bg{ fill: #fff; }
-#svgWrap svg .icon-label{ fill: #111; }
-
-/* default: tutti visibili */
-#sentieri_colori g[id^="route-"]{
-  opacity: 1;
-  transition: opacity .25s ease, filter .25s ease;
-}
-
-/* quando c'è un attivo: tutti muted */
-#sentieri_colori.is-filtering g[id^="route-"]{
-  opacity: .12;
-}
-
-/* attivo */
-#sentieri_colori.is-filtering g[id^="route-"].is-active{
-  opacity: 1;
+/* attivo: torna colorato */
+#tracciati.is-filtering .route.is-active .route-path{
+  stroke: var(--route-color);
+  stroke-width: 5;
   filter: drop-shadow(0 6px 10px rgba(0,0,0,.15));
-}
-
-/* rendo cliccabile */
-#sentieri_colori g[id^="route-"] .route-path,
-#sentieri_colori g[id^="route-"] .route-icon{
-  cursor: pointer;
-}
-
-/* hover */
-#sentieri_colori g[id^="route-"]:hover{
-  opacity: 1;
 }
 
 /* =========================

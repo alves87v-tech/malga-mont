@@ -184,71 +184,127 @@ document.addEventListener('DOMContentLoaded', initHeroSlideshow);
    MAPS – Percorsi interattivi
 ============================ */
 
-(() => {
+document.addEventListener("DOMContentLoaded", () => {
   const svgWrap = document.getElementById("svgWrap");
   if (!svgWrap) return;
 
   const svg = svgWrap.querySelector("svg");
   if (!svg) return;
 
-  const routeGroups = Array.from(svg.querySelectorAll('g[id^="route-"]'));
-  const chips = Array.from(document.querySelectorAll(".map-chip[data-route]"));
-  const cards = Array.from(document.querySelectorAll(".route-card[data-route]"));
+  const tracciati = svg.querySelector("#tracciati");
+  if (!tracciati) return;
 
-  const STATE = {
-    dimOpacity: 0.15,
-    dimStroke: 2.5,
-    activeStroke: 5,
-  };
+  const routeGroups = [...svg.querySelectorAll('g[id^="route-"]')];
+  const cards = [...document.querySelectorAll('.route-card[data-route]')];
 
-  function setGroupStyle(group, active) {
-    group.querySelectorAll(".route-path").forEach(p => {
-      p.style.opacity = active ? "1" : STATE.dimOpacity;
-      p.style.strokeWidth = active ? STATE.activeStroke : STATE.dimStroke;
-      p.style.transition = "opacity .2s ease, stroke-width .2s ease";
+   // 👉 QUI
+  function openCard(card) {
+    const head = card.querySelector(".route-head");
+    const body = card.querySelector(".route-body");
+
+    cards.forEach(c => {
+      c.classList.remove("is-open", "is-active");
+      const b = c.querySelector(".route-body");
+      if (b) b.hidden = true;
+      const h = c.querySelector(".route-head");
+      if (h) h.setAttribute("aria-expanded", "false");
     });
 
-    group.querySelectorAll(".route-icon").forEach(i => {
-      i.style.opacity = active ? "1" : STATE.dimOpacity;
-      i.style.transition = "opacity .2s ease";
-    });
+    card.classList.add("is-open", "is-active");
+    if (body) body.hidden = false;
+    if (head) head.setAttribute("aria-expanded", "true");
+  }
+  
+  function setNeutral() {
+    tracciati.classList.add("is-filtering"); // tutti grigi
+    routeGroups.forEach(g => g.classList.remove("is-active"));
+    cards.forEach(c => c.classList.remove("is-active", "is-open"));
   }
 
-  function highlightRoute(route) {
-    if (route === "all") {
-      routeGroups.forEach(g => setGroupStyle(g, true));
-      setActiveUI("all");
-      return;
+  function highlightRoute(routeId) {
+  if (!routeId) { 
+    setNeutral(); 
+    return; 
+  }
+
+  const normalized = routeId.startsWith("route-")
+    ? routeId
+    : `route-${routeId}`;
+
+  tracciati.classList.add("is-filtering");
+
+  routeGroups.forEach(g => {
+    const isActive = g.id === normalized;
+    g.classList.toggle("is-active", isActive);
+
+    // 🔥 PORTA SOPRA IL TRACCIATO ATTIVO
+    if (isActive) {
+      tracciati.appendChild(g);
     }
+  });
 
-    routeGroups.forEach(g => {
-      setGroupStyle(g, g.id === `route-${route}`);
+  cards.forEach(c => {
+    const cId = c.dataset.route.startsWith("route-")
+      ? c.dataset.route
+      : `route-${c.dataset.route}`;
+    c.classList.toggle("is-active", cId === normalized);
+  });
+}
+
+ // ✅ stato iniziale: primo percorso attivo e scheda aperta
+const defaultRoute = "route-1";
+
+// evidenzia percorso sulla mappa
+highlightRoute(defaultRoute);
+
+// apri la scheda corrispondente
+const defaultCard = cards.find(c => {
+  const cId = c.dataset.route.startsWith("route-")
+    ? c.dataset.route
+    : `route-${c.dataset.route}`;
+  return cId === defaultRoute;
+});
+
+if (defaultCard) {
+  // chiudi tutto + apri solo quella
+  cards.forEach(c => {
+    c.classList.remove("is-open", "is-active");
+    const b = c.querySelector(".route-body");
+    if (b) b.hidden = true;
+    const h = c.querySelector(".route-head");
+    if (h) h.setAttribute("aria-expanded", "false");
+  });
+
+  defaultCard.classList.add("is-open", "is-active");
+  const body = defaultCard.querySelector(".route-body");
+  if (body) body.hidden = false;
+  const head = defaultCard.querySelector(".route-head");
+  if (head) head.setAttribute("aria-expanded", "true");
+}
+
+   // CLICK SULLA LISTA
+  cards.forEach(card => {
+    const head = card.querySelector(".route-head");
+    const body = card.querySelector(".route-body");
+    const routeId = card.dataset.route;
+
+    head.addEventListener("click", () => {
+      const isOpen = card.classList.contains("is-open");
+
+      // chiudi tutto
+      cards.forEach(c => {
+        c.classList.remove("is-open", "is-active");
+        const b = c.querySelector(".route-body");
+        if (b) b.hidden = true;
+      });
+
+      if (!isOpen) {
+        card.classList.add("is-open", "is-active");
+        if (body) body.hidden = false;
+        highlightRoute(routeId);
+      } else {
+        highlightRoute(null); // torna neutro grigio
+      }
     });
-
-    setActiveUI(route);
-  }
-
-  function setActiveUI(route) {
-    chips.forEach(c =>
-      c.classList.toggle("is-active", c.dataset.route === route)
-    );
-
-    cards.forEach(card =>
-      card.classList.toggle("is-active", card.dataset.route === route)
-    );
-  }
-
-  chips.forEach(c =>
-    c.addEventListener("click", () =>
-      highlightRoute(c.dataset.route)
-    )
-  );
-
-  routeGroups.forEach(g =>
-    g.addEventListener("click", () =>
-      highlightRoute(g.id.replace("route-", ""))
-    )
-  );
-
-  highlightRoute("all");
-})();
+  });
+});
