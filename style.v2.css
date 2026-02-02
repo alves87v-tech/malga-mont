@@ -263,6 +263,7 @@ h2{
   margin: 0 auto; }
 
 .intro-title{
+ font-family: "canvas-script", sans-serif;
   font-size: 1.3rem;
   letter-spacing: 0.15em;
   color: #888;
@@ -273,7 +274,6 @@ h2{
 
 .intro-quote{
   font-size: 1.2rem;
-  font-style: italic;
   color: #888;
   font-weight: 400;
   max-width: 900px;
@@ -317,7 +317,10 @@ h2{
 }
 
 .food-title{
-  font-size: 2rem;
+  font-family: "canvas-script", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 3rem;
   margin: 0 0 10px;
 }
 
@@ -650,7 +653,7 @@ h2{
    MAPS SECTION
 ========================= */
 .maps{
-  padding: 56px 16px;
+  padding: 15px 16px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -671,7 +674,7 @@ h2{
 
 .maps-grid{
   display: grid;
-  gap: 18px;
+  gap: 0px;
 }
 
 
@@ -834,7 +837,7 @@ h2{
   position: relative;
   background: #fafafa;
   border-radius: 0px;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 /* LIST card ----------------------------------------------------- */
@@ -1696,8 +1699,12 @@ footer{
   .food-text-wrap.food-text-detailed{
   display: none;
 }
+/* Sezione mappe/percorsi ----------------------------*/
 
-/* Sezione maps ----------------------------*/
+.maps-subtitle { display: none; }
+
+
+/* Sezione map card ----------------------------*/
 .arrivare-layout{
     display: grid;
     grid-template-columns: 260px 1fr 1fr;
@@ -1897,9 +1904,6 @@ footer{
     margin-left: 0;
     padding-left: 0; /* nel caso ti rimanga qualche padding ereditato */
   }
-
-
-  
 }
 
 /* HERO full-screen (tablet/mobile) */
