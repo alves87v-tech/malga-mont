@@ -1,3 +1,4 @@
+console.log("✅ script.v2.js caricato");
 // --- FOOD: slideshow piatti ------------------------------------
 (function(){
   const slides = document.querySelectorAll('.food-slide');
@@ -220,12 +221,14 @@ document.addEventListener("DOMContentLoaded", () => {
     routeGroups.forEach(g => g.classList.remove("is-active"));
     cards.forEach(c => c.classList.remove("is-active", "is-open"));
   }
-
+  
   function highlightRoute(routeId) {
   if (!routeId) { 
     setNeutral(); 
     return; 
   }
+
+
 
   const normalized = routeId.startsWith("route-")
     ? routeId
@@ -250,6 +253,29 @@ document.addEventListener("DOMContentLoaded", () => {
     c.classList.toggle("is-active", cId === normalized);
   });
 }
+
+/* ====== INIZIO: funzione highlightVariant (NUOVA) ====== */
+function highlightVariant(routeId) {
+
+  // 1) spengo tutte le varianti
+  routeGroups.forEach(g => g.classList.remove("is-variant-active"));
+
+  // 2) se routeId è nullo/vuoto, fine (serve per spegnere variante)
+  if (!routeId) return;
+
+  // 3) normalizzo il nome (accetto "route-1a" oppure "1a")
+  const normalized = routeId.startsWith("route-")
+    ? routeId
+    : `route-${routeId}`;
+
+  // 4) cerco il gruppo nello SVG
+  const g = svg.querySelector(`#${CSS.escape(normalized)}`);
+  if (!g) return;
+
+  // 5) attivo la variante e la porto sopra
+  g.classList.add("is-variant-active");
+}
+/* ====== FINE: funzione highlightVariant (NUOVA) ====== */
 
  // ✅ stato iniziale: primo percorso attivo e scheda aperta
 const defaultRoute = "route-1";
@@ -304,7 +330,58 @@ if (defaultCard) {
         highlightRoute(routeId);
       } else {
         highlightRoute(null); // torna neutro grigio
+        highlightVariant(null);     // ✅ spegne anche la variante
       }
     });
+
+/* ====== INIZIO: click varianti (NUOVO) ====== */
+document.addEventListener("click", (e) => {
+
+  const btn = e.target.closest(".variant-btn");
+  if (!btn) return;
+
+  // impedisco che il click faccia altro (tipo chiudere/aprire schede)
+  e.preventDefault();
+  e.stopPropagation();
+  if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+  // prendo l'id della variante dal bottone (es: "route-1a")
+  const routeId = (btn.dataset.route || "").trim();
+  if (!routeId) return;
+
+console.log("VARIANT CLICK", routeId);
+
+  // accendo SOLO la variante (non tocco il main)
+  highlightVariant(routeId);
+
+}, true);
+/* ====== FINE: click varianti (NUOVO) ====== */
+
   });
-});
+
+// ===============================
+// VARIANTI → MAPPA (CAPTURE, niente conflitti con le card)
+// ===============================
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".variant-btn");
+  if (!btn) return;
+
+  // blocca qualunque handler della card/head che potrebbe "resettare"
+  e.preventDefault();
+  e.stopPropagation();
+  if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+  const routeId = (btn.dataset.route || "").trim(); // qui sarà "route-1a"
+  if (!routeId) return;
+
+  console.log("[VARIANT] click:", routeId); // debug: deve apparire
+
+  highlightRoute(routeId);
+
+  // feedback UI (opzionale)
+  document.querySelectorAll(".variant-btn.is-active")
+    .forEach(b => b.classList.remove("is-active"));
+  btn.classList.add("is-active");
+
+}, true); // <-- CAPTURE: arriva prima degli altri click listener
+  }); // chiude document.querySelectorAll(".variant-btn").forEach
