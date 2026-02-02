@@ -809,7 +809,7 @@ h2{
   font-weight: 700;
   font-size: 24px;
   pointer-events: none;  /* opzionale per mappe */
-  fill: #000000; stroke: none;
+  fill: #808080; stroke: none;
 }
 
 /* legenda---------------------------------- */
@@ -1897,6 +1897,9 @@ footer{
     margin-left: 0;
     padding-left: 0; /* nel caso ti rimanga qualche padding ereditato */
   }
+
+
+  
 }
 
 /* HERO full-screen (tablet/mobile) */
