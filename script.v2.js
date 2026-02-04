@@ -315,24 +315,36 @@ if (defaultCard) {
     const routeId = card.dataset.route;
 
     head.addEventListener("click", () => {
-      const isOpen = card.classList.contains("is-open");
+  const isOpen = card.classList.contains("is-open");
 
-      // chiudi tutto
-      cards.forEach(c => {
-        c.classList.remove("is-open", "is-active");
-        const b = c.querySelector(".route-body");
-        if (b) b.hidden = true;
-      });
+  // chiudi tutto
+  cards.forEach(c => {
+    c.classList.remove("is-open", "is-active");
+    const b = c.querySelector(".route-body");
+    if (b) b.hidden = true;
+    
+    // spegni eventuali varianti attive dentro questa card
+    c.querySelectorAll(".variant-btn.is-active")
+      .forEach(v => v.classList.remove("is-active"));
+  });
 
-      if (!isOpen) {
-        card.classList.add("is-open", "is-active");
-        if (body) body.hidden = false;
-        highlightRoute(routeId);
-      } else {
-        highlightRoute(null); // torna neutro grigio
-        highlightVariant(null);     // ✅ spegne anche la variante
-      }
-    });
+  // 🔥🔥🔥 QUESTO È IL RESET GLOBALE (METTILO QUI)
+  document.querySelectorAll('[data-route].is-active')
+    .forEach(el => el.classList.remove('is-active'));
+
+  // --------------------
+
+  if (!isOpen) {
+    card.classList.add("is-open", "is-active");
+    if (body) body.hidden = false;
+
+    highlightVariant(null);   // 🔥 aggiungi QUESTA riga
+    highlightRoute(routeId);
+  } else {
+    highlightRoute(null);
+    highlightVariant(null);
+  }
+});
 
 /* ====== INIZIO: click varianti (NUOVO) ====== */
 document.addEventListener("click", (e) => {
