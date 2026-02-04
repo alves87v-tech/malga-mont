@@ -199,9 +199,10 @@ h2{
   gap: 1rem;
 }
 .hero-logo{
-  width: 180px;
+  width: 400px;
   max-width: 60vw;
   filter: drop-shadow(0 2px 12px rgba(0,0,0,0.18));
+  margin-bottom: 30px;
 }
 
 .hero-btn{
@@ -1775,6 +1776,7 @@ footer{
   }
 
   .maps-title {
+    
     margin: 0;
     display: flex;
     flex-direction: column;
