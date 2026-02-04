@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /* =========================
    GLOBAL STYLES
 ========================= */
@@ -60,11 +61,12 @@ html, body{
 *, *::before, *::after{
   box-sizing: inherit;
 }
+
 /* =========================
    LAYOUT GENERALE
 ========================= */
 main{
-   max-width: none;
+  max-width: none;
   margin: 0;
   padding: 0;          /* se vuoi padding lo gestiamo nelle sezioni */
   background: transparent;
@@ -147,12 +149,14 @@ h2{
   inset: 0;
   z-index: 1;
 }
+
 .hero-fallback img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+
 .hero-bg-base img{
   width: 100%;
   height: 100%;
@@ -290,10 +294,10 @@ h2{
   background: rgb(255, 255, 255);
   overflow: hidden;
 }
+
 #food.food-section{ background:#f3ebe0;
 
  }
-
 .food-inner{
   position: relative;
   z-index: 1;
@@ -481,6 +485,7 @@ h2{
 .food-text-category{
   display: none;    /* mobile/tablet: categoria nascosta */
 }
+
 /* =====================================================
    FOOD — BASE (0–429): rail ON, slider OFF
    (serve per evitare il “collasso” sotto i 430px)
@@ -653,28 +658,44 @@ h2{
    MAPS SECTION
 ========================= */
 .maps{
-  padding: 15px 16px;
-  max-width: 1200px;
-  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 56px 0;          /* padding verticale per la sezione */
+  background: #fff;         /* oppure un beige leggero se vuoi stacco */
 }
 
 .maps-header{
-  margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
-.maps-title{
-  margin: 0 0 8px 0;
+/* Base (mobile): mostra quello sopra, nasconde quello nel pannello */
+.maps-header--desktop { 
+display: none; 
 }
 
-.maps-subtitle{
-  margin: 0;
-  opacity: .85;
-  max-width: 70ch;
+.maps-header--mobile {
+max-width: 1200px;
+padding: 0 16px;
+text-align: left;
 }
 
-.maps-grid{
-  display: grid;
-  gap: 0px;
+.maps-title {
+margin: 0 0 8px 0;
+font-size: clamp(1.4rem, 4vw, 1.8rem);
+letter-spacing: 0.06em;
+}
+
+.maps-subtitle {
+margin: 0;
+opacity: .85;
+max-width: 70ch;
+}
+
+.maps-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 0px;
 }
 
 
@@ -1699,10 +1720,73 @@ footer{
   .food-text-wrap.food-text-detailed{
   display: none;
 }
+
 /* Sezione mappe/percorsi ----------------------------*/
 
-.maps-subtitle { display: none; }
+/* full-bleed (se vuoi fuori dal wrap) */
+  .maps{
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0;
+  }
 
+  /* split 65/35 */
+  .maps-grid{
+    grid-template-columns: 65fr 35fr;
+    height: 100svh;
+    min-height: 720px;
+    align-items: stretch;
+  }
+
+  .maps-header--desktop {
+    display: block;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+.maps-title {
+margin: 0 0 8px 0;
+font-size: 4rem;
+letter-spacing: 0.06em;
+text-align: left;
+}
+
+  /* mappa riempie */
+  .maps-map{
+    border-radius: 0;
+    border: 0;
+    overflow: hidden;
+  }
+
+  .maps-svgwrap{
+    height: 100%;
+  }
+
+  .maps-svgwrap svg{
+    height: 100%;
+    width: 100%;
+    padding: 50px;          /* via padding “card” */
+    display: block;
+  }
+
+  /* pannello lista (deve scrollare da solo) */
+  .maps-list{
+    height: 100%;
+    overflow: auto;
+    padding: 24px 16px;
+    max-width: 700px;
+  }
+
+  .maps-list .maps-title{
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+.maps-subtitle { display: none; }
+.maps-header--mobile { display: none; }
 
 /* Sezione map card ----------------------------*/
 .arrivare-layout{
@@ -1712,11 +1796,11 @@ footer{
     align-items: start;
   }
 
-   .arrivare-intro{
+.arrivare-intro{
     grid-column: 1;
   }
 
-   .arrivare-cards{
+.arrivare-cards{
     grid-column: 2 / 4; /* fallback se rimane wrapper */
     display: contents; /* chiave */
   }
