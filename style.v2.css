@@ -658,11 +658,11 @@ h2{
    MAPS SECTION
 ========================= */
 .maps{
-  position: relative;
-  width: 100%;
-  margin: 0;
-  padding: 56px 0;          /* padding verticale per la sezione */
-  background: #fff;         /* oppure un beige leggero se vuoi stacco */
+position: relative;
+width: 100%;
+margin: 0;
+padding: 56px 0;          /* padding verticale per la sezione */
+background: #fff;         /* oppure un beige leggero se vuoi stacco */
 }
 
 .maps-header{
@@ -680,10 +680,26 @@ padding: 0 16px;
 text-align: left;
 }
 
-.maps-title {
-margin: 0 0 8px 0;
-font-size: clamp(1.4rem, 4vw, 1.8rem);
-letter-spacing: 0.06em;
+.maps-title{
+  margin: 0 0 8px 0;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+}
+
+.maps-title-main{
+  display: block;
+  font-size: clamp(1.8rem, 6vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.maps-title-sub{
+  display: block;
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+  margin-top: 6px;
 }
 
 .maps-subtitle {
@@ -1739,19 +1755,31 @@ footer{
     align-items: stretch;
   }
 
+ /* Titolo maps----------------------------------------------------------- */
   .maps-header--desktop {
     display: block;
-    font-size: 4rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 24px;
   }
 
-.maps-title {
-margin: 0 0 8px 0;
-font-size: 4rem;
-letter-spacing: 0.06em;
-text-align: left;
+  .maps-title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    text-align: left;
+}
+
+ .maps-list .maps-title-main{
+    font-size: clamp(4rem, 2.6vw, 3rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+.maps-title-sub{
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+  margin-top: 4px;
 }
 
   /* mappa riempie */
@@ -1768,7 +1796,7 @@ text-align: left;
   .maps-svgwrap svg{
     height: 100%;
     width: 100%;
-    padding: 50px;          /* via padding “card” */
+    padding: 8px;          /* via padding “card” */
     display: block;
   }
 
@@ -1778,11 +1806,6 @@ text-align: left;
     overflow: auto;
     padding: 24px 16px;
     max-width: 700px;
-  }
-
-  .maps-list .maps-title{
-    font-weight: 700;
-    margin-bottom: 10px;
   }
 
 .maps-subtitle { display: none; }
