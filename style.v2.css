@@ -359,15 +359,8 @@ h2{
 }
 
 /* --- SLIDER BASE (MOBILE / TABLET) --------------------------- */
-.food-slider{
-  position: relative;
-  max-width: 1500px;
-  margin: 0 auto;
-}
 
-.food-frame{
-   background: transparent;
-  box-shadow: none;
+...existing code...
   border-radius: 0;
   padding: 0;
 }
@@ -492,7 +485,7 @@ h2{
    (serve per evitare il “collasso” sotto i 430px)
 ===================================================== */
 
-.food-slider{ display: none; }         /* mobile-first */
+...existing code...
 .food-arrow{ display: none; }          /* non servono senza slider */
 
 /* rail */
@@ -1283,40 +1276,15 @@ footer{
 }
 
   /* 2. la slide diventa il contenitore dell’overlay */
-  .food-slider{
-     position: relative;
-    height: 600px;          /* regola qui */
-    width: 100%;
-    border-radius: 20px;
-    overflow: hidden;
-  }
+...existing code...
 
   /* 3. l’immagine riempie la slide */
-  .food-slider img{
-    height: 600px;
-    object-fit: cover;
-  }
+...existing code...
 
   /* 4. overlay testo in basso */
-  .food-slider .food-text-wrap h3{
-  margin: 0 0 10px;   /* rimuove il centraggio */
-  max-width: none;    /* rimuove il limite */
-  width: 100%;        /* prende tutta la larghezza */
-  }
+...existing code...
 
-  .food-slider .food-text-detailed{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 20px 20px 18px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  background: rgba(28, 28, 28, 0.85);
-    color: #ffffff;
+...existing code...
 
     border-radius: 0 0 14px 14px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.15);
@@ -1385,7 +1353,7 @@ footer{
 @media (min-width: 430px) and (max-width: 1024px){
 
    /* spegne lo slider */
-  .food-slider{ display: none; }
+...existing code...
 
   /* accende la rail */
   .food-rail{
@@ -1636,12 +1604,12 @@ footer{
     display: none !important;
   }
 
-  .food-slider{
+...existing code...
     display: block;
   }
 
   /* contenitore centrato e ampio */
-  .food-slider{
+...existing code...
     max-width: 1500px;
     margin: 0 auto;
      height: auto;      /* 🔑 elimina il vuoto sotto */
