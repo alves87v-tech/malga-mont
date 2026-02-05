@@ -440,6 +440,50 @@ h2{
 /* mobile-first: nascondi il detailed */
 .food-text-detailed{ display: none; }
 
+/* --- nascondi scrollbar nativa ma mantieni scroll --- */
+.food-items{
+  scrollbar-width: none;           /* Firefox */
+}
+
+.food-items::-webkit-scrollbar{
+  display: none;                   /* Chrome/Safari */
+}
+
+/* UI sotto la rail */
+.food-rail-ui{
+  grid-column: 2;   /* ← sta sotto la rail (colonna destra) */
+  justify-content: center; /* centrata */
+  margin-top: 40px;
+}
+
+/* Track */
+.food-scrollbar{
+  width: min(750px, 85%);
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.08);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none; /* importante per drag su touch */
+}
+
+/* Thumb */
+.food-scrollbar__thumb{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 20px; /* verrà aggiornato via JS */
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.35),
+    rgba(0,0,0,.5) 
+  );
+  transition: width .25s ease;
+}
+
 /* =========================
    SLIDESHOW CONTESTO
 ========================= */

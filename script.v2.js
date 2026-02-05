@@ -1,58 +1,88 @@
 console.log("✅ script.v2.js caricato");
-// --- FOOD: slideshow piatti ------------------------------------
-(function(){
-  const slides = document.querySelectorAll('.food-slide');
-  const dots   = document.querySelectorAll('.food-dot');
-  const prev   = document.querySelector('.food-arrow-prev');
-  const next   = document.querySelector('.food-arrow-next');
+// --- FOOD: scrollbar reale (thumb + drag) -----------------------
+(() => {
+  const rail = document.getElementById("foodRail");
+  const track = document.getElementById("foodScrollbar");
+  const thumb = document.getElementById("foodThumb");
 
-  // se non c'è la sezione esco
+  if (!rail || !track || !thumb) return;
 
-  if (!slides.length) return;
+  let dragging = false;
+  let dragStartX = 0;
+  let thumbStartLeft = 0;
 
-  let current = 0;
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
-  function showSlide(index){
-    current = (index + slides.length) % slides.length;
+  const metrics = () => {
+    const maxScroll = rail.scrollWidth - rail.clientWidth;
+    const trackW = track.clientWidth;
 
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('is-active', i === current);
-    });
+    // rapporto visibile -> thumb come scrollbar vera
+    const ratioVisible = rail.scrollWidth > 0 ? (rail.clientWidth / rail.scrollWidth) : 1;
+    const thumbW = clamp(trackW * ratioVisible, 36, trackW);
+    const maxThumbLeft = Math.max(0, trackW - thumbW);
 
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('is-active', i === current);
-    });
-  }
-
-  // frecce
-  if (prev) prev.addEventListener('click', () => showSlide(current - 1));
-  if (next) next.addEventListener('click', () => showSlide(current + 1));
-
-  // pallini
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const idx = Number(dot.getAttribute('data-index')) || 0;
-      showSlide(idx);
-    });
-  });
-
-  // autoplay
-  let auto = setInterval(() => {
-    showSlide(current + 1);
-  }, 7000);
-
-  const resetAuto = () => {
-    clearInterval(auto);
-    auto = setInterval(() => showSlide(current + 1), 7000);
+    return { maxScroll, thumbW, maxThumbLeft };
   };
 
-  [prev, next, ...dots].forEach(el => {
-    if (!el) return;
-    el.addEventListener('click', resetAuto);
+  const render = () => {
+    const { maxScroll, thumbW, maxThumbLeft } = metrics();
+
+    thumb.style.width = `${thumbW}px`;
+
+    const p = (maxScroll > 0) ? (rail.scrollLeft / maxScroll) : 0;
+    thumb.style.left = `${Math.round(p * maxThumbLeft)}px`;
+
+    // se non c'è overflow, nascondi barra (optional ma bello)
+    const hasOverflow = maxScroll > 2;
+    track.style.opacity = hasOverflow ? "1" : "0";
+    track.style.pointerEvents = hasOverflow ? "auto" : "none";
+  };
+
+  const setScrollFromThumbLeft = (leftPx) => {
+    const { maxScroll, maxThumbLeft } = metrics();
+    const p = (maxThumbLeft > 0) ? (leftPx / maxThumbLeft) : 0;
+    rail.scrollLeft = p * maxScroll;
+  };
+
+  // click sul track -> vai a quel punto
+  track.addEventListener("pointerdown", (e) => {
+    const rect = track.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+
+    const { thumbW, maxThumbLeft } = metrics();
+    const targetLeft = clamp(x - thumbW / 2, 0, maxThumbLeft);
+    setScrollFromThumbLeft(targetLeft);
   });
 
-  // prima slide
-  showSlide(0);
+  // drag thumb
+  thumb.addEventListener("pointerdown", (e) => {
+    e.stopPropagation();
+    dragging = true;
+    thumb.setPointerCapture(e.pointerId);
+
+    dragStartX = e.clientX;
+    thumbStartLeft = parseFloat(getComputedStyle(thumb).left) || 0;
+  });
+
+  window.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+
+    const { maxThumbLeft } = metrics();
+    const dx = e.clientX - dragStartX;
+    const newLeft = clamp(thumbStartLeft + dx, 0, maxThumbLeft);
+
+    setScrollFromThumbLeft(newLeft);
+  });
+
+  window.addEventListener("pointerup", () => {
+    dragging = false;
+  });
+
+  rail.addEventListener("scroll", render, { passive: true });
+  window.addEventListener("resize", render);
+
+  render();
 })();
 
 // --- GENERIC SLIDER (riusabile) --------------------------------

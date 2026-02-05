@@ -125,7 +125,7 @@
     </div>
 
     <!-- COLONNA DESTRA = RAIL CARD -->
-    <div class="food-items" aria-label="Piatti più richiesti">
+    <div class="food-items" id="foodRail" aria-label="Piatti più richiesti">
 
       <!-- CARD 1 -->
       <a href="menu.html#antipasti" class="food-card">
@@ -201,10 +201,14 @@
           <p>Panna cotta ai frutti di bosco e dolci stagionali</p>
         </div>
       </a>
+    </div><!-- </food-items> ------------------------------->
 
-    </div>
-
+<!-- UI RAIL (FUORI DAL RAIL) -->
+<div class="food-rail-ui" aria-hidden="true">
+  <div class="food-scrollbar" id="foodScrollbar">
+    <div class="food-scrollbar__thumb" id="foodThumb"></div>
   </div>
+</div>
 </section>
 
 <!-- Sezione maps intro -------------------------------------------->
@@ -521,7 +525,7 @@
           </g>
         </g>
        </svg>
-        </div>
+     </div>
    </div><!-- chiusura maps-map-------------------------------------------->
 
 <!-- LISTA PERCORSI --------------------------------------------------------------------->
