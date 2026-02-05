@@ -269,11 +269,9 @@ h2{
 
 .intro-title{
  font-family: "canvas-script", sans-serif;
-  font-size: 1.3rem;
-  letter-spacing: 0.15em;
-  color: #888;
-  text-transform: uppercase;
-  font-weight: 700;
+  font-size: 4rem;
+  color: #7e765a;
+  font-weight: 400;
   margin-bottom: 1.0rem;
 }
 
@@ -285,39 +283,51 @@ h2{
   margin: 0 auto;
   line-height: 1.3;
 }
+.intro-flat{
+  background: #fff;
+  padding: 100px 20px;   /* regola qui l’aria */
+}
+
+.intro-flat .intro-content{
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0;
+  border-radius: 0;
+}
 
 /* SEZIONE FOOD ------------------------------------------------- */
+/* =====================================================
+   FOOD — MOBILE FIRST (base = rail)
+===================================================== */
+
 .food-section{
   position: relative;
   width: 100%;
   margin: 0;
   padding: 72px 16px;
-  background: rgb(255, 255, 255);
   overflow: hidden;
+  background: #f3ebe0;
 }
 
-#food.food-section{ background:#f3ebe0;
-
- }
 .food-inner{
-  position: relative;
-  z-index: 1;
   max-width: 1500px;
   margin: 0 auto;
 }
 
-/* Header */
+/* HEADER (mobile default: centrato) */
 .food-header{
   max-width: 640px;
-  margin: 0 auto 40px;
+  margin: 0 auto 28px;
   text-align: center;
+  padding: 20px;
+
 }
 
 .food-eyebrow{
   text-transform: uppercase;
   letter-spacing: .14em;
   font-size: .78rem;
-  margin-bottom: 6px;
+  margin: 0 0 6px;
   color: #8b5a2b;
 }
 
@@ -325,14 +335,16 @@ h2{
   font-family: "canvas-script", sans-serif;
   font-weight: 300;
   font-style: normal;
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 0 0 10px;
+  line-height: 1.05;
+  text-align: center;
 }
 
 .food-subtitle{
   font-size: .95rem;
   line-height: 1.6;
-  margin: 0 0 20px;
+  margin: 0 0 18px;
 }
 
 .food-menu-btn{
@@ -358,203 +370,75 @@ h2{
   box-shadow: 0 6px 18px rgba(0,0,0,.18);
 }
 
-/* --- SLIDER BASE (MOBILE / TABLET) --------------------------- */
-
-...existing code...
-  border-radius: 0;
-  padding: 0;
-}
-
-/* tutte le slide nascoste di default */
-.food-slide{
-  display: none;
-  background: transparent;
-}
-
-/* solo quella attiva visibile: LAYOUT A 1 COLONNA (img sopra, testo sotto) */
-.food-slide.is-active{
-  display:grid;
-  grid-template-columns: minmax(0, 1fr);  /* UNA SOLA COLONNA */
-  gap: 24px;
-  align-items: center;
-  background: transparent;
-}
-
-.food-img-wrap{
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,.10);
-}
-
-.food-img-wrap img{
-  display: block;
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-}
-
-.food-text-wrap h3{
-  margin: 0 auto 10px;
-  font-size: 1.15rem;
-  line-height: 1.6;
-  max-width: 500px;
-  text-align: left;
-}
-
-.food-text-wrap p{
-  margin: 0 auto;
-  font-size: .92rem;
-  line-height: 1.6;
-  max-width: 500px;
-  text-align: left;
-}
-
-/* Frecce */
-.food-arrow{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  border: none;
-  background: rgba(255,255,255,.95);
-  box-shadow: 0 8px 20px rgba(0,0,0,.22);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.4rem;
-  line-height: 1;
-  padding: 0;
-  z-index: 3;
-  transition: transform .1s ease, box-shadow .1s ease, background .1s ease;
-}
-
-.food-arrow:hover{
-  transform: translateY(-50%) translateY(-1px);
-  box-shadow: 0 10px 24px rgba(0,0,0,.28);
-  background: #fff;
-}
-
-.food-arrow-prev{ left: -18px; }
-.food-arrow-next{ right: -18px; }
-
-/* Pallini */
-.food-dots{
-   display: none !important;
-}
-
-.food-dot{
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  border: 1px solid #8b5a2b;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  transition: background .15s ease, transform .15s ease;
-}
-
-.food-dot.is-active{
-  background: #8b5a2b;
-  transform: scale(1.15);
-}
-
-/* Visibilità testi: di base (mobile/tablet) */
-.food-text-detailed{ display: block; }
-.food-text-category{ display: none; }
-
-/* Ancora overlay */
-.food-img-wrap{
-  position: relative;
-  overflow: hidden;
-}
-
-/* Testi slider vs categorie */
-.food-text-detailed{
-  display: block;   /* mobile/tablet: testo completo visibile */
-}
-
-.food-text-category{
-  display: none;    /* mobile/tablet: categoria nascosta */
-}
-
 /* =====================================================
-   FOOD — BASE (0–429): rail ON, slider OFF
-   (serve per evitare il “collasso” sotto i 430px)
+   CARD RAIL (mobile base)
 ===================================================== */
 
-...existing code...
-.food-arrow{ display: none; }          /* non servono senza slider */
-
-/* rail */
-.food-rail{
-  display: flex;
+.food-items{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 86%;
   gap: 16px;
+
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
-  padding: 6px 2px 4px;
+
+  padding: 6px 2px 10px;
 }
 
-.food-rail .food-card{
-  flex: 0 0 86%;
-  max-width: 420px;
+.food-card{
   scroll-snap-align: start;
   text-decoration: none;
   color: inherit;
+  border-radius: 16px;
 }
 
-/* riuso la tua .food-img-wrap, ma dentro rail la rendo “card” */
-.food-rail .food-img-wrap{
+/* CARD MEDIA */
+.food-img-wrap{
   position: relative;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  aspect-ratio: 3 / 4;
 }
 
-.food-rail .food-img-wrap img{
+.food-img-wrap img{
   width: 100%;
-  height: clamp(320px, 52vh, 520px);
-  object-fit: cover;
+  height: 100%;
   display: block;
+  object-fit: cover;
 }
 
-/* overlay visibile in rail */
-.food-rail .food-text-category{
-  display: block;
+/* overlay categoria */
+.food-text-category{
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 16px;
+  color: #fff;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.65),
+    rgba(0,0,0,.22),
+    rgba(0,0,0,0)
+  );
 }
 
-/* testo sotto nascosto in rail */
-.food-rail .food-text-detailed{ display: none; }
-/* Intro usata come sezione di continuità (no box, no ombre) */
-
-/* Rail: nascondi tutto il testo "sotto" */
-.food-rail .food-text-detailed{
-  display: none;
-}
-.food-rail .food-text-category h3{
-  display: none;
-}
-/* Rail: se vuoi anche nascondere il paragrafo dell’overlay (lascia solo h3) */
-.food-rail .food-text-category p{
-  display: none;
-}
-.intro-flat{
-  background: #fff;
-  padding: 100px 20px;   /* regola qui l’aria */
+.food-text-category h3{
+  margin: 0 0 6px;
+  font-size: 1.25rem;
+  line-height: 1.1;
 }
 
-.intro-flat .intro-content{
-  box-shadow: none !important;
-  margin: 0 !important;
-  padding: 0;
-  border-radius: 0;
+.food-text-category p{
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.35;
+  opacity: .95;
 }
+
+/* mobile-first: nascondi il detailed */
+.food-text-detailed{ display: none; }
 
 /* =========================
    SLIDESHOW CONTESTO
@@ -1273,30 +1157,13 @@ footer{
     height: 100dvh;     /* browser moderni */
     min-height: 0;      /* IMPORTANTISSIMO: toglie il vincolo 560px */
   }
-}
-
-  /* 2. la slide diventa il contenitore dell’overlay */
-...existing code...
-
-  /* 3. l’immagine riempie la slide */
-...existing code...
-
-  /* 4. overlay testo in basso */
-...existing code...
-
-...existing code...
-
-    border-radius: 0 0 14px 14px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-
-  z-index: 2;
-  }
 
   /*frecce slideshow contesto------------------------- */
  .context-nav{
    display: none;
   }
 
+  /* Maps Card ---------------------------------------------------- */
    /* griglia: 2 colonne anche su mobile------------------------- */
  .arrivare-cards{
     display: grid;
@@ -1346,72 +1213,11 @@ footer{
   .contact-social{
     display: none;
   }
-
+  }
 /* =========================
    TABLET (430px–1024px)
 ========================= */
 @media (min-width: 430px) and (max-width: 1024px){
-
-   /* spegne lo slider */
-...existing code...
-
-  /* accende la rail */
-  .food-rail{
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: clamp(220px, 42vw, 320px);
-    gap: 18px;   
-
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-
-    padding: 0 18px 12px;
-  }
-
- .food-rail > .food-card{
-    scroll-snap-align: start;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  /* card compatta: niente testo sotto */
-  .food-rail .food-text-detailed{
-    display: none;
-  }
-
-  /* immagine: altezza "card" */
-  .food-rail .food-img-wrap img{
-    width: 100%;
-    height: clamp(240px, 36vw, 360px);
-    object-fit: cover;
-    display: block;
-    border-radius: 20px;
-  }
-
-  /* barra sotto = scrollbar stilizzata */
-  .food-rail{
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0,0,0,.35) transparent;
-  }
-
-  .food-rail::-webkit-scrollbar{ height: 8px; }
-  .food-rail::-webkit-scrollbar-track{
-    background: rgba(0,0,0,.10);
-    border-radius: 999px;
-  }
-
-  .food-rail::-webkit-scrollbar-thumb{
-    background: rgba(0,0,0,.35);
-    border-radius: 999px;
-  }
-
-  /*frecce slideshow contesto------------------------- */
- .context-nav{
-   display: none;
-  }
 
  /* contact -------------------------------------- */
   .contact-footer{
@@ -1453,6 +1259,15 @@ footer{
    Tablet(≥600px)
 ========================= */
 @media (min-width: 600px){
+
+/* Food cards ------------------------------ */
+  .food-items{ grid-auto-columns: 50%; }
+
+
+.food-title { text-align: center; }
+
+
+/* Maps cards ------------------------------ */
   .arrivare-cards{
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1477,6 +1292,7 @@ footer{
   height: 100%;
   line-height: 1.55;
   }
+
 /* DESKTOP FRAME (Jeep-style) */
   .arrivare-intro {
     display: none;
@@ -1544,10 +1360,8 @@ footer{
     min-height: 100vh;
     box-shadow: 0 20px 60px rgba(0,0,0,.35);
   }
-}
 
 /* HERO dentro page-wrap (desktop) */
-@media (min-width: 1025px){
   .hero{
     width: 100%;          /* rientra nel container */
     height: 900px;        /* niente full-screen forzato */
@@ -1600,113 +1414,29 @@ footer{
   }
 
 /* Sezione food ----------------------------*/
-  .food-rail{
-    display: none !important;
-  }
-
-...existing code...
-    display: block;
-  }
-
-  /* contenitore centrato e ampio */
-...existing code...
-    max-width: 1500px;
-    margin: 0 auto;
-     height: auto;      /* 🔑 elimina il vuoto sotto */
-     min-height: 0;
-  }
-
-  /* 4 colonne flessibili: NON imponiamo più 260px minimi */
-  .food-frame{
+   .food-inner{
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr)); /* ⬅️ QUI LA MODIFICA */
-    gap: clamp(16px, 2vw, 28px);        /* leggermente meno */
-    padding: clamp(16px, 2.5vw, 32px);
-    min-height: auto;
-  }
-
-  .food-slide,
-  .food-slide.is-active{
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 360px 1fr;
     align-items: center;
-    text-align: center;
-    gap: 14px;
-    background: transparent;
+    column-gap: 56px;
   }
 
-  .food-img-wrap{
-    width: 100%;
-  }
-
-  .food-img-wrap img{
-    width: 100%;
-    object-fit: cover;
-    border-radius: 0;
-    height: clamp(360px, 38vw, 500px);
-  }
-
-  .food-text-wrap h3{
+  .food-header{
     margin: 0;
-    font-size: 1.1rem;
     text-align: left;
+    max-width: 360px;
   }
 
-  .food-text-wrap p{
-    font-size: .95rem;
-    line-height: 1.55;
+  /* rail desktop con card a larghezza fissa */
+  .food-items{
+    grid-auto-columns: 320px;
+    gap: 22px;
   }
 
-  .food-arrow,
-  .food-dots{
-    display: none;
-  }
+  .food-title {text-align: left; }
 
-   /* Desktop: mostra solo le categorie, nascondi i testi lunghi */
-  .food-text-detailed{
-    display: none;
-  }
-
-  .food-text-category{
-   display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  padding: 18px 22px;
-  box-sizing: border-box;
-
-  background: rgba(156, 152, 170, 0.90);
-  color: #ffffff;
-
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  }
-
-  .food-text-category h3{
-     margin: 0 0 6px;
-    font-size: 1.02rem;
-    font-weight: 700;
-    letter-spacing: .02em;
-    text-align: left;
-  }
-
-  .food-text-category p{
-    margin: 0;
-    font-size: .88rem;
-    line-height: 1.45;
-
-    /* opzionale: max 2 righe (pulito) */
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .food-text-wrap.food-text-detailed{
-  display: none;
-  }
+  /* desktop pulito: togli testo sotto (opzionale) */
+  .food-text-detailed{ display: none; }
 
 /* Sezione mappe/percorsi ----------------------------*/
 

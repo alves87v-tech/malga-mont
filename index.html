@@ -93,7 +93,7 @@
 <!-- Sezione intro -------------------------------------------->
         <section class="intro">
             <div class="intro-content">
-              <h2 class="food-title">la tradizione
+              <h2 class="intro-title">la tradizione
               </h2>
                 <div class="intro-quote">“Malga Mont è una piccola realtà a conduzione familiare, legata ai ritmi della montagna”</div>
             </div>
@@ -101,197 +101,18 @@
 
 <!-- Sezione FOOD -------------------------------------------->
 <section id="food" class="food-section">
+
   <div class="food-inner">
 
-    <!-- Slideshow piatti -->
-    <div class="food-slider">
-
-      <!-- Frecce -->
-            <button class="food-arrow food-arrow-prev" aria-label="Piatto precedente">‹</button>
-            <button class="food-arrow food-arrow-next" aria-label="Piatto successivo">›</button>
-
-      <div class="food-frame">
-
-         <!-- SLIDE 1 -->
-        <article class="food-slide is-active">
-              <div class="food-img-wrap">
-                  <img
-                   src="Asset/main/food-section/slideshow/_DSC0090.jpg"
-                   alt="Il nostro tagliere di antipasti"
-                   >
-
-              <!-- Desktop: categoria + descrizione breve overlay -->
-           <div class="food-text-wrap food-text-category">
-               <h3>Antipasti</h3>
-               <p>I nostri taglieri di formaggi e affettati, preparati con prodotti locali</p>
-               </div>
-           </div>
-
-          <!-- Testo dettagliato per slider (mobile/tablet) -->
-             <div class="food-text-wrap food-text-detailed">
-                 <h3>Il tagliere misto</h3>
-                 <p>Un antipasto da condividere con una selezine dei nostri formaggi, affettati e crostini con ricotta alle erbe</p>
-             </div>
-         </article>
-
-         <!-- SLIDE 2 -->
-             <article class="food-slide">
-               <div class="food-img-wrap">
-                  <img
-                   src="Asset/main/food-section/slideshow/_DSC0084.jpg"
-                   alt="Gnocchi di ricotta su un letto di lonzino"
-                   >
-
-                 <!-- Desktop: categoria + descrizione breve overlay -->
-              <div class="food-text-wrap food-text-category">
-                 <h3>Primi piatti</h3>
-                 <p>Gnocchi fatti a mano, con ricotta e adagiati su un letto di lonzino</p>
-              </div>
-              </div>
-
-              <!-- Testo dettagliato per slider (mobile/tablet) -->
-                 <div class="food-text-wrap food-text-detailed">
-                     <h3>Gnocchi di ricotta</h3>
-                     <p>Gnocchi fatti a mano, con ricotta e adagiati su un letto di lonzino</p>
-                 </div>
-            </article>
-
-           <!-- SLIDE 3 -->
-            <article class="food-slide">
-                <div class="food-img-wrap">
-                  <img
-                     src="Asset/main/food-section/slideshow/_DSC1273.jpg"
-                     alt="panino con sopressa e formaggio"
-                     >
-            <!-- Desktop: categoria + descrizione breve overlay -->
-              <div class="food-text-wrap food-text-category">
-                  <h3>Secondi piatti</h3>
-                  <p>Il nostro panino con sopressa e formaggio oppure uno spezzatino con polenta</p>
-              </div>
-          </div>
-
-          <!-- Testo dettagliato per slider (mobile/tablet) -->
-              <div class="food-text-wrap food-text-detailed">
-              <h3>Il panino di Malga Mont</h3>
-              <p>Due fette di pane morbido, farcite con sopressa e formaggio</p>
-              </div>
-         </article>
-
-           <!-- SLIDE 4 -->
-           <article class="food-slide">
-                <div class="food-img-wrap">
-                   <img
-                     src="Asset/main/food-section/slideshow/_DSC1246.jpg"
-                     alt="Dolce della casa"
-                     >
-             <!-- Desktop: categoria + descrizione breve overlay -->
-              <div class="food-text-wrap food-text-category">
-                  <h3>Dolci della casa</h3>
-                  <p>Torte e dessert preparati da Paola, con ingredienti semplici e stagionali</p>
-              </div>
-             </div>
-          <!-- Testo dettagliato per slider (mobile/tablet) -->
-             <div class="food-text-wrap food-text-detailed">
-                   <h3>I dolci della casa</h3>
-                   <p>La nostra panna cotta ai frutti di bosco è un classico a fine pasto</p>
-             </div>
-           </article>
-
-         <!-- Pallini -->
-             <div class="food-dots" aria-label="Seleziona il piatto">
-                 <button class="food-dot is-active" data-index="0"></button>
-                 <button class="food-dot" data-index="1"></button>
-                 <button class="food-dot" data-index="2"></button>
-                 <button class="food-dot" data-index="3"></button>
-             </div>
-      </div> <!-- chiusura food-frame -->
-    </div> <!-- chiusura food-slider -->
-    <!-- ⬇️ QUI INSERISCI LA RAIL -->
-     <!-- FOOD RAIL CARD (430-1023) -->
-      <div class="food-rail" aria-label="Piatti più richiesti">
-      <a href="menu.html#antipasti" class="food-card">
-         <div class="food-img-wrap">
-                 <img
-                  src="Asset/main/food-section/slideshow/_DSC0090.jpg"
-                  alt="Il nostro tagliere di antipasti"
-                 >
-               <!-- overlay -->
-                <div class="food-text-wrap food-text-category">
-                   <h3>Antipasti</h3>
-                   <p>I nostri taglieri di formaggi e affettati, preparati con prodotti locali</p>
-                </div>
-            </div>
-           <!-- sotto (lo teniamo ma lo spegniamo in rail) -->
-        <div class="food-text-wrap food-text-detailed">
-           <h3>Il tagliere misto</h3>
-           <p>Un antipasto da condividere con una selezine dei nostri formaggi, affettati e crostini con ricotta alle erbe</p>
-       </div>
-     </a>
-    <!-- FOOD RAIL CARD 2 -->
-     <a href="menu.html#primi" class="food-card">
-           <div class="food-img-wrap">
-                  <img
-                   src="Asset/main/food-section/slideshow/_DSC0084.jpg"
-                   alt="Gnocchi di ricotta su un letto di lonzino"
-                   >
-              <!-- Desktop: categoria + descrizione breve overlay -->
-                <div class="food-text-wrap food-text-category">
-                   <h3>Primi piatti</h3>
-                   <p>Gnocchi fatti a mano, con ricotta e adagiati su un letto di lonzino</p>
-                </div>
-           </div>
-            <!-- Testo dettagliato per slider (mobile/tablet) -->
-                 <div class="food-text-wrap food-text-detailed">
-                     <h3>Gnocchi di ricotta</h3>
-                     <p>Gnocchi fatti a mano, con ricotta e adagiati su un letto di lonzino</p>
-                 </div>
-     </a>
-     <!-- FOOD RAIL CARD 3 -->
-     <a href="menu.html#secondi" class="food-card">
-           <div class="food-img-wrap">
-                  <img
-                     src="Asset/main/food-section/slideshow/_DSC1273.jpg"
-                     alt="panino con sopressa e formaggio"
-                     >
-            <!-- Desktop: categoria + descrizione breve overlay -->
-              <div class="food-text-wrap food-text-category">
-                  <h3>Secondi piatti</h3>
-                  <p>Il nostro panino con sopressa e formaggio oppure uno spezzatino con polenta</p>
-              </div>
-          </div>
-          <!-- Testo dettagliato per slider (mobile/tablet) -->
-              <div class="food-text-wrap food-text-detailed">
-              <h3>Il panino di Malga Mont</h3>
-              <p>Due fette di pane morbido, farcite con sopressa e formaggio</p>
-              </div>
-     </a>
-     <!-- FOOD RAIL CARD 4-->
-     <a href="menu.html#dolci" class="food-card">
-           <div class="food-img-wrap">
-                  <img
-                     src="Asset/main/food-section/slideshow/_DSC1246.jpg"
-                     alt="Dolce della casa"
-                  >
-              <!-- Desktop: categoria + descrizione breve overlay -->
-                 <div class="food-text-wrap food-text-category">
-                     <h3>Dolci della casa</h3>
-                     <p>Torte e dessert preparati da Paola, con ingredienti semplici e stagionali</p>
-                 </div>
-           </div>
-          <!-- Testo dettagliato per slider (mobile/tablet) -->
-             <div class="food-text-wrap food-text-detailed">
-                   <h3>I dolci della casa</h3>
-                   <p>La nostra panna cotta ai frutti di bosco è un classico a fine pasto</p>
-             </div>
-     </a>
-    </div><!-- chiusura food-rail -->
-
-  <!-- SINISTRA -->
-    <div class="food-title-wrap">
-    <!-- Testo introduttivo -->
+    <!-- COLONNA SINISTRA (desktop) -->
     <div class="food-header">
+
       <p class="food-eyebrow"></p>
-      <h2 class="food-title">I piatti più richiesti in malga</h2>
+
+      <h2 class="food-title">
+        I piatti più richiesti in malga
+      </h2>
+
       <p class="food-subtitle">
         Un piccolo assaggio dei piatti che trovi nel nostro menù:
         porzioni generose, ingredienti locali e ricette curate da Andrea e Paola.
@@ -300,10 +121,91 @@
       <a href="./menu/index.html" class="food-menu-btn">
         Vai al menù digitale
       </a>
+
     </div>
+
+    <!-- COLONNA DESTRA = RAIL CARD -->
+    <div class="food-items" aria-label="Piatti più richiesti">
+
+      <!-- CARD 1 -->
+      <a href="menu.html#antipasti" class="food-card">
+        <div class="food-img-wrap">
+          <img src="Asset/main/food-section/slideshow/_DSC0090.jpg"
+               alt="Il nostro tagliere di antipasti">
+
+          <div class="food-text-wrap food-text-category">
+            <h3>Antipasti</h3>
+            <p>I nostri taglieri di formaggi e affettati, preparati con prodotti locali</p>
+          </div>
+        </div>
+
+        <div class="food-text-wrap food-text-detailed">
+          <h3>Il tagliere misto</h3>
+          <p>Un antipasto da condividere con una selezione dei nostri formaggi e affettati</p>
+        </div>
+      </a>
+
+
+      <!-- CARD 2 -->
+      <a href="menu.html#primi" class="food-card">
+        <div class="food-img-wrap">
+          <img src="Asset/main/food-section/slideshow/_DSC0084.jpg"
+               alt="Gnocchi di ricotta">
+
+          <div class="food-text-wrap food-text-category">
+            <h3>Primi piatti</h3>
+            <p>Gnocchi fatti a mano con ricotta e lonzino</p>
+          </div>
+        </div>
+
+        <div class="food-text-wrap food-text-detailed">
+          <h3>Gnocchi di ricotta</h3>
+          <p>Fatti a mano e serviti su letto di lonzino</p>
+        </div>
+      </a>
+
+
+      <!-- CARD 3 -->
+      <a href="menu.html#secondi" class="food-card">
+        <div class="food-img-wrap">
+          <img src="Asset/main/food-section/slideshow/_DSC1273.jpg"
+               alt="Panino con sopressa">
+
+          <div class="food-text-wrap food-text-category">
+            <h3>Secondi piatti</h3>
+            <p>Panino con sopressa e formaggio o spezzatino con polenta</p>
+          </div>
+        </div>
+
+        <div class="food-text-wrap food-text-detailed">
+          <h3>Il panino di Malga Mont</h3>
+          <p>Pane morbido con sopressa e formaggio</p>
+        </div>
+      </a>
+
+
+      <!-- CARD 4 -->
+      <a href="menu.html#dolci" class="food-card">
+        <div class="food-img-wrap">
+          <img src="Asset/main/food-section/slideshow/_DSC1246.jpg"
+               alt="Dolci della casa">
+
+          <div class="food-text-wrap food-text-category">
+            <h3>Dolci della casa</h3>
+            <p>Torte e dessert preparati da Paola</p>
+          </div>
+        </div>
+
+        <div class="food-text-wrap food-text-detailed">
+          <h3>I dolci della casa</h3>
+          <p>Panna cotta ai frutti di bosco e dolci stagionali</p>
+        </div>
+      </a>
+
     </div>
-  </div><!-- chiusura food-inner -->
-</section><!-- chiusura food-section -->
+
+  </div>
+</section>
 
 <!-- Sezione maps intro -------------------------------------------->
 <section class="intro intro-flat">
