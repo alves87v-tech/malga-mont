@@ -1415,7 +1415,7 @@ footer{
 /* HERO dentro page-wrap (desktop) */
   .hero{
     width: 100%;          /* rientra nel container */
-    height: 900px;        /* niente full-screen forzato */
+    height: clamp(720px, 78vh, 980px);   
     min-height: 560px;    /* scegli tu: 520–650 */
   }
 
@@ -1452,7 +1452,6 @@ footer{
     display: block;
   }
   .hero-content{ position: relative; z-index: 10; }
-
 
   .intro-quote{
   font-size: 2rem;
