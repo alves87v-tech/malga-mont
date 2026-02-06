@@ -268,7 +268,7 @@ h2{
   margin: 0 auto; }
 
 .intro-title{
- font-family: "canvas-script", sans-serif;
+  font-family: "canvas-script", sans-serif;
   font-size: 4rem;
   color: #7e765a;
   font-weight: 400;
@@ -319,7 +319,7 @@ h2{
   max-width: 640px;
   margin: 0 auto 28px;
   text-align: center;
-  padding: 20px;
+  padding-left: 50px;
 
 }
 
@@ -332,17 +332,17 @@ h2{
 }
 
 .food-title{
-  font-family: "canvas-script", sans-serif;
-  font-weight: 300;
+  font-weight: 600;
   font-style: normal;
-  font-size: 4rem;
+  font-size: 3rem;
   margin: 0 0 10px;
   line-height: 1.05;
   text-align: center;
+  color: #8b5a2b;
 }
 
 .food-subtitle{
-  font-size: .95rem;
+  font-size: .99rem;
   line-height: 1.6;
   margin: 0 0 18px;
 }
@@ -418,15 +418,15 @@ h2{
   color: #fff;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,.65),
-    rgba(0,0,0,.22),
+    rgba(0,0,0,.90),
+    rgba(0,0,0,.40),
     rgba(0,0,0,0)
   );
 }
 
 .food-text-category h3{
   margin: 0 0 6px;
-  font-size: 1.25rem;
+  font-size: 2.0rem;
   line-height: 1.1;
 }
 
@@ -482,6 +482,10 @@ h2{
     rgba(0,0,0,.5) 
   );
   transition: width .25s ease;
+}
+
+.is-disabled-link{
+  pointer-events: none;
 }
 
 /* =========================
@@ -582,8 +586,9 @@ h2{
 .maps{
 position: relative;
 width: 100%;
-margin: 0;
-padding: 56px 0;          /* padding verticale per la sezione */
+padding-top: 50px;
+padding-left: 15px;  
+padding-right: 15px;       /* padding verticale per la sezione */
 background: #f3ebe0;         /* oppure un beige leggero se vuoi stacco */
 }
 
@@ -625,9 +630,10 @@ text-align: left;
 }
 
 .maps-subtitle {
-margin: 0;
+margin: 0 auto;
 opacity: .85;
 max-width: 70ch;
+text-align: center;
 }
 
 .maps-grid {
@@ -643,6 +649,7 @@ gap: 0px;
   border-radius: 0px;
   overflow: hidden;
   background:transparent ;
+
 }
 
 .maps-svgwrap{
@@ -654,7 +661,6 @@ gap: 0px;
 .maps-svgwrap svg{
   display: block;
   width: 100%;
-  height: auto;
   padding: 15px 15px;
 }
 
@@ -804,10 +810,11 @@ gap: 0px;
   display:grid;
   grid-template-columns: 25px 1fr;
   gap: 0;
-  border-top: 1px solid rgba(0,0,0,.08);
-  border-radius: 0px;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 2px;
   overflow: hidden;            /* barra “tagliata” bene */
-  background: #fff;
+  background: #f1ede8;
+  box-shadow: #1d1d1b 0 0 .8px;
 }
 
 .route-card.is-active{ background: rgba(0,0,0,.035); }
@@ -1461,12 +1468,13 @@ footer{
    .food-inner{
     display: grid;
     grid-template-columns: 360px 1fr;
-    align-items: center;
     column-gap: 56px;
+    align-items: start;
+
   }
 
   .food-header{
-    margin: 0;
+    margin-top: 0px;
     text-align: left;
     max-width: 360px;
   }
@@ -1500,14 +1508,13 @@ footer{
     grid-template-columns: minmax(0, 1fr) clamp(520px, 34vw, 690px);
 
     /* più aria tra mappa e lista */
-    column-gap: clamp(28px, 3.2vw, 72px);
+    column-gap: clamp(12px, 1vw, 5px);
 
     /* centra e limita l’area totale */
     max-width: 2000px;
     margin-inline: auto;
 
     height: auto;
-    min-height: 100svh;
       align-content: start;   /* importante: niente centratura verticale “strana” */
     align-items: start;     /* ancora i blocchi in alto */
   }
@@ -1549,17 +1556,14 @@ footer{
     /* 🔥 limite anti-ultrawide */
     max-width: 1200px;
     width: 100%;
+    margin-left: 200px;
     margin-top: 100px;
     margin-left: auto; /* resta attaccata alla colonna lista */
     background: #f3ebe0;
   }
 
-  .maps-svgwrap{
-    height: 100%;
-  }
-
   .maps-svgwrap svg{
-    height: 100%;
+    height: clamp(800px, 80vh, 900px);
     width: 100%;
     padding: 8px;          /* via padding “card” */
     display: block;
@@ -1568,8 +1572,8 @@ footer{
   /* pannello lista (deve scrollare da solo) */
   .maps-list{
     height: 100%;
-    overflow: auto;
-    padding: 100px 100px;
+    overflow: visible;
+    padding: 100px 50px;
     max-width: none;
     background: #f3ebe0;
   }
