@@ -98,8 +98,8 @@ h2{
 .hero{
   position: relative;
   width: 100%;
-  height: 72vh;
-  min-height: 560px;
+  height: 100dvh;
+  min-height: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -110,6 +110,7 @@ h2{
   color: #fff;
   z-index: 0;
 }
+
 /* layer full-bleed */
 .hero-fallback,
 .hero-bg-video,
@@ -207,8 +208,8 @@ h2{
 
 .hero-btn{
   padding: 0.6rem 2.5rem;
-  font-size: 1.2rem;
-  border: 2px solid #fff;
+  font-size: 1rem;
+  border: 1px solid #fff;
   background: rgba(0,0,0,0.25);
   color: #fff;
   border-radius: 30px;
@@ -319,7 +320,6 @@ h2{
   max-width: 640px;
   margin: 0 auto 28px;
   text-align: center;
-  padding-left: 50px;
 
 }
 
@@ -587,8 +587,8 @@ h2{
 position: relative;
 width: 100%;
 padding-top: 50px;
-padding-left: 15px;  
-padding-right: 15px;       /* padding verticale per la sezione */
+padding-left: 0px;  
+padding-right: 0px;       /* padding verticale per la sezione */
 background: #f3ebe0;         /* oppure un beige leggero se vuoi stacco */
 }
 
@@ -802,6 +802,7 @@ gap: 0px;
   background: #fafafa;
   border-radius: 0px;
   margin-bottom: 0;
+  padding: 0;
 }
 
 /* LIST card ----------------------------------------------------- */
@@ -961,13 +962,13 @@ gap: 0px;
 }
 #tracciati.is-filtering g.is-variant-active .route-path{
   stroke: #ff9800;
-  stroke-width: 5;
+  stroke-width: 2;
 }
 
 /* attivo: torna colorato */
 #tracciati.is-filtering .route.is-active .route-path{
   stroke: var(--route-color);
-  stroke-width: 5;
+  stroke-width: 2;
   filter: drop-shadow(0 6px 10px rgba(0,0,0,.15));
 }
 
@@ -1165,12 +1166,11 @@ gap: 0px;
    FOOTER
 ========================= */
 footer{
- background: rgba(255,255,255,0.92);
-  border-top: 1px solid #eee;
+ background: #dcd7c5;
   margin: 0;
   padding: 0;          /* <- via lo spazio */
   text-align: center;
-  color: #888;
+  color: #262626;
 }
 
 .main-footer{ margin-bottom: 0; }
@@ -1178,7 +1178,7 @@ footer{
 .copyright{
   padding: 30px;     /* <- qui decidi tu quanto */
   font-size: .95rem;
-  color: #aaa;
+  color: #585858;
   margin: 0;           /* <- evita margini default */
 }
 
@@ -1265,10 +1265,12 @@ footer{
     display: none;
   }
   }
+
 /* =========================
    TABLET (430px–1024px)
 ========================= */
 @media (min-width: 430px) and (max-width: 1024px){
+  /* Maps -------------------------------------- */
 
  /* contact -------------------------------------- */
   .contact-footer{
@@ -1312,11 +1314,19 @@ footer{
 @media (min-width: 600px){
 
 /* Food cards ------------------------------ */
-  .food-items{ grid-auto-columns: 50%; }
-
+.food-items{ grid-auto-columns: 50%; }
 
 .food-title { text-align: center; }
 
+ /* Maps -------------------------------------- */
+#tracciati.is-filtering g.is-variant-active .route-path{
+  stroke-width: 3;
+}
+
+/* attivo: torna colorato */
+#tracciati.is-filtering .route.is-active .route-path{
+  stroke-width: 3;
+}
 
 /* Maps cards ------------------------------ */
   .arrivare-cards{
@@ -1576,6 +1586,16 @@ footer{
     max-width: none;
     background: #f3ebe0;
   }
+
+ /* Maps -------------------------------------- */
+#tracciati.is-filtering g.is-variant-active .route-path{
+  stroke-width: 5;
+}
+
+/* attivo: torna colorato */
+#tracciati.is-filtering .route.is-active .route-path{
+  stroke-width: 5;
+}
 
 .maps-subtitle { display: none; }
 .maps-header--mobile { display: none; }
