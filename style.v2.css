@@ -244,57 +244,68 @@ h2{
 /* =========================
    INTRO (stacco)
 ========================= */
-.intro{
-  width: 100%;
-  margin: 0;
-
-  height: auto;        /* ← FONDAMENTALE */
-  min-height: 0;       /* ← FONDAMENTALE */
-
-  display: flex;
-  align-items: flex-start; /* puoi anche cambiare in flex-start */
-  justify-content: center;
-
-  padding: 100px 20px;  /* QUI controlli lo stacco */
-  background: #fff !important;
-  color: #222 !important;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-.intro-content{ 
-  text-align: center;
-  width: min(900px, 92vw);
-  margin: 0 auto; }
-
-.intro-title{
-  font-family: "canvas-script", sans-serif;
-  font-size: 4rem;
-  color: #7e765a;
-  font-weight: 400;
-  margin-bottom: 1.0rem;
-}
-
-.intro-quote{
-  font-size: 1.2rem;
-  color: #888;
-  font-weight: 400;
-  max-width: 900px;
-  margin: 0 auto;
-  line-height: 1.3;
-}
-.intro-flat{
+.intro-split{
   background: #fff;
-  padding: 100px 20px;   /* regola qui l’aria */
+  padding: 70px 0;
+  position: relative;
+  overflow: hidden;
+
+  /* 👇 IL TUO SFONDO ACQUERELLO */
+  background-image: none;
+  background-size: cover;
+  background-position: none;
+  background-repeat: no-repeat;
 }
 
-.intro-flat .intro-content{
-  box-shadow: none !important;
-  margin: 0 !important;
-  padding: 0;
-  border-radius: 0;
+.intro-split__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: clamp(18px, 5vw, 60px);
+   
 }
+
+.intro-split__panel{
+  background: transparent;
+  text-align: center;
+  padding: 0;
+  
+}
+
+.intro-split__title{
+  margin: 0 0 18px;
+  line-height: 0.95;
+  color: #808080;
+ 
+}
+
+
+.intro-split__title-small{
+  display: block;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 300;
+}
+
+.intro-split__title-big{
+  display: block;
+  font-size: clamp(3.2rem, 10vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.intro-split__quote{
+  margin: 0;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  line-height: 1.6;
+  font-style: italic;
+  color: #333;;
+}
+
+/* su mobile nascondo la foto: per ora */
+.intro-split__media{
+  display: none;
+}
+
 
 /* SEZIONE FOOD ------------------------------------------------- */
 /* =====================================================
@@ -1362,33 +1373,48 @@ footer{
 /* contatti---------------------------------------- */
 
 .contact-footer{
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "brand brand"
-      "hours booking";
+   display: grid;
+    grid-template-columns: 200px 1fr 1fr;  /* regola il 220 */
+    grid-template-areas: "brand hours booking";
     align-items: start;
-    justify-items: stretch;   /* le colonne riempiono */
-    text-align: left;         /* da qui in su torna left */
-    gap: 32px 32px;
+    justify-items: stretch;
+    gap: 12px;
+  }
+  .contact-logo {
+    width: clamp(150px, 20vw, 140px);
   }
 
-  .contact-brand{ grid-area: brand; justify-content: center; }
-  .contact-hours{ grid-area: hours; 
-                  max-width: 420px; 
-                  justify-self: end;
+  .contact-brand{ grid-area: brand; 
+                  justify-content: center;
   }
 
-  .contact-booking{ grid-area: booking; 
+  .contact-block h3{
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+   }
+
+  
+  .contact-hours{ font-size: clamp(0.5rem, 1.4vw, 1.25rem);
+                  grid-area: hours; 
+                  max-width: 100px; 
+                  justify-self: center;
+  }
+
+  .contact-booking{ font-size: clamp(1.0rem, 1.4vw, 1.25rem);
+                    grid-area: booking; 
                     max-width: 100px; 
                     justify-self: start;
   }
 
-  .contact-block{ max-width: 300px; 
+  .contact-block{ font-size: clamp(0.7rem, 1.4vw, 1.25rem);
+                  max-width: 300px; 
                   text-align: left;
+  }
 
+  .contact-eyebrow{ font-size: clamp(0.9rem, 1.4vw, 1.25rem);
   }
 
   .contact-link{
+    font-size: clamp(0.6rem, 1.1vw, 1rem);
                 text-align: left;
                 padding: 12px 0 0;        /* evita “spazi strani” */
   }
@@ -1410,16 +1436,13 @@ footer{
 
 /* DESKTOP FRAME (Jeep-style) */
 @media (min-width: 1025px){
-  body{
-    background: #262626; /* grigio scuro, non nero */
-  }
 
   .page-wrap{
     max-width: 1280px;
     margin: 0 auto;
     background: #f3ede4; /* il tuo background chiaro */
     min-height: 100vh;
-    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    box-shadow: 0;
   }
 
 /* HERO dentro page-wrap (desktop) */
@@ -1463,15 +1486,81 @@ footer{
   }
   .hero-content{ position: relative; z-index: 10; }
 
-  .intro-quote{
-  font-size: 2rem;
-  font-style: italic;
-  color: #888;
-  font-weight: 400;
-  max-width: 900px;
-  margin: 0 auto;
-  line-height: 1.3;
+/* Sezione intro ----------------------------*/
+     /* full-bleed fuori dal wrap */
+
+  .intro-split{
+    /* full-bleed fuori dal wrap */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    /* layout */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+
+    /* respiro + altezza intelligente */
+    padding: clamp(56px, 6vh, 90px) 0;
+    min-height: clamp(500px, 60vh, 1000px) !important;
+
+    /* background acquerello */
+    background-image: url("Asset/main/intro-section/img/art_3.jpg");
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+
+    position: relative;
+    overflow: hidden;
   }
+
+  /* overlay sfumato bianco per stacco dalla hero sopra */
+  .intro-split::before{
+    content:"";
+    position:absolute;
+    left:0; right:0; top:0;
+    height: 600px;              /* regola 160–240px */
+    pointer-events:none;
+    z-index: 0;
+  }
+
+  /* porta il contenuto sopra l’overlay */
+  .intro-split__col,
+  .intro-split__text,
+  .intro-split__text-inner{
+    position: relative;
+    z-index: 1;
+  }
+
+  /* colonna testo: pannello bianco centrato */
+  .intro-split__text{
+    background: transparent;
+    display: grid;
+    place-items: center; /* ✅ centro pieno */
+    padding: clamp(48px, 6vw, 110px);
+  }
+
+  /* “inner” testo: allinea a sinistra dentro al blocco */
+  .intro-split__text-inner{
+    max-width: 300px;
+    width: 100%;
+  }
+
+  /* colonna immagine: deve riempire la metà */
+  .intro-split__img{
+    height: 100%;
+  }
+
+  .intro-split__img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .intro-split__quote{
+  line-height: 1.6;
+}
+
 
 /* Sezione food ----------------------------*/
    .food-inner{
@@ -1498,6 +1587,30 @@ footer{
 
   /* desktop pulito: togli testo sotto (opzionale) */
   .food-text-detailed{ display: none; }
+
+/* Contesto slider ----------------------------*/
+ .context-slider{
+    width: 100vw;
+
+    position: relative;
+    left: 50%;
+    right: 50%;
+
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    height: clamp(520px, 65vh, 850px);
+    overflow: hidden;
+  }
+
+  .context-slider img,
+  .context-slider video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
 
 /* Sezione mappe/percorsi ----------------------------*/
 
@@ -1770,6 +1883,13 @@ footer{
     text-align: left;
     margin: 0;
 }
+.contact-section{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background: #dcd7c5; /* colore footer */
+}
 
   .contact-brand,
   .contact-block{
@@ -1800,6 +1920,20 @@ footer{
     margin-left: 0;
     padding-left: 0; /* nel caso ti rimanga qualche padding ereditato */
   }
+  #main-footer {
+     width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background: #dcd7c5; /* colore footer */
+   }
+}
+/* Maps-list riduzione testo------------------------------------------- */
+@media (min-width: 1025px) and (max-width: 1600px){
+  .routes-title{ font-size: clamp(1.7rem, 2.2vw, 3.2rem); }
+  .route-name{  font-size: clamp(0.9rem, 1.0vw, 1.35rem); }
+  .route-meta{  font-size: clamp(0.2rem, 0.75vw, 1.0rem); }
+  .route-desc{  font-size: clamp(0.5rem, 0.8vw, 1.0rem); }
 }
 
 /* HERO full-screen (tablet/mobile) */
@@ -1811,3 +1945,48 @@ footer{
     min-height: 100svh;
   }
 }
+ /* opzionale: limita l'effetto "troppo lunga" su mega desktop */
+  @media (min-width: 1600px){
+    .intro-split{
+      min-height: 600px; /* oppure 500 se vuoi più compatta */
+    }
+
+    .food-section{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: #e9dfd1;  /* stesso colore food */
+}
+
+     /* layout sezione: 2 colonne stabili (testo + cards) */
+  .food-inner{
+    display: grid;
+    grid-template-columns: minmax(420px, 520px) 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* cards: griglia 4, NO slider */
+  .food-items{
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(350px, 1fr)) !important;
+    gap: 38px;
+
+    overflow: visible !important;
+    overflow-x: visible !important;
+    scroll-snap-type: none !important;
+    -webkit-overflow-scrolling: auto !important;
+  }
+
+  /* annulla regole tipiche da slider sulle card */
+  .food-card{
+    width: 100%;
+    flex: none !important;         /* se prima erano flex items */
+    scroll-snap-align: none !important;
+  }
+
+  /* UI scrollbar off */
+  .food-rail-ui{
+    display: none !important;
+  }
+  }
