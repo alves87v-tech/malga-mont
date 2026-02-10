@@ -53,24 +53,22 @@ html, body{
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #fff;   /* bianco per tutto il sito */
   color: #222; 
   scroll-behavior: smooth;  /* testo scuro */
+  background: #f3ebe0;
 }
 
-*, *::before, *::after{
-  box-sizing: inherit;
-}
+*, *::before, *::after{ box-sizing: inherit; }
 
 /* =========================
    LAYOUT GENERALE
 ========================= */
 main{
-  max-width: none;
   margin: 0;
-  padding: 0;          /* se vuoi padding lo gestiamo nelle sezioni */
+  padding: 0;
   background: transparent;
   border: none;
+  z-index: 1;
 }
 
 h2{
@@ -91,6 +89,7 @@ h2{
   padding: 2rem 1.5rem;
   margin-bottom: 2.5rem;
 }
+
 
 /* =========================
    HERO
@@ -242,70 +241,76 @@ h2{
 }
 
 /* =========================
-   INTRO (stacco)
+   INTRO (stacco) base
 ========================= */
 .intro-split{
-  background: #fff;
-  padding: 70px 0;
   position: relative;
-  overflow: hidden;
-
-  /* 👇 IL TUO SFONDO ACQUERELLO */
-  background-image: none;
-  background-size: cover;
-  background-position: none;
-  background-repeat: no-repeat;
+  overflow: visible;                 /* serve per lo sconfinamento */
+  padding: 48px 0 30px;              /* niente vh, niente min-height */
+  background: transparent;
 }
 
 .intro-split__inner{
   max-width: 1200px;
   margin: 0 auto;
   padding-inline: clamp(18px, 5vw, 60px);
-   
+}
+  /* Img BG ------------------------------------ */
+.intro-split__art{
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.55;
+
+  /* posizionamento base */
+  right: -20%;
+  top: 45%;
+  width: clamp(500px, 98vw, 1400px);
+  height: auto;
+
+  transform: translateY(-40%);
 }
 
-.intro-split__panel{
-  background: transparent;
+/* testo ------------------------------------------ */
+.intro-split__text{
   text-align: center;
-  padding: 0;
-  
+  position: relative;
+  z-index: 2;
+  max-width: 36rem; /* testo leggibile su mobile */
+  padding-top: 50px;
+  padding-bottom: 50px;     
 }
 
 .intro-split__title{
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   line-height: 0.95;
   color: #808080;
- 
 }
-
 
 .intro-split__title-small{
   display: block;
-  font-size: clamp(2rem, 6vw, 3rem);
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
   font-weight: 300;
 }
 
 .intro-split__title-big{
   display: block;
-  font-size: clamp(3.2rem, 10vw, 5.2rem);
+  font-size: clamp(3rem, 12vw, 4.8rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  position: relative;
+  color: #545454;
 }
 
 .intro-split__quote{
   margin: 0;
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-size: clamp(1rem, 4.2vw, 1.25rem);
   line-height: 1.6;
   font-style: italic;
-  color: #333;;
+  color: #626262;
+  font-weight: 700;
 }
-
-/* su mobile nascondo la foto: per ora */
-.intro-split__media{
-  display: none;
-}
-
+.intro-split__quote p{ margin: 0; }
 
 /* SEZIONE FOOD ------------------------------------------------- */
 /* =====================================================
@@ -318,7 +323,8 @@ h2{
   margin: 0;
   padding: 72px 16px;
   overflow: hidden;
-  background: #f3ebe0;
+  background: transparent;
+  z-index: 3;
 }
 
 .food-inner{
@@ -350,6 +356,7 @@ h2{
   line-height: 1.05;
   text-align: center;
   color: #8b5a2b;
+  z-index: 3;
 }
 
 .food-subtitle{
@@ -498,6 +505,77 @@ h2{
 .is-disabled-link{
   pointer-events: none;
 }
+/* Maps-Intro---------------------------------------------------------- */
+
+.maps-split{
+  position: relative;
+  overflow: visible;                 /* ✅ per sconfinare *//* più controllabile di 70 fisso */
+  background: transparent;
+  padding-top: 5px;
+  padding-bottom: clamp(200px, 18vh, 4200px);
+}
+
+.maps-split__inner{
+  position: relative;
+  max-width: 1200px;
+  padding-inline: clamp(18px, 5vw, 60px);
+  text-align: center;
+  padding-top: 30px;
+    z-index: 2;   
+}
+
+.maps-split__art{
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.55;
+
+  right: -30%;
+  top: clamp(-120px, -10vh, -200px);
+  width: clamp(500px, 98vw, 1400px);
+  height: auto;
+
+  transform: none;
+}
+.maps-split__panel{
+  position: relative;
+  z-index: 2;                        /* testo sopra */
+  text-align: center;                  /* su mobile meglio leggibile */
+  padding: 0;
+  background: transparent;
+}
+
+.maps-split__title{
+  margin: 0 0 14px;
+  line-height: 0.95;
+  color: #808080;
+}
+
+.maps-split__title-small{
+  display: block;
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  font-weight: 300;
+}
+
+.maps-split__title-big{
+  display: block;
+  font-size: clamp(3rem, 12vw, 4.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #2b2b2b;
+}
+
+.maps-split__quote{
+  margin: 0;
+  font-size: clamp(1rem, 4.2vw, 1.25rem);
+  line-height: 1.6;
+  font-style: italic;
+  color: #626262;
+  font-weight: 700;
+}
+.maps-split__quote p{ margin: 0; }
+
 
 /* =========================
    SLIDESHOW CONTESTO
@@ -600,7 +678,7 @@ width: 100%;
 padding-top: 50px;
 padding-left: 0px;  
 padding-right: 0px;       /* padding verticale per la sezione */
-background: #f3ebe0;         /* oppure un beige leggero se vuoi stacco */
+background:transparent;         /* oppure un beige leggero se vuoi stacco */
 }
 
 .maps-header{
@@ -1440,7 +1518,7 @@ footer{
   .page-wrap{
     max-width: 1280px;
     margin: 0 auto;
-    background: #f3ede4; /* il tuo background chiaro */
+    background: transparent; /* il tuo background chiaro */
     min-height: 100vh;
     box-shadow: 0;
   }
@@ -1503,33 +1581,8 @@ footer{
     /* respiro + altezza intelligente */
     padding: clamp(56px, 6vh, 90px) 0;
     min-height: clamp(500px, 60vh, 1000px) !important;
-
-    /* background acquerello */
-    background-image: url("Asset/main/intro-section/img/art_3.jpg");
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
-
     position: relative;
     overflow: hidden;
-  }
-
-  /* overlay sfumato bianco per stacco dalla hero sopra */
-  .intro-split::before{
-    content:"";
-    position:absolute;
-    left:0; right:0; top:0;
-    height: 600px;              /* regola 160–240px */
-    pointer-events:none;
-    z-index: 0;
-  }
-
-  /* porta il contenuto sopra l’overlay */
-  .intro-split__col,
-  .intro-split__text,
-  .intro-split__text-inner{
-    position: relative;
-    z-index: 1;
   }
 
   /* colonna testo: pannello bianco centrato */
@@ -1947,15 +2000,12 @@ footer{
 }
  /* opzionale: limita l'effetto "troppo lunga" su mega desktop */
   @media (min-width: 1600px){
-    .intro-split{
-      min-height: 600px; /* oppure 500 se vuoi più compatta */
-    }
 
     .food-section{
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  background: #e9dfd1;  /* stesso colore food */
+  background: transparent;  /* stesso colore food */
 }
 
      /* layout sezione: 2 colonne stabili (testo + cards) */

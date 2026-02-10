@@ -20,23 +20,25 @@
 <link rel="stylesheet" href="./style.v2.css">
 </head>
 <body>
- 
+
     <header>
         <nav>
             <!-- Nav bar opzionale, lasciata vuota -->
         </nav>
 
-<!-- Sezione hero -------------------------------------------->
-<section class="hero">
+  <main>
 
-<!-- 🖼️ Slideshow (desktop) -->
-<div class="hero-bg-slideshow" aria-hidden="true">
-  <img class="hero-slide is-active" src="Asset/Header/hero-section/img/wide/img_1.jpg" alt="">
-  <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_2.jpg" alt="">
-  <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_3.jpg" alt="">
-  <!-- opzionale 4a -->
-  <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_4.jpg" alt="">
-</div>
+      <!-- Sezione hero -------------------------------------------->
+    <section class="hero">
+
+    <!-- 🖼️ Slideshow (desktop) -->
+    <div class="hero-bg-slideshow" aria-hidden="true">
+       <img class="hero-slide is-active" src="Asset/Header/hero-section/img/wide/img_1.jpg" alt="">
+       <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_2.jpg" alt="">
+       <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_3.jpg" alt="">
+      <!-- opzionale 4a -->
+        <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_4.jpg" alt="">
+       </div>
 
   <!-- 🎬 Video di sfondo -->
   <div class="hero-bg-video">
@@ -49,7 +51,7 @@
       preload="auto"
     >
       <source src="Asset/Header/hero-section/video/hero_mobile.mp4" media="(max-width: 768px)">
-      <source src="Asset/Header/hero-section/video/promo_hero_1080.mp4" media="(min-width: 769px)">
+      <source src="Asset/Header/hero-section/video/promo_hd.mp4" media="(min-width: 769px)">
     </video>
   </div>
 
@@ -84,39 +86,41 @@
            src="Asset/Header/hero-section/logo/PNG/wip2.png"
            alt="Icona lavori in corso"
            class="hero-wip-icon">
-    </div>
-  </section>
-</header>
+      </div>
+     </section>
+    </header>
 
  <div class="page-wrap">
-  <main>
+  <main class="page-bg">
 
-<!-- Sezione intro -------------------------------------------->
-<section class="intro-split" aria-labelledby="introTitle">
+   <!-- Sezione intro -------------------------------------------->
+   <section class="intro-split" aria-labelledby="introTitle">
 
-  <div class="intro-split__col intro-split__text">
-    <div class="intro-split__text-inner">
+    <div class="intro-split__inner">
+      <div class="intro-split__text">
+        <h1 class="intro-split__title" id="introTitle">
+          <span class="intro-split__title-small">Malga</span>
+          <span class="intro-split__title-big">Mont</span>
+        </h1>
 
-      <h1 class="intro-split__title" id="introTitle">
-        <span class="intro-split__title-small">Malga</span>
-        <span class="intro-split__title-big">Mont</span>
-      </h1>
-      
-      <blockquote class="intro-split__quote" cite="tradizione locale">
-        <p>
-          “Una piccola realtà a conduzione familiare, legata ai ritmi del territorio”
-        </p>
-      </blockquote>
-
+        <blockquote class="intro-split__quote" cite="tradizione locale">
+          <p>“Una piccola realtà a conduzione familiare, legata ai ritmi del territorio”</p>
+        </blockquote>
+      </div>
     </div>
-  </div>
 
-</section>
+    <!-- GRAFICA ACQUERELLO (decorativa) -->
+    <img
+      src="/Asset/BG/img_1.webp"
+      alt=""
+      class="intro-split__art"
+      aria-hidden="true"
+    >
+  </section>
+ <!-- Sezione FOOD -------------------------------------------->
+     <section id="food" class="food-section">
 
-<!-- Sezione FOOD -------------------------------------------->
-<section id="food" class="food-section">
-
-  <div class="food-inner">
+     <div class="food-inner">
 
     <!-- COLONNA SINISTRA (desktop) -->
     <div class="food-header">
@@ -217,36 +221,41 @@
       </a>
     </div><!-- </food-items> ------------------------------->
 
-<!-- UI RAIL (FUORI DAL RAIL) -->
-<div class="food-rail-ui" aria-hidden="true">
+  <!-- UI RAIL (FUORI DAL RAIL) -->
+   <div class="food-rail-ui" aria-hidden="true">
   <div class="food-scrollbar" id="foodScrollbar">
     <div class="food-scrollbar__thumb" id="foodThumb"></div>
   </div>
-</div>
-</section>
+   </div>
+   </section>
 
-<!-- Sezione maps intro -------------------------------------------->
-<section class="maps-split" aria-labelledby="mapsTitle">
+   <!-- Sezione maps intro -------------------------------------------->
+ <section class="maps-split" aria-labelledby="introTitle">
 
-  <div class="maps-split__col maps-split__text">
-    <div class="maps-split__text-inner">
+    <div class="maps-split__inner">
+      <div class="maps-split__text">
+        <h1 class="maps-split__title" id="introTitle">
+          <span class="maps-split__title-small">Il territorio</span>
+          <span class="maps-split__title-big"></span>
+        </h1>
 
-      <h1 class="maps-split__title" id="mapsTitle">
-        <span class="maps-split__title-small"></span>
-        <span class="maps-split__title-big"></span>
-      </h1>
-      
-      <blockquote class="maps-split__quote" cite="tradizione locale">
-        <p>
-          "a metà strada tra la zona delle colline del Prosecco UNESCO e le Dolomiti bellunesi" 
-        </p>
-      </blockquote>
+        <blockquote class="maps-split__quote" cite="tradizione locale">
+          <p> "a metà strada tra la zona delle colline del Prosecco UNESCO e le Dolomiti bellunesi" </p>
+        </blockquote>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- SEZIONE CONTESTO: SLIDESHOW TERRITORIO -->
-<section id="contesto" class="context-section">
+    <!-- GRAFICA ACQUERELLO (decorativa) -->
+    <img
+      src="/Asset/BG/img_1.webp"
+      alt=""
+      class="maps-split__art"
+      aria-hidden="true"
+    >
+  </section>
+
+    <!-- SEZIONE CONTESTO: SLIDESHOW TERRITORIO -->
+   <section id="contesto" class="context-section">
   <div class="container">
 
     <div class="context-slider" aria-label="Slideshow territorio Malga Mont">
@@ -280,16 +289,16 @@
         <button class="context-dot" type="button" aria-label="Vai alla slide 2"></button>
         <button class="context-dot" type="button" aria-label="Vai alla slide 3"></button>
       </div>
+     </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
+    <!-- Sezione Maps-------------------------------------------->
+      <section id="maps" class="maps"> 
 
-<!-- Sezione Maps-------------------------------------------->
-<section id="maps" class="maps"> 
-
-<!-- Titolo per MOBILE (sopra a tutto) -->
-  <div class="maps-header maps-header--mobile">
+   <!-- Titolo per MOBILE (sopra a tutto) -->
+      <div class="maps-header maps-header--mobile">
          <h2 class="maps-title">
                <span class="maps-title-main">7 percorsi</span>
                <span class="maps-title-sub">per arrivare a Malga Mont</span>
@@ -299,10 +308,10 @@
          </p>
       </div>
  
-  <div class="maps-grid">
+     <div class="maps-grid">
 
-<!-- MAPPA ---------------------------------------------------------------------->
-   <div class="maps-map" id="mapsMap">
+    <!-- MAPPA ---------------------------------------------------------------------->
+      <div class="maps-map" id="mapsMap">
         <div class="maps-svgwrap" id="svgWrap">
         <svg id="Livello_2" data-name="Livello 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3559.47 2953.13">
   
@@ -550,10 +559,10 @@
         </g>
        </svg>
      </div>
-   </div><!-- chiusura maps-map-------------------------------------------->
+      </div><!-- chiusura maps-map-------------------------------------------->
 
-<!-- LISTA PERCORSI --------------------------------------------------------------------->
-  <aside class="maps-list" id="mapsList" aria-label="Elenco percorsi">
+   <!-- LISTA PERCORSI --------------------------------------------------------------------->
+       <aside class="maps-list" id="mapsList" aria-label="Elenco percorsi">
 
       <!-- Titolo per DESKTOP (dentro pannello) -->
         <div class="maps-header maps-header--desktop">
@@ -737,22 +746,22 @@
         </div>
       </div>
      </article>
-    </aside>
-   </div><!-- chiusura maps-grid-------------------------------------------->
-</section>
+       </aside>
+       </div><!-- chiusura maps-grid-------------------------------------------->
+       </section>
 
-<!-- Sezione Card Maps-------------------------------------------->
- <section hidden>
+   <!-- Sezione Card Maps-------------------------------------------->
+      <section hidden>
 
-<section id="arrivare" class="card-section">
- <div class="arrivare-inner">
-   <h2 class="arrivare-title">Come arrivare</h2>
+      <section id="arrivare" class="card-section">
+       <div class="arrivare-inner">
+       <h2 class="arrivare-title">Come arrivare</h2>
 
-  <div class="arrivare-layout">
+      <div class="arrivare-layout">
 
     <!-- TESTO SINISTRA -->
-    <div class="arrivare-intro">
-        <p class="section-eyebrow">Come raggiungerci</p>
+       <div class="arrivare-intro">
+         <p class="section-eyebrow">Come raggiungerci</p>
 
                <p class="arrivare-lead">
                   Due modi per arrivare
@@ -767,8 +776,8 @@
           </p>
     </div>
 
-    <!-- CARD WRAP DESTRA -->
-    <div class="arrivare-cards">
+     <!-- CARD WRAP DESTRA -->
+      <div class="arrivare-cards">
 
       <!-- CARD MTB -->
       <a href="maps/maps.html" class="arrivare-card arrivare-mtb">
@@ -794,15 +803,15 @@
         </div>
       </a>
 
-    </div>
-  </div>
- </div>
-</section>
-</section>
+         </div>
+       </div>
+      </div>
+    </section>
+   </section>
 
 
-<!-- Sezione contatti -------------------------------------------->
- <section id="contatti" class="contact-section">
+     <!-- Sezione contatti-------------------------------------------->
+     <section id="contatti" class="contact-section">
   <div class="contact-inner">
 
     <h2 class="contact-title">contatti</h2>
@@ -845,23 +854,24 @@
                </div>
           </div>
 
-      </div>
-    </div>
-  </section>
-</main>
+          </div>
+        </div>
+     </section>
 
-<!-- Sezione footer -------------------------------------------->
-<section id="main-footer" class="is-hidden">
-    <footer>
+   </main>
+
+     <!-- Sezione footer-------------------------------------------->
+     <section id="main-footer" class="is-hidden">
+     <footer>
         <div class="main-footer">
             <!-- Footer principale, aggiungi qui info o link -->
         </div>
         <div class="copyright">
             &copy; 2026 MalgaMont Tutti i diritti riservati.
         </div>
-    </footer>
-   <script src="./script.v2.js" defer></script>
-  </section>
-</div>
-</body>
+       </footer>
+        <script src="./script.v2.js" defer></script>
+      </section>
+     </div>
+ </body>
 </html>
