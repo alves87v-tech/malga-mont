@@ -116,27 +116,50 @@
 
   <div class="food-inner">
 
-    <!-- COLONNA SINISTRA (desktop) -->
-      <div class="food-header">
+  <!-- MOBILE: immagine singola -->
+    <div class="food-mobile">
+      <figure class="food-feature">
+        <img src="Asset/main/food-section/slideshow/_DSC0090.jpg"
+             alt="Tagliere con formaggi e affettati della Malga Mont">
 
-        <p class="food-eyebrow"></p>
+        <figcaption class="food-feature__caption">
+          <p class="food-eyebrow">Piatti e prodotti</p>
+          <h2>I piatti della malga</h2>
+        </figcaption>
+      </figure>
+
+      <p class="food-subtitle">
+        Un piccolo assaggio della nostra cucina:
+        taglieri, primi piatti, dolci fatti in casa e prodotti del territorio.
+      </p>
+
+      <div class="food-actions">
+        <a href="./menu/index.html" class="food-menu-btn">
+          Vai al menù digitale
+        </a>
+      </div>
+    </div>
+
+  <!-- TABLET/DESKTOP: header + card -->
+    <div class="food-desktop">
+      <div class="food-header">
+        <p class="food-eyebrow">Piatti e prodotti</p>
 
         <h2 class="food-title">
-        I piatti più richiesti in malga
+          I piatti più richiesti in malga
         </h2>
 
         <p class="food-subtitle">
-        Un piccolo assaggio dei piatti che trovi nel nostro menù:
-        porzioni generose, ingredienti locali e ricette curate da Andrea e Paola.
+          Un piccolo assaggio dei piatti che trovi nel nostro menù:
+          porzioni generose, ingredienti locali e ricette curate da Andrea e Paola.
         </p>
 
         <a href="./menu/index.html" class="food-menu-btn">
-        Vai al menù digitale
+          Vai al menù digitale
         </a>
-
       </div>
 
-    <!-- COLONNA DESTRA = RAIL CARD -->
+  <!-- COLONNA DESTRA = RAIL CARD -->
     <div class="food-items" id="foodRail" aria-label="Piatti più richiesti">
 
       <!-- CARD 1 -->
@@ -213,13 +236,14 @@
           <p>Panna cotta ai frutti di bosco e dolci stagionali</p>
         </div>
       </a>
-    </div><!-- </food-items> ------------------------------->
+       </div><!-- </food-items> ------------------------------->
 
    <!-- UI RAIL (FUORI DAL RAIL) -->
      <div class="food-rail-ui" aria-hidden="true">
-      <div class="food-scrollbar" id="foodScrollbar">
-       <div class="food-scrollbar__thumb" id="foodThumb"></div>
-   </div>
+        <div class="food-scrollbar" id="foodScrollbar">
+            <div class="food-scrollbar__thumb" id="foodThumb"></div>
+        </div>
+     </div>
    </div>
   </div>
 </section>
