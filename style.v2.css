@@ -627,88 +627,101 @@ h2{
   display: none;
 }
 
-/* =========================
+/* ========================= 
    MAPS SECTION
 ========================= */
-.maps{
-position: relative;
-width: 100%;
-padding-top: 50px;
-padding-left: 0px;  
-padding-right: 0px;       /* padding verticale per la sezione */
-background:transparent;         /* oppure un beige leggero se vuoi stacco */
+
+.maps {
+  position: relative;
+  width: 100%;
+  padding: 56px 0 72px;
+  background: #f7f3eb;
+  overflow: hidden;
+  z-index: 3;
 }
 
-.maps-header{
-margin-bottom: 20px;
+.maps-header {
+  margin-bottom: 32px;
 }
 
-/* Base (mobile): mostra quello sopra, nasconde quello nel pannello */
-.maps-header--desktop { 
-display: none; 
+/* Base mobile: mostra intro sopra, nasconde eventuale header desktop */
+.maps-header--desktop {
+  display: none;
 }
 
 .maps-header--mobile {
-max-width: 1200px;
-padding: 0 16px;
-text-align: left;
-}
-
-.maps-title{
-  margin: 0 0 8px 0;
-  letter-spacing: 0.06em;
-  line-height: 1.1;
-}
-
-.maps-title-main{
+  margin-bottom: 36px;
   display: block;
-  font-size: clamp(1.8rem, 6vw, 2.2rem);
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
-.maps-title-sub{
-  display: block;
-  font-size: clamp(0.95rem, 3vw, 1.1rem);
+/* Box testo coerente con food / territorio */
+.maps-header__box {
+  padding: 34px 24px 36px;
+  border-radius: 24px;
+  background: #e9ece7;
+  text-align: left;
+}
+
+.maps-header__eyebrow {
+  margin: 0 0 14px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .78rem;
+  font-weight: 700;
+  color: #8b5a2b;
+}
+
+.maps-title {
+  margin: 0 0 24px;
+  font-size: clamp(2.15rem, 9vw, 3.2rem);
+  line-height: 1.05;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  opacity: 0.7;
-  margin-top: 6px;
+  letter-spacing: 0;
+  color: #143826;
+  text-align: left;
 }
 
 .maps-subtitle {
-margin: 0 auto;
-opacity: .85;
-max-width: 70ch;
-text-align: center;
+  margin: 0;
+  max-width: 42rem;
+  font-size: clamp(1.05rem, 4.3vw, 1.24rem);
+  line-height: 1.55;
+  opacity: 1;
+  color: #1f2520;
+  text-align: left;
 }
 
 .maps-grid {
-display: grid;
-grid-template-columns: 1fr;
-gap: 0px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
 }
-
 
 /* MAP --------------------------------------------------*/
-.maps-map{
+.maps-map {
   position: relative;
-  border-radius: 0px;
+  margin: 0 16px 36px;
+  border-radius: 24px;
   overflow: hidden;
-  background:transparent ;
-
 }
 
-.maps-svgwrap{
+.maps-svgwrap {
   width: 100%;
   height: auto;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f7f3eb;
 }
 
 /* IMPORTANT: SVG responsive */
-.maps-svgwrap svg{
+.maps-svgwrap svg {
   display: block;
   width: 100%;
-  padding: 15px 15px;
+  height: auto;
+  padding: 0;
 }
 
 /* LEGEND overlay */
@@ -846,7 +859,7 @@ gap: 0px;
 /* ROUTE CARD - container principale */
 .maps-list{
   position: relative;
-  background: #f2eee9;
+  background: transparent;
   border-radius: 0px;
   margin-bottom: 0;
   padding: 0;
@@ -990,7 +1003,7 @@ gap: 0px;
 
   margin: 0 0 0px;
   padding:  10px 14px;
-  margin-left: 0px;
+  margin-left: 26px;
 
   font-weight: 900;
   letter-spacing: .06em;
@@ -998,7 +1011,7 @@ gap: 0px;
   font-size: 1.5rem;
 
   background: #f1ede8;
-  color: #111;
+  color: #9e9a8e;
 
   border: 1px solid rgba(0,0,0,.08);
   border-bottom: none;
