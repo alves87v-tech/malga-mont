@@ -111,6 +111,43 @@ html, body{
   background: #f4f2ef;
 }
 
+/* Link e pulsanti - rimuove evidenziazione blu mobile */
+a,
+button,
+.btn,
+.hero-btn,
+.menu-button,
+.nav-link {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+button:focus,
+.btn:focus,
+.hero-btn:focus,
+.menu-button:focus,
+.nav-link:focus {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.hero-btn:focus-visible,
+.menu-button:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid rgba(244, 234, 216, 0.75);
+  outline-offset: 4px;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
 *, *::before, *::after{ box-sizing: inherit; }
 
 /* =========================
