@@ -181,7 +181,7 @@ h2{
 }
 
 /* =========================
-   HEADER / MENU MOBILE
+   HEADER / HAMBURGER
 ========================= */
 
 .site-header {
@@ -190,7 +190,7 @@ h2{
   left: 0;
   width: 100%;
   height: 64px;
-  z-index: 9000;
+  z-index: 9700;
   pointer-events: none;
 }
 
@@ -215,7 +215,6 @@ h2{
   pointer-events: none;
 }
 
-/* Bottone hamburger */
 .menu-toggle {
   width: 44px;
   height: 44px;
@@ -231,6 +230,11 @@ h2{
   gap: 5px;
   cursor: pointer;
   padding: 0;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  position: relative;
+  z-index: 9800;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -243,7 +247,7 @@ h2{
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-/* Animazione X quando aperto */
+/* Trasforma hamburger in X, utile se decidi di non nasconderlo */
 body.menu-open .menu-toggle span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -256,27 +260,41 @@ body.menu-open .menu-toggle span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Pannello menu */
+/* =========================
+   MENU MOBILE FULLSCREEN
+========================= */
+
 .mobile-menu {
   position: fixed;
-  top: 76px;
-  right: 18px;
-  width: min(260px, calc(100vw - 36px));
-  padding: 18px;
-  background: rgba(15, 15, 15, 0.92);
-  border: 1px solid rgba(244, 234, 216, 0.18);
-  border-radius: 18px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9500;
+  background: #f4f2ef;
+  color: #222;
   display: flex;
   flex-direction: column;
-  gap: 4px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-8px);
-  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+  transform: translateY(-12px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
   pointer-events: none;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+}
+
+.mobile-menu-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-menu-logo img {
+  width: 150px;
+  max-width: 45vw;
+  height: auto;
+  display: block;
 }
 
 body.menu-open .mobile-menu {
@@ -286,31 +304,69 @@ body.menu-open .mobile-menu {
   pointer-events: auto;
 }
 
-.mobile-menu a {
-  color: #f4ead8;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 13px 10px;
-  border-radius: 10px;
+.mobile-menu-header {
+  height: 98px;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  position: relative;
+}
+
+.mobile-menu-header span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 0.55);
+}
+
+.menu-close {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: rgba(34, 34, 34, 0.55);
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 8px;
+  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 
-.mobile-menu a:active {
-  background: rgba(244, 234, 216, 0.08);
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
 }
 
-/* Stato focus pulito */
-.menu-toggle:focus,
-.mobile-menu a:focus {
+.mobile-menu-links a {
+  color: #222;
+  text-decoration: none;
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.mobile-menu-links a:active {
+  opacity: 0.55;
+}
+
+.menu-close:focus,
+.mobile-menu-links a:focus {
   outline: none;
 }
 
-.menu-toggle:focus-visible,
-.mobile-menu a:focus-visible {
-  outline: 2px solid rgba(244, 234, 216, 0.75);
+.menu-close:focus-visible,
+.mobile-menu-links a:focus-visible {
+  outline: 2px solid rgba(34, 34, 34, 0.35);
   outline-offset: 4px;
 }
 
@@ -2348,3 +2404,10 @@ footer{
     display: none !important;
   }
   }
+  
+  @media (max-width: 1023px) {
+  svg #BG_maps {
+    display: none !important;
+    opacity: 0 !important;
+  }
+}
