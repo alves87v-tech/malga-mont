@@ -427,3 +427,48 @@ document.addEventListener("click", (e) => {
 
 }, true); // <-- CAPTURE: arriva prima degli altri click listener
   }); // chiude document.querySelectorAll(".variant-btn").forEach
+  
+  // =========================
+// MENU MOBILE
+// =========================
+
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileMenuLinks = document.querySelectorAll(".mobile-menu a");
+
+if (menuToggle) {
+  menuToggle.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const isOpen = document.body.classList.toggle("menu-open");
+
+    menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    menuToggle.setAttribute("aria-label", isOpen ? "Chiudi menu" : "Apri menu");
+
+    menuToggle.blur();
+  });
+}
+
+mobileMenuLinks.forEach(function (link) {
+  link.addEventListener("click", function () {
+    document.body.classList.remove("menu-open");
+
+    if (menuToggle) {
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Apri menu");
+    }
+
+    link.blur();
+  });
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    document.body.classList.remove("menu-open");
+
+    if (menuToggle) {
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Apri menu");
+    }
+  }
+});
