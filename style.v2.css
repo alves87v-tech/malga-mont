@@ -387,7 +387,7 @@ body.menu-open .mobile-menu {
   background: #000;
   color: #fff;
   z-index: 1;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 /* layer full-bleed */
@@ -1616,6 +1616,12 @@ footer{
 }
 
 /* =========================
+   nascondi foto-box mobile
+========================= */
+.intro-split__media {
+  display: none;
+}
+/* =========================
    RESPONSIVE (tutto in fondo)
 ========================= */
 /* =========================
@@ -1838,6 +1844,184 @@ footer{
     aspect-ratio: 4 / 3; 
   }
 }
+
+/* =========================
+   Tablet(≥768px)
+========================= */
+@media (min-width: 768px) {
+  .intro-split {
+    padding: 0px 24px;
+  }
+
+  .intro-split__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .intro-split__box {
+    min-height: 460px;
+    padding: 42px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 28px;
+  }
+
+  .intro-split__media {
+    display: block;
+    min-height: 460px;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .intro-split__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+.food-section {
+    padding: 50px 24px;
+  }
+
+  .food-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* tablet: foto a sinistra, testo a destra */
+.food-mobile {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.food-desktop {
+  display: none;
+}
+
+.food-feature,
+#food-box.food-mobile-box {
+  height: 500px;
+  min-height: 500px;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.food-feature {
+  margin: 0;
+}
+
+.food-feature img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+  #food-box.food-mobile-box {
+    margin-top: 0;
+    margin-bottom: 0;
+    align-self: stretch;
+    padding: 42px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+.food-mobile-title {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.08;
+}
+
+.food-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.food-actions {
+  margin-top: 28px;
+}
+
+/* =========================
+   MAPS INTRO / TERRITORIO - TABLET
+========================= */
+  .maps-split {
+    padding-bottom: 48px;
+  }
+
+  .maps-split__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  /* Testo a sinistra */
+  .maps-split__box {
+    order: 1;
+    height: 520px;
+    min-height: 520px;
+    border-radius: 28px;
+    padding: 56px 42px 42px;
+    background: #eef2ec;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  /* Foto a destra */
+  .maps-split__feature {
+    order: 2;
+    margin: 0;
+    height: 520px;
+    min-height: 520px;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .maps-split__feature img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .maps-split__eyebrow {
+    margin: 0 0 24px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #9a5f25;
+  }
+
+  .maps-split__title {
+    margin: 0 0 28px;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.08;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #123d2a;
+  }
+
+  .maps-split__text {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #222;
+  }
+
+  }
 
 /* =========================
    DESKTOP (≥1024px)
@@ -2404,7 +2588,7 @@ footer{
     display: none !important;
   }
   }
-  
+
   @media (max-width: 1023px) {
   svg #BG_maps {
     display: none !important;
