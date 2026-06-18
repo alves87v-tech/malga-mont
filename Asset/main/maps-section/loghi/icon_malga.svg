@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Livello_2" data-name="Livello 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.12 62.43">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #bf1622;
+      }
+    </style>
+  </defs>
+  <g id="troi_de_cavai_malga_mont_992" data-name="troi de cavai malga mont 992">
+    <g id="Parcheggio">
+      <polygon class="cls-1" points="11.61 59.68 11.12 20.71 34.06 6.44 59.05 25.94 56.25 58 11.61 59.68"/>
+      <path class="cls-1" d="M68.12,26l-12.35-9.43V.97h-8.83v8.86L34.06,0,0,26l5.36,7.02,3.67-2.8v32.22h50.07V30.22l3.67,2.8,5.36-7.01ZM54.19,57.53h-11.31v-18.63h-17.65v18.63h-11.31v-30.44l20.13-15.37,20.13,15.37v30.44Z"/>
+    </g>
+  </g>
+</svg>

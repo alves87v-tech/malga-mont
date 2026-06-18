@@ -328,6 +328,12 @@
   </div>
 </section>
 
+<!-- Testo: intro-slide -->
+<div class="context-heading">
+  <p class="context-heading__eyebrow">Vista dal Monte Crep</p>
+  <h2 class="context-heading__title">Un panorama che cambia con le stagioni</h2>
+</div>
+
 <!-- SEZIONE CONTESTO: SLIDESHOW TERRITORIO -->
 <section id="contesto" class="context-section" aria-label="Paesaggi intorno a Malga Mont">
 
@@ -362,8 +368,14 @@
     <!-- Sezione Maps-------------------------------------------->
       <section id="maps" class="maps"> 
 
-  <!-- Intro mappa / mobile -->
+  <!-- Intro mappa / mobile + tablet -->
 <div class="maps-header maps-header--mobile">
+
+  <figure class="maps-header__feature">
+    <img
+      src="Asset/main/maps-section/img_large/walk.webp"
+      alt="Strada e panorama verso Malga Mont">
+  </figure>
 
   <div class="maps-header__box">
 
@@ -377,6 +389,7 @@
       Scegli il percorso più adatto: in auto, a piedi o in MTB.
       Tocca una scheda per visualizzare il tracciato sulla mappa.
     </p>
+
   </div>
 </div>
  
@@ -650,7 +663,36 @@
         </g>
        </svg>
      </div>
-  </div><!-- chiusura maps-map-------------------------------------------->
+
+<!-- LEGENDA MAPPA -->
+  <div class="maps-route-legend" aria-label="Legenda mappa">
+        <p class="maps-route-legend__title">Legenda</p>
+
+        <div class="maps-route-legend__item">
+          <span class="maps-route-legend__line maps-route-legend__line--auto"></span>
+          <span>In auto</span>
+        </div>
+
+        <div class="maps-route-legend__item">
+          <span class="maps-route-legend__line maps-route-legend__line--walk"></span>
+          <span>A piedi / MTB</span>
+        </div>
+
+        <div class="maps-route-legend__item">
+        <img src="Asset/main/maps-section/loghi/icon_park.svg"
+       alt=""
+        class="maps-route-legend__parking">
+          <span>Parcheggio</span>
+        </div>
+
+       <div class="maps-route-legend__item">
+      <img src="Asset/main/maps-section/loghi/icon_malga.svg"
+       alt=""
+       class="maps-route-legend__malga">
+      <span>Malga Mont</span>
+  </div>
+ </div>
+</div><!-- chiusura maps-map-------------------------------------------->
 
 <!-- LISTA PERCORSI --------------------------------------------------------------------->
        <aside class="maps-list" id="mapsList" aria-label="Elenco percorsi">

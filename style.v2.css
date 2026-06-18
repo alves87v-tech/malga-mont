@@ -665,7 +665,17 @@ body.menu-open .mobile-menu {
   justify-content: flex-start;
   margin-top: 26px;
 }
+.food-menu-btn,
+.food-menu-btn:visited {
+  color: #8b5a2b;
+  border-color: #8b5a2b;
+}
 
+.food-menu-btn:hover,
+.food-menu-btn:active {
+  background: #8b5a2b;
+  color: #fff;
+}
 /* BOTTONE */
 .food-menu-btn {
   display: inline-flex;
@@ -1621,6 +1631,13 @@ footer{
 .intro-split__media {
   display: none;
 }
+.maps-header__feature {
+  display: none;
+}
+.maps-route-legend {
+  display: none;
+}
+
 /* =========================
    RESPONSIVE (tutto in fondo)
 ========================= */
@@ -1949,6 +1966,36 @@ footer{
   margin-top: 28px;
 }
 
+  /* tablet: testo intro-slideshow */
+ .context-heading {
+    max-width: 1100px;
+    margin: 0 auto 22px;
+    padding: 0 4px;
+    text-align: center;
+  }
+
+  .context-heading__eyebrow {
+    margin: 0 0 10px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8b5a2b;
+    text-align: center;
+  }
+
+  .context-heading__title {
+    margin: 0;
+    max-width: 620px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.08;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #173d2b;
+    text-align: center;
+  }
+
 /* =========================
    MAPS INTRO / TERRITORIO - TABLET
 ========================= */
@@ -2021,7 +2068,187 @@ footer{
     color: #222;
   }
 
+/* =========================
+   CONTESTO / SLIDESHOW - TABLET
+========================= */
+  .context-section {
+    padding-bottom: 48px;
   }
+
+  .context-inner {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .context-slider {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+  }
+
+  .context-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .context-slide.is-active {
+    opacity: 1;
+  }
+
+  .context-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .context-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+  }
+
+/* =========================
+   MAPPA - LEGENDA
+========================= */
+.maps-route-legend {
+  display: none;
+  position: absolute;
+  top: 1px;
+  right: 32px;
+  left: auto;
+  z-index: 50;
+  width: 178px;
+  padding: 14px 16px;
+  background: rgba(244, 242, 239, 0.94);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  flex-direction: column;
+  gap: 8px;
+}
+
+.maps-route-legend__title {
+  margin: 0 0 12px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8b5a2b;
+}
+
+.maps-route-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.maps-route-legend__line {
+  width: 28px;
+  height: 4px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+.maps-route-legend__line--auto {
+  background: #3ba4ff;
+}
+
+.maps-route-legend__line--walk {
+  background: #ff9a1f;
+}
+
+.maps-route-legend__parking {
+  width: 22px;
+  height: 22px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.maps-route-legend__malga {
+  width: 22px;
+  height: 22px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+@media (min-width: 768px) {
+  .maps-route-legend {
+    display: flex;
+  }
+}
+  /* =========================
+   MAPS HEADER - TABLET
+========================= */
+  .maps-header {
+    padding-bottom: 48px;
+  }
+
+  .maps-header--mobile {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+    align-items: stretch;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .maps-header__feature {
+    display: block;
+    margin: 0;
+    height: 520px;
+    min-height: 520px;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .maps-header__feature img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .maps-header__box {
+    height: 520px;
+    min-height: 520px;
+    border-radius: 28px;
+    padding: 56px 42px 42px;
+    background: #eef2ec;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+  }
+
+  .maps-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.08;
+  }
+
+  .maps-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+}
 
 /* =========================
    DESKTOP (≥1024px)
