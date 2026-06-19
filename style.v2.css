@@ -1638,6 +1638,9 @@ footer{
 .maps-route-legend {
   display: none;
 }
+.desktop-card-grid {
+  display: none;
+}
 
 /* =========================
    RESPONSIVE (tutto in fondo)
@@ -2271,11 +2274,14 @@ footer{
 }
 
 /* =========================
-   DESKTOP (≥1024px)
+   DESKTOP (≥1025px)
 ========================= */
 
-/* DESKTOP FRAME (Jeep-style) */
-@media (min-width: 1025px){
+@media (min-width: 1025px) {
+
+  /* =========================
+     HEADER / MINI MENU DESKTOP
+  ========================= */
 
   .site-header {
     height: 78px;
@@ -2285,18 +2291,7 @@ footer{
     height: 78px;
     padding: 0 56px;
     position: relative;
-  }
-
-  .site-brand {
-    opacity: 1;
-    pointer-events: auto;
-    color: #f4ead8;
-    font-family: "Montserrat", system-ui, sans-serif;
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    text-decoration: none;
+    justify-content: flex-end;
   }
 
   .menu-toggle {
@@ -2305,6 +2300,7 @@ footer{
     z-index: 9800;
     width: 46px;
     height: 46px;
+    margin-left: auto;
     border: 1px solid rgba(244, 234, 216, 0.45);
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.28);
@@ -2349,7 +2345,30 @@ footer{
   }
 
   .mobile-menu-header {
-    display: none;
+    display: flex;
+    height: auto;
+    padding: 18px 22px 14px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: relative;
+  }
+
+  .mobile-menu-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-menu-logo img {
+    width: 118px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .mobile-menu .menu-close {
+    display: none !important;
   }
 
   .mobile-menu-links {
@@ -2378,163 +2397,475 @@ footer{
     color: #8b5a2b;
   }
 
-  .page-wrap{
-    max-width: 1280px;
-    margin: 0 auto;
-    background: transparent; /* il tuo background chiaro */
-    min-height: 100vh;
-    box-shadow: 0;
-  }
+  /* =========================
+     PAGE WRAP / HERO DESKTOP
+  ========================= */
 
-/* HERO dentro page-wrap (desktop) */
-  .hero{
-    width: 100%;          /* rientra nel container */
-    height: clamp(720px, 78vh, 980px);   
-    min-height: 560px;    /* scegli tu: 520–650 */
-  }
-
-/* DESKTOP: slideshow ON, fallback OFF, video OFF */
-  .hero-bg-slideshow{ display: block;  z-index: 2;
-  }
-  
-  .hero-fallback{ display: none; }
-  .hero-bg-video{ display: none; }
-
-  /* assicura che il video continui a riempire l'area hero */
-  .hero-bg-video,
-  .hero-bg-video video,
-   #heroVideo{
+  .page-wrap {
     width: 100%;
-    height: 100%;
+    max-width: none;
+    margin: 0 auto;
+    background: transparent;
+    min-height: 100vh;
+    box-shadow: none;
   }
 
-  /* 👉 DESKTOP: usa immagine, spegni video */
-  .hero-bg-video{
+  .hero {
+    width: 100%;
+    height: clamp(720px, 78vh, 980px);
+    min-height: 560px;
+    margin-bottom: 72px;
+  }
+
+  .hero-bg-slideshow {
+    display: block;
+    z-index: 2;
+  }
+
+  .hero-bg-video {
     display: none;
   }
 
   .hero-fallback,
-  .hero-bg-base{
+  .hero-bg-base {
     display: block;
   }
 
-  /* (opzionale ma pulito) l'immagine riempie la hero */
-  .hero-fallback img{
+  .hero-fallback img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  .hero-content{ position: relative; z-index: 10; }
 
-/* Sezione intro ----------------------------*/
-     /* full-bleed fuori dal wrap */
-
-  .intro-split{
-    /* full-bleed fuori dal wrap */
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-
-    /* layout */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-
-    /* respiro + altezza intelligente */
-    padding: clamp(56px, 6vh, 90px) 0;
-    min-height: clamp(500px, 60vh, 1000px) !important;
+  .hero-content {
     position: relative;
-    overflow: hidden;
+    z-index: 10;
   }
 
-  /* colonna testo: pannello bianco centrato */
-  .intro-split__text{
-    background: transparent;
+/* DESKTOP CARD GRID */
+  .desktop-card-grid {
     display: grid;
-    place-items: center; /* ✅ centro pieno */
-    padding: clamp(48px, 6vw, 110px);
-    text-align: left;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: min(100% - 96px, 1500px);
+    margin: 56px auto;
   }
 
-  .intro-split__title {
-    background: coral;
-    text-align: left;
-
- }
-
-  /* “inner” testo: allinea a sinistra dentro al blocco */
-  .intro-split__text-inner{
-    max-width: 300px;
-    width: 100%;
-
+  .desktop-card {
+    height: 380px;
+    border-radius: 22px;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
-  /* colonna immagine: deve riempire la metà */
-  .intro-split__img{
-    height: 100%;
+  .desktop-card--text {
+    padding: 34px 32px;
+    background: #edf2ec;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
   }
 
-  .intro-split__img img{
+  .desktop-card--image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  .intro-split__quote{
+
+  .desktop-card__eyebrow {
+    margin: 0 0 16px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b5a2b;
+  }
+
+  .desktop-card__title {
+    margin: 0 0 20px;
+    font-size: clamp(1.65rem, 1.8vw, 2.45rem);
+    line-height: 1.08;
+    font-weight: 500;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    color: #143826;
+  }
+
+  .desktop-card__text {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #1f2520;
+  }
+
+  .desktop-card__link {
+    margin-top: 24px;
+    display: inline-flex;
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8b5a2b;
+    text-decoration: none;
+  }
+
+  /* Nascondi sezioni duplicate su desktop */
+  .intro-split,
+  .food-section {
+    display: none;
+  }
+
+  /* =========================
+   DESKTOP CARD GRID - TESTI
+========================= */
+
+.desktop-card--text {
+  padding: 34px 32px;
+  background: #edf2ec;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
+}
+
+.desktop-card__eyebrow {
+  margin: 0 0 18px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8b5a2b;
+  text-align: left;
+}
+
+.desktop-card__title {
+  margin: 0 0 24px;
+  font-size: clamp(1.65rem, 1.8vw, 2.45rem);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  color: #143826;
+  text-align: left;
+}
+
+.desktop-card__text {
+  margin: 0;
+  max-width: 330px;
+  font-size: 0.92rem;
   line-height: 1.6;
+  color: #1f2520;
+  text-align: left;
+}
+.desktop-card__link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #8b5a2b;
+  text-decoration: none;
+}
+
+.desktop-card__link::after {
+  content: "›";
+  margin-left: 8px;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+  /* =========================
+     DESKTOP - BASE SEZIONI
+  ========================= */
+
+  .intro-split,
+  .food-section,
+  .maps-split,
+  .context-section,
+  .maps {
+  padding-left: clamp(40px, 4vw, 72px);
+  padding-right: clamp(40px, 4vw, 72px);
+  }
+.intro-split__inner,
+.food-inner,
+.maps-split__inner,
+.context-inner,
+.maps-header--mobile,
+.maps-grid {
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   INTRO DESKTOP
+========================= */
+
+.intro-split {
+  padding-top: 56px;
+  padding-bottom: 32px;
+}
+
+.intro-split__inner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.intro-split__box,
+.intro-split__media {
+  height: 340px;
+  min-height: 340px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.intro-split__box {
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
+}
+
+.intro-split__media {
+  display: block;
+}
+
+.intro-split__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 
-/* Sezione food ----------------------------*/
-   .food-inner{
+  /* =========================
+     FOOD DESKTOP
+     Usiamo la versione immagine + testo
+  ========================= */
+
+  .food-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .food-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .food-mobile {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    column-gap: 56px;
-    align-items: start;
-
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
   }
 
-  .food-header{
-    margin-top: 0px;
-    text-align: left;
-    max-width: 360px;
+  .food-desktop {
+    display: none;
   }
 
-  /* rail desktop con card a larghezza fissa */
-  .food-items{
-    grid-auto-columns: 320px;
-    gap: 22px;
-  }
-
-  .food-title {text-align: left; }
-
-  /* desktop pulito: togli testo sotto (opzionale) */
-  .food-text-detailed{ display: none; }
-
-/* Contesto slider ----------------------------*/
- .context-slider{
-    width: 100vw;
-
-    position: relative;
-    left: 50%;
-    right: 50%;
-
-    margin-left: -50vw;
-    margin-right: -50vw;
-
-    height: clamp(520px, 65vh, 850px);
+  .food-feature,
+  #food-box.food-mobile-box {
+    height: 620px;
+    min-height: 620px;
+    border-radius: 28px;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
-  .context-slider img,
-  .context-slider video{
+  .food-feature {
+    margin: 0;
+  }
+
+  .food-feature img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
+  #food-box.food-mobile-box {
+    margin: 0;
+    padding: 64px 58px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.045);
+  }
+
+  .food-actions {
+    margin-top: 34px;
+  }
+
+
+  /* =========================
+     TITOLI / TESTI BOX DESKTOP
+  ========================= */
+
+  .intro-split__eyebrow,
+  .food-eyebrow,
+  .maps-split__eyebrow,
+  .maps-header__eyebrow {
+    margin: 0 0 22px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b5a2b;
+  }
+
+  .intro-split__title,
+  .food-mobile-title,
+  .maps-split__title,
+  .maps-title {
+    margin: 0 0 28px;
+    font-size: clamp(3rem, 4vw, 4.7rem);
+    line-height: 1.04;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: #143826;
+    text-align: left;
+  }
+
+  .intro-split__text,
+  .food-subtitle,
+  .maps-split__text,
+  .maps-subtitle {
+    margin: 0;
+    max-width: 560px;
+    font-size: 1.18rem;
+    line-height: 1.75;
+    color: #1f2520;
+  }
+
+
+  /* =========================
+     TERRITORIO / MAPS SPLIT DESKTOP
+  ========================= */
+
+  .maps-split {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .maps-split__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  .maps-split__box,
+  .maps-split__media {
+    height: 620px;
+    min-height: 620px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .maps-split__box {
+    padding: 64px 58px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.045);
+  }
+
+  .maps-split__media {
+    display: block;
+  }
+
+  .maps-split__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+
+  /* =========================
+     CONTEXT SLIDER DESKTOP
+  ========================= */
+
+  .context-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .context-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .context-heading {
+    max-width: 980px;
+    margin: 0 auto 34px;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .context-heading__eyebrow {
+    margin: 0 0 12px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b5a2b;
+    text-align: center;
+  }
+
+  .context-heading__title {
+    margin: 0 auto;
+    max-width: 980px;
+    font-size: clamp(2.8rem, 4vw, 4.6rem);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #143826;
+    text-align: center;
+  }
+
+  .context-slider {
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    height: auto;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .context-slide,
+  .context-slide img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .context-slide img {
+    object-fit: cover;
+    display: block;
+  }
 
 /* Sezione mappe/percorsi ----------------------------*/
 
