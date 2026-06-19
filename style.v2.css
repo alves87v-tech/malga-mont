@@ -2515,7 +2515,8 @@ footer{
 
   /* Nascondi sezioni duplicate su desktop */
   .intro-split,
-  .food-section {
+  .food-section,
+  .maps-split {
     display: none;
   }
 
@@ -2595,6 +2596,7 @@ footer{
   padding-left: clamp(40px, 4vw, 72px);
   padding-right: clamp(40px, 4vw, 72px);
   }
+
 .intro-split__inner,
 .food-inner,
 .maps-split__inner,
@@ -2835,17 +2837,17 @@ footer{
     text-align: center;
   }
 
-  .context-heading__title {
-    margin: 0 auto;
-    max-width: 980px;
-    font-size: clamp(2.8rem, 4vw, 4.6rem);
-    line-height: 1.05;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #143826;
-    text-align: center;
-  }
+   .context-heading__title {
+  margin: 0 auto;
+  max-width: 820px;
+  font-size: clamp(1rem, 2.8vw, 2.8rem);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  color: #143826;
+  text-align: center;
+}
 
   .context-slider {
     width: 100%;
@@ -2883,13 +2885,11 @@ footer{
   display: grid;
 
     /* lista più larga + mappa sempre fluida */
-    grid-template-columns: 1.6fr clamp(440px, 26vw, 560px);
-
-    /* più aria tra mappa e lista */
-    column-gap: clamp(16px, 2vw, 28px);
+     grid-template-columns: minmax(0, 1.05fr) clamp(400px, 24vw, 500px);
+     column-gap: 0;
 
     /* centra e limita l’area totale */
-    max-width: 2000px;
+    max-width: 1800px;
     margin-inline: auto;
 
     height: auto;
@@ -2925,7 +2925,7 @@ footer{
   margin-top: 4px;
 }
 
- :root{ --maps-panel-h: clamp(760px, 78vh, 1200px); }/* fisso desktop */
+ :root{ --maps-panel-h: clamp(640px, 70vh, 820px); }/* fisso desktop */
 
   /* mappa riempie */
   .maps-map{
@@ -2940,21 +2940,6 @@ footer{
     height: var(--maps-panel-h);
     z-index: 1;
   }
-
-.maps-map::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  /* 🔥 allarghiamo solo lateralmente */
-  left: -8vw;
-  right: -8vw;
-
-  background: #f2eee9;
-  border-radius: 24px;
-
-  z-index: -1;
-}
 
   .maps-svgwrap,
   .maps-svgwrap svg{
@@ -2972,7 +2957,7 @@ footer{
 
   .maps-list{
     margin: 0;                /* via offset */
-    padding: 24px 24px;       /* padding realistico */
+    padding: 20px 22px;       /* padding realistico */
     background: transparent;
 
     height: var(--maps-panel-h);
