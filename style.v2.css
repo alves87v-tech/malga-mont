@@ -200,7 +200,7 @@ h2{
   padding: 0 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start ;
   pointer-events: auto;
 }
 
@@ -216,6 +216,7 @@ h2{
 }
 
 .menu-toggle {
+  margin-left: auto;
   width: 44px;
   height: 44px;
   border: 1px solid rgba(244, 234, 216, 0.45);
@@ -1865,7 +1866,7 @@ footer{
 /* =========================
    Tablet(≥768px)
 ========================= */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px){
   .hero {
     margin-bottom: 48px;
     }
@@ -2275,6 +2276,107 @@ footer{
 
 /* DESKTOP FRAME (Jeep-style) */
 @media (min-width: 1025px){
+
+  .site-header {
+    height: 78px;
+  }
+
+  .site-nav {
+    height: 78px;
+    padding: 0 56px;
+    position: relative;
+  }
+
+  .site-brand {
+    opacity: 1;
+    pointer-events: auto;
+    color: #f4ead8;
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+    position: relative;
+    z-index: 9800;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(244, 234, 216, 0.45);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  body.menu-open .menu-toggle {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 82px;
+    right: 56px;
+    left: auto;
+    width: 260px;
+
+    background: rgba(244, 242, 239, 0.96);
+    color: #222;
+    border-radius: 18px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+
+    pointer-events: none;
+    z-index: 9500;
+    overflow: hidden;
+  }
+
+  body.menu-open .mobile-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mobile-menu-header {
+    display: none;
+  }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 22px;
+  }
+
+  .mobile-menu-links a {
+    color: #222;
+    text-decoration: none;
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .mobile-menu-links a:last-child {
+    border-bottom: 0;
+  }
+
+  .mobile-menu-links a:hover {
+    color: #8b5a2b;
+  }
 
   .page-wrap{
     max-width: 1280px;
@@ -2775,6 +2877,7 @@ footer{
   background: #dcd7c5; /* colore footer */
    }
 }
+
 /* Maps-list riduzione testo------------------------------------------- */
 @media (min-width: 1025px) and (max-width: 1600px){
   .routes-title{ font-size: clamp(1.7rem, 2.2vw, 3.2rem); }
@@ -2792,6 +2895,7 @@ footer{
     min-height: 100svh;
   }
 }
+
  /* opzionale: limita l'effetto "troppo lunga" su mega desktop */
   @media (min-width: 1600px){
 
