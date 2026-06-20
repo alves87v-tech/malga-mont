@@ -1053,7 +1053,7 @@ body.menu-open .mobile-menu {
 }
 
 .poi{
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 700;
   fill: #1d1d1b;
   inline-size: 0px;
@@ -1144,6 +1144,13 @@ body.menu-open .mobile-menu {
 .legend-btn--reset{
   font-weight: 600;
   opacity: .9;
+}
+
+ #icone .park-bg,
+#icone .park-text {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(1.35);
 }
 
 /* LIST */
@@ -2392,7 +2399,7 @@ footer{
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     width: min(100% - 96px, 1500px);
-    margin: 56px auto;
+    margin: 56px auto 72px;
   }
 
   .desktop-card {
@@ -2759,7 +2766,7 @@ footer{
   }
 
   .context-inner {
-    max-width: 1440px;
+    max-width: 1500px;
     margin: 0 auto;
   }
 
@@ -2814,31 +2821,29 @@ footer{
 
 /* Sezione mappe/percorsi ----------------------------*/
 
-/* full-bleed (se vuoi fuori dal wrap) */
-  .maps{
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
+/* Sezione mappe/percorsi ----------------------------*/
 
-  /* split 65/35 */
-  .maps-grid{
+.maps {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.maps-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1.05fr) clamp(400px, 24vw, 500px);
+  column-gap: 0;
 
-    /* lista più larga + mappa sempre fluida */
-     grid-template-columns: minmax(0, 1.05fr) clamp(400px, 24vw, 500px);
-     column-gap: 0;
+  width: min(100% - 80px, 1500px);
+  max-width: none;
+  margin-inline: auto;
 
-    /* centra e limita l’area totale */
-    max-width: 1800px;
-    margin-inline: auto;
-
-    height: auto;
-    align-content: start;   /* importante: niente centratura verticale “strana” */
-    align-items: start;     /* ancora i blocchi in alto */
-  }
+  height: auto;
+  align-content: start;
+  align-items: start;
+}
 
  /* Titolo maps----------------------------------------------------------- */
   .maps-header--desktop {
@@ -2938,6 +2943,14 @@ footer{
 
 .maps-subtitle { display: none; }
 .maps-header--mobile { display: none; }
+
+ /*testo park mappa------- */
+ #icone .park-bg,
+#icone .park-text {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(1.35);
+}
 
    /*frecce slideshow contesto------------------------- */
  .context-nav{
