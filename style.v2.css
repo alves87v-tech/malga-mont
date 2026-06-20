@@ -1299,7 +1299,7 @@ body.menu-open .mobile-menu {
   font-weight: 900;
   letter-spacing: .06em;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1rem;
 
   background: #f1ede8;
   color: #9e9a8e;
@@ -1398,87 +1398,6 @@ body.menu-open .mobile-menu {
   stroke: var(--route-color);
   stroke-width: 2;
   filter: drop-shadow(0 6px 10px rgba(0,0,0,.15));
-}
-
-/* =========================
-   MAPS (placeholder tuo)
-========================= */
-/* Griglia */
-.arrivare-layout{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 50px;
-}
-
-.card-section{
-  margin: 0px 0;
-}
-.arrivare-inner{
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.arrivare-card{
-  display: grid;
-  grid-template-columns: 1fr;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 10px 28px rgba(0,0,0,.10);
-  color: #222;
-  text-decoration: none;
-  color: inherit;
-  overflow: hidden;
-}
-
-/* media */
-.arrivare-media{
-  position: relative;
-  width: 100%;
-  height: 260px;              /* base */
-  overflow: hidden;
-  background: #eee;
-  border-radius: 20px 20px 0 0;
-}
-
-.arrivare-media > img:not(.arrivare-icon){
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* testo */
-.arrivare-title{
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* kicker / soprattitolo */
-.section-eyebrow{
-  font-size: 1.50rem;        /* più grande del body */
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0 0 12px;
-  color: #222;
-}
-
-.arrivare-text{
-  width: 100%;
-  max-width: none;
-  line-height: 1.55;
-  padding: 16px 18px 20px; /* ↑ più aria sotto */
-}
-
-.arrivare-text h2{
-  margin: 0 0 10px;
-  font-size: 1.1rem;
-}
-
-.arrivare-cta{
-  margin-top: auto;
-  font-weight: 600;
 }
 
 /* =========================
@@ -1639,6 +1558,9 @@ footer{
   display: none;
 }
 .desktop-card-grid {
+  display: none;
+}
+.context-heading {
   display: none;
 }
 
@@ -2900,6 +2822,7 @@ footer{
  /* Titolo maps----------------------------------------------------------- */
   .maps-header--desktop {
     display: block;
+    margin-bottom: 28px;
   }
 
   .maps-title {
@@ -2907,13 +2830,13 @@ footer{
     margin: 0;
     display: flex;
     flex-direction: column;
-    line-height: 1.1;
+    line-height: 1.08;
     text-align: left;
   }
 
   .maps-list .maps-title-main{
-    font-size: clamp(3rem, 2.6vw, 3rem);
-    font-weight: 800;
+    font-size: clamp(2rem,2.1vw,2.55rem);
+    font-weight: 500;
     letter-spacing: 0.05em;
   }
 
@@ -2921,8 +2844,8 @@ footer{
   font-size: clamp(1rem, 1.2vw, 1.2rem);
   font-weight: 500;
   letter-spacing: 0.08em;
-  opacity: 0.75;
   margin-top: 4px;
+  color:  #8b5a2b;
 }
 
  :root{ --maps-panel-h: clamp(640px, 70vh, 820px); }/* fisso desktop */
@@ -2965,6 +2888,23 @@ footer{
     scrollbar-gutter: stable;
   }
 
+/* scrollbar pannello percorsi */
+.maps-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.maps-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.maps-list::-webkit-scrollbar-thumb {
+  background: rgba(20, 56, 38, 0.28);
+  border-radius: 999px;
+}
+
+.maps-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(20, 56, 38, 0.45);
+}
  /* Maps -------------------------------------- */
 #tracciati.is-filtering g.is-variant-active .route-path{
   stroke-width: 5;
@@ -2977,150 +2917,6 @@ footer{
 
 .maps-subtitle { display: none; }
 .maps-header--mobile { display: none; }
-
-/* Sezione map card ---------------------------------------------------------*/
-.arrivare-layout{
-    display: grid;
-    grid-template-columns: 260px 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-  }
-
-.arrivare-intro{
-    grid-column: 1;
-  }
-
-.arrivare-cards{
-    grid-column: 2 / 4; /* fallback se rimane wrapper */
-    display: contents; /* chiave */
-  }
-
-/* card */
-.arrivare-card{
-  height: 400px;
-  max-width: 280px;   /* se vuoi comunque un limite */
-  width: 100%;          /* uguale alla colonna */
-  border-radius: 18px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,.10);
-  display: flex;
-  flex-direction: column;
-  color: #222;
-  text-decoration: none;
-  justify-self: center;   /* centra la card dentro la cella grid */
-}
-
-/* MTB – verde/grigio bosco */
-.arrivare-card.arrivare-mtb:hover .arrivare-text{
-  background: #a1f4af;
-}
-
-/* A piedi – beige caldo */
-.arrivare-card.arrivare-piedi:hover .arrivare-text{
-  background: #f9c684;
-}
-
-/* box immagine con altezza controllata */
-.arrivare-card .card-media{
-  flex: 0 0 250px;   
-  height: 200px;    /* alza/abbassa qui */
-  background: #f2f2f2;  /* colore bande */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* immagine: NON taglia */
-.arrivare-card .card-media img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  /* <-- niente tagli */
-  display: block;
-  transition: transform .35s ease;
-  object-position: center;
-}
-
-.arrivare-card:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0,0,0,.18);
-}
-
-.arrivare-media img{
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  display: block;
-}
-
-/* testo-------------------------------------- */
- .arrivare-intro{
-    display: block; /* oppure flex, a seconda di come lo impagini */
-}
-
-.arrivare-text{
-  flex: 1;
-  padding: 12px 18px 12px;  /* meno di 24, altrimenti mangia troppo */
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: background .25s ease;
-}
-
-.arrivare-text h3{
-  margin: 0 0 10px;
-  font-size: 1.1rem;
-}
-
-.arrivare-text h2{
-  margin: 0 0 10px;
-  font-size: 1.1rem;
-}
-
-.arrivare-text p{
-  margin: 0 0 14px;
-  line-height: 1.55;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;     /* 2 righe uguali per tutti */
-  overflow: hidden;
-}
-
-.section-eyebrow{
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 1.15;
-}
-
-.arrivare-lead{
-  font-size: 1.2rem;
-  font-weight: 600;   /* Montserrat semibold */
-  margin-bottom: 16px;
-}
-
-.arrivare-intro p strong{
-  font-size: 1.05rem;   /* oppure 1.1rem */
-  line-height: 1.20;
-  font-weight: 600;
-  margin: 0 0 6px;
-}
-
-.arrivare-cta{
-  font-weight: 600;
-  letter-spacing: .02em;
-  margin-top: auto;
-}
-
- .arrivare-intro p{
-  margin-bottom: 18px;
-  line-height: 1.6;
-  max-width: 38ch;
-}
-
-.arrivare-title{
- display: none;
-}
 
    /*frecce slideshow contesto------------------------- */
  .context-nav{
