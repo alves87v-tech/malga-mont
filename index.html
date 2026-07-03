@@ -770,6 +770,13 @@
             <p class="maps-subtitle">Scegli un percorso per vedere il tracciato...</p>
         </div>
 
+<button class="routes-master-toggle" type="button" aria-expanded="false" aria-controls="routesMobilePanel">
+  <span>Percorsi e itinerari</span>
+  <span class="routes-master-arrow" aria-hidden="true">⌄</span>
+</button>
+
+<div class="routes-mobile-panel" id="routesMobilePanel">
+
 <!-- GRUPPO AUTO---------------------------------------->
     <section class="routes-group routes-group--auto" aria-label="Accesso in auto">
     <h3 class="routes-group__title">In auto</h3>
@@ -845,13 +852,13 @@
    <span class="route-bar" aria-hidden="true"></span>
 
   <div class="route-content" >
-        <button class="route-head" type="button" aria-expanded="false" aria-controls="route-body-1">
+        <button class="route-head" type="button" aria-expanded="false" aria-controls="route-body-2">
           <span class="route-name">.2 Sentiero CAI 988 da Miane</span>
           <span class="route-meta">Medio 6,4 km ⛰ +609 m ⏱ 2:00 h</span>
           <span class="route-toggle" aria-hidden="true">+</span>
         </button>
 
-       <div class="route-body" id="route-body-1" hidden>
+       <div class="route-body" id="route-body-2" hidden>
 
        <div class="route-main">
           <p>Itinerario di salita da Costolada di Miane a Malga Mont. Il percorso si snoda in gran parte nel bosco, su strade asfaltate, cementate e sterrate, con alcuni tratti di sentiero. Presenta una breve sezione centrale con pendenze più marcate, ma senza difficoltà tecniche rilevanti.</p>
@@ -979,6 +986,7 @@
       </div>
         </article>
 </section> 
+</div><!-- chiusura routes-mobile-panel -->
 
        </aside>
       </div><!-- chiusura maps-grid-------------------------------------------->

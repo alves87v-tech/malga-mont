@@ -2221,6 +2221,50 @@ footer{
     line-height: 1.65;
   }
 
+/* =========================
+   SCHEDA PERCORSI - TABLET
+========================= */
+
+.routes-master-toggle {
+    width: calc(100% - 48px);
+    margin: 28px 24px 14px;
+    padding: 18px 20px;
+    border: 1px solid rgba(20, 56, 38, 0.14);
+    border-radius: 20px;
+    background: #edf2ec;
+    color: #143826;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
+  }
+
+  .routes-master-arrow {
+    font-size: 1.45rem;
+    line-height: 1;
+    transition: transform 0.25s ease;
+  }
+
+  .routes-master-toggle.is-open .routes-master-arrow {
+    transform: rotate(180deg);
+  }
+
+  .routes-mobile-panel {
+    display: none;
+  }
+
+  .routes-mobile-panel.is-open {
+    display: block;
+  }
+
+  .routes-group__title {
+    display: none;
+  }
 }
 
 /* =========================

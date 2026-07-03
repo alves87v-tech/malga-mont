@@ -216,6 +216,19 @@ document.addEventListener('DOMContentLoaded', initHeroSlideshow);
 ============================ */
 
 document.addEventListener("DOMContentLoaded", () => {
+// MENU MOBILE PERCORSI / ITINERARI
+const routesMasterToggle = document.querySelector(".routes-master-toggle");
+const routesMobilePanel = document.querySelector(".routes-mobile-panel");
+
+if (routesMasterToggle && routesMobilePanel) {
+  routesMasterToggle.addEventListener("click", () => {
+    const isOpen = routesMasterToggle.classList.toggle("is-open");
+
+    routesMasterToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    routesMobilePanel.classList.toggle("is-open", isOpen);
+  });
+}
+
   const svgWrap = document.getElementById("svgWrap");
   if (!svgWrap) return;
 
