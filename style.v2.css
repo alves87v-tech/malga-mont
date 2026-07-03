@@ -1306,8 +1306,8 @@ body.menu-open .mobile-menu {
 
 .routes-group{
   position: relative;
-  margin-top: 10px;
-  padding-top: 15px; /* spazio sotto la linguetta */
+  margin-top: 0px;
+  padding-top: 0px; /* spazio sotto la linguetta */
 }
 
 /* linguetta */
@@ -1340,8 +1340,8 @@ body.menu-open .mobile-menu {
 
    box-shadow: #1d1d1b 0 0 .8px;
 
- 
 }
+
 
 /* “rientranza” tipo raccoglitore */
 .routes-group__title::after{
@@ -1358,7 +1358,6 @@ body.menu-open .mobile-menu {
   transform: skewX(-18deg);
   opacity: .5;
 }
-
 
 /* layer accesso auto */
 #tracciati .route--auto.is-on{
@@ -1396,6 +1395,96 @@ body.menu-open .mobile-menu {
 .route-pill--marrone-chiaro{ background: #ff9800;}
 .route-pill--violetto{ background: #2e00a3;}
 /* aggiungi gli altri colori */
+
+/* Percorsi mobile - base ---------------------------- */
+
+.routes-master-toggle {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 100%;
+  margin: 0;
+  padding: 26px 32px;
+
+  border: 1px solid rgba(20, 56, 38, 0.12);
+  border-radius: 0;
+  background: #edf2ec;
+  color: #143826;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.routes-master-toggle span:first-child {
+  font-size: clamp(1.45rem, 5.8vw, 2.15rem);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  color: #143826;
+  text-align: left;
+}
+
+.routes-master-arrow {
+  position: relative;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  margin-left: 12px;
+}
+
+.routes-master-arrow::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 10px;
+  height: 10px;
+
+  border-right: 2px solid #143826;
+  border-bottom: 2px solid #143826;
+
+  transform: translate(-50%, -65%) rotate(45deg);
+  transform-origin: center;
+}
+
+.routes-master-toggle.is-open .routes-master-arrow::before {
+  transform: translate(-50%, -35%) rotate(225deg);
+}
+
+
+.routes-mobile-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.55s ease,
+    opacity 0.25s ease,
+    transform 0.35s ease;
+}
+
+.routes-mobile-panel.is-open {
+  max-height: 3600px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.routes-group {
+  margin: 0;
+  padding: 0;
+}
+
+.routes-group__title {
+  display: none;
+}
 
 /* =========================
    SVG INTERACTION (KEY PART)
@@ -2226,28 +2315,30 @@ footer{
 ========================= */
 
 .routes-master-toggle {
-    width: calc(100% - 48px);
-    margin: 28px 24px 14px;
-    padding: 18px 20px;
-    border: 1px solid rgba(20, 56, 38, 0.14);
-    border-radius: 20px;
-    background: #edf2ec;
-    color: #143826;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.05rem;
-    font-weight: 800;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    cursor: pointer;
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  border: 1px solid rgba(20, 56, 38, 0.14);
+  border-radius: 0;
+  background: #e8ece7;
+  color: #143826;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-radius 0.25s ease, background 0.25s ease;
+  position: relative;
+  z-index: 2;
   }
 
   .routes-master-arrow {
     font-size: 1.45rem;
     line-height: 1;
-    transition: transform 0.25s ease;
+    display: inline-block;
+    transition: transform 0.3s ease;
   }
 
   .routes-master-toggle.is-open .routes-master-arrow {
@@ -2255,11 +2346,32 @@ footer{
   }
 
   .routes-mobile-panel {
-    display: none;
+     max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s ease,
+    opacity 0.25s ease,
+    transform 0.3s ease;
+
+  border-left: 1px solid rgba(20, 56, 38, 0.14);
+  border-right: 1px solid rgba(20, 56, 38, 0.14);
+  border-bottom: 1px solid rgba(20, 56, 38, 0.14);
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+
+  background: transparent;
+
+  margin-top: 0;
   }
 
   .routes-mobile-panel.is-open {
-    display: block;
+    max-height: 2600px;
+    opacity: 1;
+    transform: translateY(0);
+    border-bottom-left-radius: 0;
+     border-bottom-right-radius: 0;
   }
 
   .routes-group__title {
