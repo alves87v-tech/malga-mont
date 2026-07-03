@@ -1408,7 +1408,7 @@ body.menu-open .mobile-menu {
 
   border: 1px solid rgba(20, 56, 38, 0.12);
   border-radius: 0;
-  background: #edf2ec;
+  background: #e9ece7;
   color: #143826;
 
   display: flex;
@@ -2182,7 +2182,7 @@ footer{
    MAPPA - LEGENDA
 ========================= */
 .maps-route-legend {
-  display: none;
+  display: flex;
   position: absolute;
   top: 1px;
   right: 32px;
@@ -2249,11 +2249,6 @@ footer{
   flex: 0 0 auto;
 }
 
-@media (min-width: 768px) {
-  .maps-route-legend {
-    display: flex;
-  }
-}
   /* =========================
    MAPS HEADER - TABLET
 ========================= */
@@ -2334,16 +2329,33 @@ footer{
   z-index: 2;
   }
 
-  .routes-master-arrow {
-    font-size: 1.45rem;
-    line-height: 1;
-    display: inline-block;
-    transition: transform 0.3s ease;
-  }
+.routes-master-arrow {
+  position: relative;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  margin-left: 12px;
+}
 
-  .routes-master-toggle.is-open .routes-master-arrow {
-    transform: rotate(180deg);
-  }
+.routes-master-arrow::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 10px;
+  height: 10px;
+
+  border-right: 2px solid #143826;
+  border-bottom: 2px solid #143826;
+
+  transform: translate(-50%, -65%) rotate(45deg);
+  transform-origin: center;
+}
+
+.routes-master-toggle.is-open .routes-master-arrow::before {
+  transform: translate(-50%, -35%) rotate(225deg);
+}
 
   .routes-mobile-panel {
      max-height: 0;
@@ -3087,6 +3099,7 @@ footer{
 .maps-list::-webkit-scrollbar-thumb:hover {
   background: rgba(20, 56, 38, 0.45);
 }
+
  /* Maps -------------------------------------- */
 #tracciati.is-filtering g.is-variant-active .route-path{
   stroke-width: 5;
@@ -3171,6 +3184,7 @@ footer{
     margin-left: 0;
     padding-left: 0; /* nel caso ti rimanga qualche padding ereditato */
   }
+
   #main-footer {
      width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -3178,6 +3192,103 @@ footer{
 
   background: #dcd7c5; /* colore footer */
    }
+
+   .routes-master-toggle {
+    display: none;
+  }
+
+  .routes-mobile-panel {
+    display: block;
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    transform: none;
+    transition: none;
+
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .maps-list .routes-group__title {
+    display: none;
+  }
+  
+/* Mappa legenda------------------------------------------- */
+ .maps-route-legend {
+    display: flex;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    left: auto;
+    bottom: auto;
+    z-index: 80;
+
+    width: 188px;
+    padding: 14px 16px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    background: rgba(244, 242, 239, 0.94);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .maps-route-legend__title {
+    margin: 0 0 8px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8b5a2b;
+  }
+  
+.maps-route-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0;
+
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #222;
+  white-space: nowrap;
+}
+
+.maps-route-legend__line {
+  display: block;
+  width: 28px;
+  height: 4px;
+  min-width: 28px;
+  border-radius: 999px;
+  flex: 0 0 28px;
+}
+
+.maps-route-legend__line--auto {
+  background: #3ba4ff;
+}
+
+.maps-route-legend__line--walk {
+  background: #ff9a1f;
+}
+
+.maps-route-legend__parking,
+.maps-route-legend__malga {
+  width: 22px;
+  height: 22px;
+  max-width: 22px;
+  max-height: 22px;
+  display: block;
+  flex: 0 0 22px;
+  object-fit: contain;
+}
+
 }
 
 /* Maps-list riduzione testo------------------------------------------- */
