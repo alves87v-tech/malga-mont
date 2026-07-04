@@ -1522,7 +1522,6 @@ body.menu-open .mobile-menu {
 ========================= */
 .footer-photo-break {
   width: min(100% - 48px, 1440px);
-  margin: 64px auto 40px;
 }
 
 .footer-photo-break img {
@@ -1531,7 +1530,7 @@ body.menu-open .mobile-menu {
   height: clamp(180px, 24vw, 320px);
   object-fit: cover;
   object-position: center;
-  border-radius: 28px;
+  border-radius: 0px;
 }
 
 /* =========================
