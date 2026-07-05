@@ -1422,7 +1422,7 @@ body.menu-open .mobile-menu {
 }
 
 .routes-master-toggle span:first-child {
-  font-size: clamp(1.45rem, 5.8vw, 2.15rem);
+  font-size: clamp(1.45rem, 5.8vw, 1.50rem);
   line-height: 1.08;
   font-weight: 500;
   letter-spacing: 0.055em;
@@ -1520,18 +1520,6 @@ body.menu-open .mobile-menu {
 /* =========================
    SVG INTERACTION (KEY PART)
 ========================= */
-.footer-photo-break {
-  width: min(100% - 48px, 1440px);
-}
-
-.footer-photo-break img {
-  display: block;
-  width: 100%;
-  height: clamp(180px, 24vw, 320px);
-  object-fit: cover;
-  object-position: center;
-  border-radius: 0px;
-}
 
 /* =========================
    CONTATTI “EDITORIAL”
@@ -1560,15 +1548,19 @@ body.menu-open .mobile-menu {
   margin: 0 auto;
 }
 
-.contact-section{
-  padding: 0px;
+.contact-section {
+  position: relative;
   background: #dcd7c5;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .contact-inner{
-  max-width: 1100px;
+   position: relative;
+  z-index: 2;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 64px 16px;
+  padding: 64px 16px 300px;
 }
 
 .contact-title{
@@ -1642,6 +1634,29 @@ body.menu-open .mobile-menu {
 }
 .contact-title {
       display: none;
+}
+
+/* il disegno NON occupa spazio: sta sul fondo della sezione */
+.contact-landscape {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 360px;
+
+  background-image: url("Asset/main/contact-section/Art_panorama.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center bottom;
+
+  opacity: 0.72;
+  pointer-events: none;
+
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 100%);
 }
 
 /* =========================
@@ -2404,6 +2419,10 @@ footer{
 
   .routes-group__title {
     display: none;
+  }
+    .footer-landscape {
+    height: 220px;
+    background-size: 120% auto;
   }
 }
 
@@ -3305,6 +3324,63 @@ footer{
   object-fit: contain;
 }
 
+ .contact-section {
+   border-radius:  22px 22px 0 0;
+    position: relative;
+
+    width: min(100% - 96px, 1500px);
+    margin: 0 auto;
+
+    background: #dcd7c5;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .contact-inner {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 48px 350px;
+  }
+
+  .contact-footer {
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .contact-landscape {
+    position: absolute;
+    z-index: 1;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+    bottom: 0px;
+
+    width: 100%;
+    height: 450px;
+
+    margin: 0;
+
+    background-image: url("Asset/main/contact-section/Art_panorama.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center bottom;
+
+    opacity: 0.72;
+    pointer-events: none;
+  }
+   .site-footer {
+    width: min(100% - 96px, 1500px);
+    margin: 0 auto;
+    background: #dcd7c5;
+    border-radius: 0;
+    overflow: hidden;
+  }
 }
 
 /* Maps-list riduzione testo------------------------------------------- */
