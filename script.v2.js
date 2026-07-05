@@ -211,6 +211,35 @@ function initHeroSlideshow() {
 }
 document.addEventListener('DOMContentLoaded', initHeroSlideshow);
 
+// --- HERO SCROLL CUE: freccia mobile/tablet visibile solo sulla hero ----
+document.addEventListener("DOMContentLoaded", () => {
+  const heroScrollCue = document.querySelector(".hero-scroll-cue");
+  const heroSection = document.querySelector(".hero, .hero-section");
+
+  if (!heroScrollCue || !heroSection) return;
+
+  const toggleHeroCue = () => {
+    const rect = heroSection.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    const isMobileOrTablet = window.innerWidth < 1025;
+
+    const heroMostlyVisible =
+      rect.top >= -40 &&
+      rect.bottom >= viewportHeight * 0.75;
+
+    heroScrollCue.classList.toggle(
+      "is-hidden",
+      !(isMobileOrTablet && heroMostlyVisible)
+    );
+  };
+
+  toggleHeroCue();
+
+  window.addEventListener("scroll", toggleHeroCue, { passive: true });
+  window.addEventListener("resize", toggleHeroCue);
+});
+
 /* ============================
    MAPS – Percorsi interattivi
 ============================ */

@@ -529,6 +529,64 @@ body.menu-open .mobile-menu {
   margin: 8px auto 0;
   max-width: 40px;
 }
+.hero-scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 20;
+
+  text-decoration: none;
+  opacity: 1;
+  pointer-events: auto;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.hero-scroll-cue span {
+  width: 18px;
+  height: 18px;
+
+  border-right: 2px solid rgba(255, 255, 255, 0.92);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.92);
+
+  transform: rotate(45deg);
+
+  animation: heroScrollCue 1.45s ease-in-out infinite;
+}
+
+.hero-scroll-cue.is-hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
+}
+
+@keyframes heroScrollCue {
+  0% {
+    transform: translateY(-4px) rotate(45deg);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(5px) rotate(45deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-4px) rotate(45deg);
+    opacity: 0.45;
+  }
+}
 
 /* SEZIONE INTRO ------------------------------------------------ */
 
@@ -1397,6 +1455,11 @@ body.menu-open .mobile-menu {
 /* aggiungi gli altri colori */
 
 /* Percorsi mobile - base ---------------------------- */
+.routes-mobile-heading {
+  background: #edf2ec;
+  border-top: 1px solid rgba(20, 56, 38, 0.12);
+  border-bottom: 1px solid rgba(20, 56, 38, 0.12);
+}
 
 .routes-master-toggle {
   appearance: none;
@@ -1480,6 +1543,21 @@ body.menu-open .mobile-menu {
 .routes-group {
   margin: 0;
   padding: 0;
+}
+
+.routes-note {
+  margin: 0;
+  padding: 20px 28px 18px;
+
+  font-size: 0.88rem;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+
+  color: rgba(20, 25, 31, 0.74);
+  background: rgba(139, 90, 43, 0.06);
+  border-left: 4px solid rgba(139, 90, 43, 0.45);
 }
 
 .routes-group__title {
@@ -1687,7 +1765,7 @@ body.menu-open .mobile-menu {
    FOOTER
 ========================= */
 footer{
- background: #dcd7c5;
+ background: transparent;
   margin: 0;
   padding: 0;          /* <- via lo spazio */
   text-align: center;
@@ -1709,7 +1787,7 @@ footer{
 }
 
 .lavori-corso,
-.hero-wip-icon{
+.hero-wip-icon, .hero-btn{
   display: none;
 }
 
@@ -2448,6 +2526,10 @@ footer{
     height: 220px;
     background-size: 120% auto;
   }
+
+ footer{
+ background: transparent;
+}
 }
 
 /* =========================
@@ -2618,6 +2700,10 @@ footer{
   .hero-content {
     position: relative;
     z-index: 10;
+  }
+
+  .hero-scroll-cue {
+    display: none;
   }
 
 /* DESKTOP CARD GRID */
@@ -3357,7 +3443,7 @@ footer{
     width: min(100% - 96px, 1500px);
     margin: 0 auto;
 
-    background: #dcd7c5;
+    background: #e6e1d0;
     overflow: hidden;
     isolation: isolate;
   }
@@ -3403,7 +3489,7 @@ footer{
    .site-footer {
     width: min(100% - 96px, 1500px);
     margin: 0 auto;
-    background: #dcd7c5;
+    background: transparent;
     border-radius: 0;
     overflow: hidden;
   }
