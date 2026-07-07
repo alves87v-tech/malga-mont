@@ -59,69 +59,47 @@
   </nav>
 </header>
 
-  <!-- Sezione hero -------------------------------------------->
-     <section id="top" class="hero">
+<!-- Sezione hero -------------------------------------------->
+<section id="top" class="hero">
 
-    <!-- 🖼️ Slideshow (desktop) -->
-      <div class="hero-bg-slideshow" aria-hidden="true">
-       <img class="hero-slide is-active" src="Asset/Header/hero-section/img/wide/img_1.jpg" alt="">
-       <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_2.jpg" alt="">
-       <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_3.jpg" alt="">
-      <!-- opzionale 4a -->
-        <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_4.jpg" alt="">
-      </div>
-
-  <!-- 🎬 Video di sfondo -->
-  <div class="hero-bg-video">
-    <video
-      id="heroVideo"
-      autoplay
-      muted
-      playsinline
-      loop
-      preload="auto"
-    >
-      <source src="Asset/Header/hero-section/video/promo_720.mp4" media="(max-width: 768px)">
-      <source src="Asset/Header/hero-section/video/promo_hd.mp4" media="(min-width: 769px)">
-    </video>
-   </div>
-
-  <!-- SFONDO NERO (fallback sotto al video) ------------------>
-  <div class="hero-bg-base">
+  <!-- Sfondo nero fallback sotto allo slideshow -->
+  <div class="hero-bg-base" aria-hidden="true">
     <img
       src="Asset/Header/hero-section/logo/PNG/BG_black.jpg"
       alt=""
-      aria-hidden="true"
-      style="
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      "
     >
-    </div>
+  </div>
 
-     <!-- 🔝 Overlay contenuti -->
-       <div class="hero-overlay">
-      <!-- LOGO E CONTENUTI -->
-        <img
-           src="Asset/Header/hero-section/logo/logo_6.svg"
-           alt="Logo Malga Mont"
-           class="hero-logo">
+  <!-- Slideshow hero -->
+  <div class="hero-bg-slideshow" aria-hidden="true">
+    <img class="hero-slide is-active" src="Asset/Header/hero-section/img/wide/img_1.jpg" alt="">
+    <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_2.jpg" alt="">
+    <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_3.jpg" alt="">
+    <img class="hero-slide" src="Asset/Header/hero-section/img/wide/img_4.jpg" alt="">
+  </div>
 
-        <a href="#food" class="hero-btn">ESPLORA</a>
+  <!-- Overlay contenuti -->
+  <div class="hero-overlay">
+    <img
+      src="Asset/Header/hero-section/logo/logo_6.svg"
+      alt="Logo Malga Mont"
+      class="hero-logo">
 
-        <p class="lavori-corso">Lavori in corso</p>
+    <a href="#food" class="hero-btn">ESPLORA</a>
 
-        <img
-           src="Asset/Header/hero-section/logo/PNG/wip2.png"
-           alt="Icona lavori in corso"
-           class="hero-wip-icon">
-      </div>
-      <a href="#malga" class="hero-scroll-cue" aria-label="Scorri verso il contenuto">
-  <span></span>
-</a>
-     </section>
+    <p class="lavori-corso">Lavori in corso</p>
+
+    <img
+      src="Asset/Header/hero-section/logo/PNG/wip2.png"
+      alt="Icona lavori in corso"
+      class="hero-wip-icon">
+  </div>
+
+  <a href="#malga" class="hero-scroll-cue" aria-label="Scorri verso il contenuto">
+    <span></span>
+  </a>
+
+</section>
 
 <main>
 
@@ -218,8 +196,39 @@
         src="Asset/Header/hero-section/img/img_1.jpg"
         alt="Vista della Malga Mont sul Monte Crep">
     </div>
-
   </div>
+</section>
+
+<!-- Video promo mobile/tablet -->
+<section class="promo-video-section promo-video-section--mobile" id="vita-di-malga-mobile">
+
+<div class="promo-video-card">
+    <video
+      class="promo-video promo-video--mobile"
+      src="Asset/Header/hero-section/video/malga-mont-web.mp4"
+      poster="Asset/Header/hero-section/img/web-promo-fotogramma.jpg"
+      preload="metadata"
+      muted
+      playsinline>
+    </video>
+
+    <button class="promo-video-play" type="button" aria-label="Guarda il video">
+      <span></span>
+    </button>
+  </div>
+
+  <div class="promo-video-text-card">
+    <p class="promo-video-eyebrow">Vita di malga</p>
+
+    <h2>Impegno e passione</h2>
+
+    <p>
+      Animali, cucina, lavoro quotidiano e prodotti di malga: pochi secondi
+      per raccontare il ritmo semplice e vero di questo luogo.
+    </p>
+  </div>
+
+  
 
 </section>
 
@@ -298,7 +307,6 @@
           <p>Un antipasto da condividere con una selezione dei nostri formaggi e affettati</p>
         </div>
       </a>
-
 
       <!-- CARD 2 -->
       <a href="menu.html#primi" class="food-card is-disabled-link">
@@ -394,52 +402,15 @@
   </div>
 </section>
 
-<!-- Testo: intro-slide -->
-<div class="context-heading">
-  <p class="context-heading__eyebrow">Intorno alla malga</p>
-  <h2 class="context-heading__title">Paesaggi aperti, aria buona e strade lente</h2>
-</div>
-
-<!-- SEZIONE CONTESTO: SLIDESHOW TERRITORIO -->
-<section id="contesto" class="context-section" aria-label="Paesaggi intorno a Malga Mont">
-
-  <div class="context-inner">
-
-    <div class="context-slider" aria-label="Slideshow territorio Malga Mont">
-
-      <div class="context-slide is-active">
-        <img src="Asset/main/contesto-section/DJI_20251129072357_0030_D.jpg"
-             alt="Vista dall'alto di Malga Mont e pascoli">
-      </div>
-
-      <div class="context-slide">
-        <img src="Asset/main/contesto-section/DSC1924.jpg"
-             alt="Panorama sul territorio intorno a Malga Mont">
-      </div>
-
-      <div class="context-slide">
-        <img src="Asset/main/contesto-section/DJI_20251122080612_0003_D.jpg"
-             alt="Boschi e sentieri verso Malga Mont">
-      </div>
-
-      <div class="context-dots" aria-label="Indicatori slideshow">
-        <button class="context-dot is-active" type="button" aria-label="Vai alla slide 1"></button>
-        <button class="context-dot" type="button" aria-label="Vai alla slide 2"></button>
-        <button class="context-dot" type="button" aria-label="Vai alla slide 3"></button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Sezione video promo ------------------------------------------------>
-<section class="promo-video-section" aria-labelledby="promo-video-title">
+<!-- Video promo desktop -->
+<section class="promo-video-section promo-video-section--desktop" id="vita-di-malga-desktop">
   <div class="promo-video-inner">
+
 
     <div class="promo-video-copy">
       <p class="promo-video-eyebrow">Vita di malga</p>
 
       <h2 id="promo-video-title">
-        Un piccolo sguardo dentro Malga Mont.
       </h2>
 
       <p>

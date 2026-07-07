@@ -300,8 +300,6 @@ if (routesMasterToggle && routesMobilePanel) {
     return; 
   }
 
-
-
   const normalized = routeId.startsWith("route-")
     ? routeId
     : `route-${routeId}`;
