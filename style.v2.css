@@ -564,30 +564,42 @@ body.menu-open .mobile-menu {
 }
 
 /* SEZIONE INTRO ------------------------------------------------ */
+/* =========================
+   SISTEMA CARD COMUNE
+========================= */
 
-.intro-split {
+.site-card-section {
   position: relative;
   width: 100%;
   margin: 0;
-  padding: 0px 16px 30px;
+  padding: 0 16px 30px;
   background: #f7f3eb;
   z-index: 3;
 }
 
-.intro-split__inner {
+.site-card-grid {
   max-width: 1500px;
   margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
-.intro-split__box {
-  margin-bottom: 24px;
-  padding: 34px 24px 36px;
+.site-card {
+  width: 100%;
+  margin: 0;
   border-radius: 24px;
+  overflow: hidden;
+}
+
+.site-card--text {
+  padding: 34px 24px 36px;
   background: #e9ece7;
   text-align: left;
 }
 
-.intro-split__eyebrow {
+.site-card__eyebrow {
   margin: 0 0 14px;
   text-transform: uppercase;
   letter-spacing: .14em;
@@ -596,7 +608,7 @@ body.menu-open .mobile-menu {
   color: #8b5a2b;
 }
 
-.intro-split__title {
+.site-card__title {
   text-align: left;
   margin: 0 0 24px;
   font-size: clamp(2.15rem, 9vw, 3.2rem);
@@ -605,30 +617,24 @@ body.menu-open .mobile-menu {
   color: #143826;
 }
 
-.intro-split__text {
+.site-card__text {
   margin: 0;
   font-size: clamp(1.05rem, 4.3vw, 1.24rem);
   line-height: 1.55;
   color: #1f2520;
 }
 
-/* FOTO MALGA - base mobile -------------------------------------- */
-
-.intro-split__media {
-  width: 100%;
-  margin: 0;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #ddd;
+.site-card--media {
+  position: relative;
+  background: #111;
 }
 
-.intro-split__media img {
+.site-card--media img,
+.site-card--media video {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
+  height: 100%;
   object-fit: cover;
-  object-position: center center;
 }
 
 /* SEZIONE FOOD ------------------------------------------------- */
@@ -972,76 +978,6 @@ body.menu-open .mobile-menu {
 .context-caption,
 .context-nav {
   display: none;
-}
-
-/* Video promo mobile/tablet come blocco card ----------------------- */
-
-.promo-video-section--mobile {
-  position: relative;
-  width: 100%;
-  margin: 0;
-  padding: 0px 16px 30px;
-  background: #f7f3eb;
-  z-index: 3;
-}
-
-.promo-video-text-card,
-.promo-video-card {
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 22px;
-  overflow: hidden;
-}
-
-.promo-video-text-card {
-  margin-top: 0px;
-  margin-bottom: 24px;
-  padding: 34px 24px 36px;
-  border-radius: 24px;
-  background: #e9ece7;
-  text-align: left;
-}
-
-.promo-video-eyebrow {
-  margin: 0 0 14px;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  font-size: .78rem;
-  font-weight: 700;
-  color: #8b5a2b;
-}
-
-.promo-video-title {
-   text-align: left;
-  margin: 0 0 24px;
-  font-size: clamp(2.15rem, 9vw, 3.2rem);
-  line-height: 1.05;
-  font-weight: 500;
-  color: #143826;
-}
-
-.promo-video-subtitle { 
-  margin: 0;
-  font-size: clamp(1.05rem, 4.3vw, 1.24rem);
-  line-height: 1.55;
-  color: #1f2520;
-}
-
-.promo-video-text-card p:last-child {
-  margin: 0;
-}
-
-.promo-video-card {
-  position: relative;
-  aspect-ratio: 4 / 5;
-}
-
-.promo-video--mobile {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
 }
 
 /* ========================= 
@@ -2113,109 +2049,46 @@ footer{
     margin-bottom: 48px;
     }
 
-  .intro-split {
-    padding: 24px 24px;
-  }
-
-  .intro-split__inner {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 28px;
-    align-items: stretch;
-  }
-
-  .intro-split__box {
-    height: 500px;
-    min-height: 500px;
-    padding: 42px 36px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 28px;
-  } 
-
- .intro-split__title {
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    line-height: 1.08;
-  }
-
-  .intro-split__text {
-  font-size: 1.05rem;
-  line-height: 1.65;
-  }
-
-    .intro-split__media {
-    display: block;
-    height: 500px;
-    min-height: 0;
-    margin: 0;
-    border-radius: 28px;
-    overflow: hidden;
-  }
-
-  .intro-split__media img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: auto;
-    object-fit: cover;
-    object-position: center center;
-  }
-
   /* =========================
-   VIDEO - TABLET
+   SISTEMA CARD COMUNE
 ========================= */
-    .promo-video-section--mobile {
+ .site-card-section {
     padding: 0 24px 40px;
   }
 
-  .promo-video-mobile-grid {
+  .site-card-grid {
     max-width: 1100px;
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1fr 1fr;
     gap: 28px;
     align-items: stretch;
   }
 
-  .promo-video-text-card,
-  .promo-video-card {
-    width: 100%;
-    margin: 0;
+  .site-card {
+    height: 500px;
     border-radius: 28px;
-    overflow: hidden;
   }
 
-  .promo-video-text-card {
-    order: 2;
-    width: 100%;
-    margin: 0;
+  .site-card--text {
     padding: 42px 36px;
-    border-radius: 28px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  .promo-video-card {
-    order: 1;
-    width: 100%;
-    margin: 0;
-    height: 500px;
-    aspect-ratio: auto;
-    border-radius: 28px;
-    overflow: hidden;
-  }
-
-  .promo-video--mobile {
-    display: block;
+  .site-card--media img,
+  .site-card--media video {
     width: 100%;
     height: 100%;
-    aspect-ratio: auto;
     object-fit: cover;
     object-position: center center;
+  }
+   .site-card-grid--reverse-tablet .site-card--media {
+    order: 1;
+  }
+
+  .site-card-grid--reverse-tablet .site-card--text {
+    order: 2;
   }
 
 /* =========================
