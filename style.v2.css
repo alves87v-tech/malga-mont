@@ -612,7 +612,7 @@ body.menu-open .mobile-menu {
   color: #1f2520;
 }
 
-/* FOTO MALGA - base mobile -------------------------------------------- */
+/* FOTO MALGA - base mobile -------------------------------------- */
 
 .intro-split__media {
   width: 100%;
@@ -731,6 +731,7 @@ body.menu-open .mobile-menu {
   background: #8b5a2b;
   color: #fff;
 }
+
 /* BOTTONE */
 .food-menu-btn {
   display: inline-flex;
@@ -1011,7 +1012,7 @@ body.menu-open .mobile-menu {
 }
 
 .promo-video-title {
-  text-align: left;
+   text-align: left;
   margin: 0 0 24px;
   font-size: clamp(2.15rem, 9vw, 3.2rem);
   line-height: 1.05;
@@ -1588,7 +1589,6 @@ body.menu-open .mobile-menu {
   transform: translate(-50%, -35%) rotate(225deg);
 }
 
-
 .routes-mobile-panel {
   max-height: 0;
   overflow: hidden;
@@ -2134,7 +2134,7 @@ footer{
     border-radius: 28px;
   } 
 
-.intro-split__title {
+ .intro-split__title {
     font-size: clamp(2.2rem, 5vw, 3.5rem);
     line-height: 1.08;
   }
@@ -2162,22 +2162,65 @@ footer{
     object-position: center center;
   }
 
- .promo-video-card {
-     width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-
-    aspect-ratio: 4/3;
-    border-radius: 0;
+  /* =========================
+   VIDEO - TABLET
+========================= */
+    .promo-video-section--mobile {
+    padding: 0 24px 40px;
   }
 
-   .promo-video--mobile {
+  .promo-video-mobile-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .promo-video-text-card,
+  .promo-video-card {
+    width: 100%;
+    margin: 0;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .promo-video-text-card {
+    order: 2;
+    width: 100%;
+    margin: 0;
+    padding: 42px 36px;
+    border-radius: 28px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .promo-video-card {
+    order: 1;
+    width: 100%;
+    margin: 0;
+    height: 500px;
+    aspect-ratio: auto;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .promo-video--mobile {
+    display: block;
     width: 100%;
     height: 100%;
+    aspect-ratio: auto;
     object-fit: cover;
     object-position: center center;
   }
 
+/* =========================
+   FOOD - TABLET
+========================= */
 .food-section {
     padding: 24px 24px;
   }
@@ -2615,9 +2658,6 @@ footer{
  footer{
  background: transparent;
 }
-.promo-video-text-card {
-    display: none;
-  }
 }
 
 /* =========================
