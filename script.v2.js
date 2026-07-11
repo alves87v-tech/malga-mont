@@ -132,6 +132,86 @@ function initHeroSlideshow() {
 
 document.addEventListener("DOMContentLoaded", initHeroSlideshow);
 
+// =========================
+// HERO PRELOADER
+// =========================
+
+function hidePreloader() {
+  const preloader = document.getElementById("preloader");
+
+  document.body.classList.add("hero-ready");
+
+  if (!preloader) return;
+
+  preloader.classList.add("is-hidden");
+
+  setTimeout(() => {
+    preloader.remove();
+  }, 450);
+}
+
+function waitForHero() {
+  const logo = document.getElementById("heroLogo");
+  const video = document.getElementById("heroVideo");
+
+  let logoReady = false;
+  let videoReady = false;
+
+  function checkReady() {
+    if (logoReady && videoReady) {
+      hidePreloader();
+    }
+  }
+
+  // Logo
+  if (!logo) {
+    logoReady = true;
+  } else if (logo.complete) {
+    logoReady = true;
+  } else {
+    logo.addEventListener("load", () => {
+      logoReady = true;
+      checkReady();
+    });
+
+    logo.addEventListener("error", () => {
+      logoReady = true;
+      checkReady();
+    });
+  }
+
+  // Video
+  if (!video) {
+    videoReady = true;
+  } else if (video.readyState >= 2) {
+    videoReady = true;
+  } else {
+    video.addEventListener("loadeddata", () => {
+      videoReady = true;
+      checkReady();
+    });
+
+    video.addEventListener("canplay", () => {
+      videoReady = true;
+      checkReady();
+    });
+
+    video.addEventListener("error", () => {
+      videoReady = true;
+      checkReady();
+    });
+  }
+
+  checkReady();
+
+  // Sicurezza: non blocca il sito se logo o video tardano
+  setTimeout(() => {
+    hidePreloader();
+  }, 5000);
+}
+
+document.addEventListener("DOMContentLoaded", waitForHero);
+
 // --- HERO SCROLL CUE: freccia mobile/tablet visibile solo sulla hero ----
 document.addEventListener("DOMContentLoaded", () => {
   const heroScrollCue = document.querySelector(".hero-scroll-cue");
