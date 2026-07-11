@@ -563,7 +563,58 @@ body.menu-open .mobile-menu {
   }
 }
 
-/* SEZIONE INTRO ------------------------------------------------ */
+/* =========================
+   PROMO VIDEO
+========================= */
+
+.promo-video-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.promo-video-play {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  width: 64px;
+  height: 64px;
+
+  border: 0;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+}
+
+.promo-video-play span {
+  display: block;
+
+  width: 0;
+  height: 0;
+
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid currentColor;
+
+  margin-left: 4px;
+}
+
+.promo-video-card.is-playing .promo-video-play {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* =========================
    SISTEMA CARD COMUNE
 ========================= */

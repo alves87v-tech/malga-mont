@@ -491,3 +491,60 @@ document.addEventListener("keydown", function (event) {
     }
   }
 });
+
+// =========================
+// PROMO VIDEO
+// =========================
+
+document.querySelectorAll(".promo-video-card").forEach((card) => {
+  const video = card.querySelector(".promo-video");
+  const playButton = card.querySelector(".promo-video-play");
+
+  if (!video || !playButton) return;
+
+ function updateState() {
+  const isPlaying = !video.paused && !video.ended;
+
+  card.classList.toggle("is-playing", isPlaying);
+
+  video.controls = isPlaying;
+
+  playButton.setAttribute(
+    "aria-label",
+    isPlaying ? "Metti in pausa il video" : "Guarda il video"
+  );
+}
+
+  playButton.addEventListener("click", async () => {
+    if (video.paused || video.ended) {
+      try {
+        await video.play();
+      } catch (error) {
+        console.error("Errore avvio video promo:", error);
+      }
+    } else {
+      video.pause();
+    }
+  });
+
+  video.addEventListener("click", () => {
+    if (video.paused || video.ended) {
+      video.play().catch((error) => {
+        console.error("Errore avvio video promo:", error);
+      });
+    } else {
+      video.pause();
+    }
+  });
+
+  video.addEventListener("play", updateState);
+  video.addEventListener("pause", updateState);
+
+ video.addEventListener("ended", () => {
+  video.currentTime = 0;
+  video.controls = false;
+  updateState();
+});
+
+  updateState();
+});
