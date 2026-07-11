@@ -1116,7 +1116,7 @@ body.menu-open .mobile-menu {
 
  .route-card {
   display:grid;
-  grid-template-columns: 25px 1fr;
+  grid-template-columns: 5px 1fr;
   gap: 0;
   border: 1px solid rgba(0,0,0,.08);
   border-radius: 2px;
@@ -1128,6 +1128,8 @@ body.menu-open .mobile-menu {
 .route-card.is-active{ background: rgba(0,0,0,.035); }
 
 .route-bar{
+  grid-column: 1;
+  grid-row: 1;
   background: var(--route-color);
 }
 
