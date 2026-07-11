@@ -2926,8 +2926,6 @@ footer{
 
 /* Sezione mappe/percorsi ----------------------------*/
 
-/* Sezione mappe/percorsi ----------------------------*/
-
 .maps {
   width: 100%;
   margin-left: 0;
@@ -3284,6 +3282,12 @@ footer{
     background: transparent;
     border-radius: 0;
     overflow: hidden;
+  }
+  .promo-video-text-card {
+  display: none;
+}
+   .maps-intro {
+    display: none;
   }
 }
 
