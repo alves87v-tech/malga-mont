@@ -615,6 +615,14 @@ body.menu-open .mobile-menu {
   pointer-events: none;
 }
 
+.promo-video-section--desktop {
+  display: none;
+}
+
+.promo-video-section--mobile {
+  display: block;
+}
+
 /* =========================
    SISTEMA CARD COMUNE
 ========================= */
@@ -624,7 +632,7 @@ body.menu-open .mobile-menu {
   width: 100%;
   margin: 0;
   padding: 0 16px 30px;
-  background: #f7f3eb;
+  background: transparent;
   z-index: 3;
 }
 
@@ -701,7 +709,7 @@ body.menu-open .mobile-menu {
   margin: 0;
   padding: 0px 16px 30px;
   overflow: hidden;
-  background: #f7f3eb;
+  background: transparent;
   z-index: 3;
 }
 
@@ -913,7 +921,7 @@ body.menu-open .mobile-menu {
 .maps {
   position: relative;
   width: 100%;
-  background: #f7f3eb;
+  background: transparent;
   overflow: hidden;
   z-index: 3;
 }
@@ -953,7 +961,7 @@ body.menu-open .mobile-menu {
   height: auto;
   border-radius: 18px;
   overflow: hidden;
-  background: #f7f3eb;
+  background: transparent;
 }
 
 /* IMPORTANT: SVG responsive */
@@ -1544,7 +1552,7 @@ body.menu-open .mobile-menu {
 
 .contact-section {
   position: relative;
-  background: #dcd7c5;
+  background: #f4f2ef;
   overflow: hidden;
   isolation: isolate;
 }
@@ -1626,8 +1634,9 @@ body.menu-open .mobile-menu {
   gap: 14px;
   margin-top: 14px;
 }
+
 .contact-title {
-      display: none;
+  display: none;
 }
 
 /* il disegno NON occupa spazio: sta sul fondo della sezione */
@@ -1657,7 +1666,7 @@ body.menu-open .mobile-menu {
    FOOTER
 ========================= */
 footer{
- background: transparent;
+  background: transparent;
   margin: 0;
   padding: 0;          /* <- via lo spazio */
   text-align: center;
@@ -3060,78 +3069,6 @@ footer{
   transform: scale(1.35);
 }
 
-   /*frecce slideshow contesto------------------------- */
- .context-nav{
-   display: none;
-}
-
-  /* contact -------------------------------------- */
-  /* footer = griglia a 3 colonne */
-  .contact-footer{
-    display: grid;
-    grid-template-columns: 260px 1fr 1fr; /* logo | orari | contatti */
-    grid-template-areas: "brand hours booking";
-    gap: 56px;
-    align-items: start;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-  /* logo a sinistra e in alto */
-  .contact-brand{
-    grid-area: brand;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
-    margin: 0;
-}
-.contact-section{
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-
-  background: #dcd7c5; /* colore footer */
-}
-
-  .contact-brand,
-  .contact-block{
-    align-self: start; /* 👈 stessa linea */
-}
-
-.contact-block h3{
-  margin-top: 0;      /* 👈 OBBLIGATORIO */
-}
-
-  .contact-logo{
-    width: 280px;
-    max-width: 85%;
-    display: block;
-}
-
-  /* metti i blocchi nelle colonne giuste */
-  .contact-hours{ grid-column: 2; }
-  .contact-booking{ grid-column: 3; }
-
-  /* cleanup */
-  .contact-social{ display: none; }
-  .contact-title{ display: none; }
-
-  .contact-link{
-    display: inline-block;
-    text-align: left;
-    margin-left: 0;
-    padding-left: 0; /* nel caso ti rimanga qualche padding ereditato */
-  }
-
-  #main-footer {
-     width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-
-  background: #dcd7c5; /* colore footer */
-   }
-
    .routes-master-toggle {
     display: none;
   }
@@ -3228,69 +3165,142 @@ footer{
   object-fit: contain;
 }
 
- .contact-section {
-   border-radius:  22px 22px 0 0;
-    position: relative;
+ /* CONTACT DESKTOP 1025+ -------------------------------------- */
 
-    width: min(100% - 96px, 1500px);
-    margin: 0 auto;
+.contact-section {
+  position: relative;
 
-    background: #e6e1d0;
-    overflow: hidden;
-    isolation: isolate;
+  width: 100vw;
+  max-width: none;
+
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background: var(--site-bg);
+  border-radius: 0;
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.contact-inner {
+  position: relative;
+  z-index: 2;
+
+  width: min(100% - 96px, 1500px);
+  max-width: 1500px;
+  margin-inline: auto;
+
+  padding: 72px 48px 350px;
+}
+
+.contact-footer {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr;
+  grid-template-areas: "brand hours booking";
+  gap: 72px;
+  align-items: start;
+
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.contact-brand {
+  grid-area: brand;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  text-align: left;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.contact-hours {
+  grid-area: hours;
+}
+
+.contact-booking {
+  grid-area: booking;
+}
+
+.contact-brand,
+.contact-block {
+  align-self: start;
+}
+
+.contact-block h3 {
+  margin-top: 0;
+}
+
+.contact-logo {
+  width: 280px;
+  max-width: 85%;
+  height: auto;
+  display: block;
+}
+
+.contact-social,
+.contact-title {
+  display: none;
+}
+
+.contact-link {
+  display: inline-block;
+  text-align: left;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.contact-landscape {
+  position: absolute;
+  z-index: 1;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 450px;
+  margin: 0;
+
+  background-image: url("Asset/main/contact-section/Art_panorama.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center bottom;
+
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.site-footer {
+  width: min(100% - 96px, 1500px);
+  margin-inline: auto;
+
+  background: transparent;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+ .promo-video-section--mobile {
+    display: none;
+}
+
+  .promo-video-section--desktop {
+  display: block;
+}
+
+.promo-video-section--desktop .promo-video-copy {
+    display: none;
   }
 
-  .contact-inner {
-    position: relative;
-    z-index: 2;
-
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 72px 48px 350px;
-  }
-
-  .contact-footer {
-    display: grid;
-    grid-template-columns: 260px 1fr 1fr;
-    gap: 72px;
-    align-items: start;
-  }
-
-  .contact-landscape {
-    position: absolute;
-    z-index: 1;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-    bottom: 0px;
-
-    width: 100%;
-    height: 450px;
-
-    margin: 0;
-
-    background-image: url("Asset/main/contact-section/Art_panorama.png");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: center bottom;
-
-    opacity: 0.72;
-    pointer-events: none;
-  }
-   .site-footer {
-    width: min(100% - 96px, 1500px);
-    margin: 0 auto;
-    background: transparent;
-    border-radius: 0;
-    overflow: hidden;
-  }
   .promo-video-text-card {
   display: none;
 }
    .maps-intro {
     display: none;
-  }
+}
 }
 
 /* Maps-list riduzione testo------------------------------------------- */
@@ -3377,8 +3387,84 @@ footer{
     display: none !important;
   }
   }
+
 /* BG mappa off */
   svg #BG_maps {
     display: none !important;
     opacity: 0 !important;
   }
+  
+@media (min-width: 1540px) {
+    .promo-video-section--desktop {
+    width: 100vw;
+    max-width: none;
+
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    border-radius: 10px;
+  }
+
+   .promo-video-section--desktop .promo-video-inner {
+     width: min(94vw, 2300px);
+     max-width: none;
+     margin-inline: auto;
+     padding: 0;
+  }
+
+ .promo-video-section--desktop .promo-video-frame,
+ .promo-video-section--desktop .promo-video {
+    width: 100%;
+    max-width: none;
+    border-radius: 10px;
+  }
+
+  .promo-video-section--mobile {
+  display: none;
+  }
+
+  .promo-video-section--desktop {
+    display: block;
+  }
+
+ .promo-video-section--desktop .promo-video-copy {
+    display: none;
+  }
+
+  /* Contatti */
+  .contact-section {
+    position: relative;
+    width: 100vw;
+    max-width: none;
+
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    background:
+      #f4f2ef
+      url("../Asset/main/contact-section/panorama_max8.png")
+      center 58% / cover
+      no-repeat;
+
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    opacity: 70%;
+  }
+
+  .contact-inner {
+    position: relative;
+    z-index: 2;
+
+    width: min(92vw, 1530px);
+    margin-inline: auto;
+
+    padding-top: 90px;
+    padding-bottom: 360px;
+  }
+
+  .contact-landscape {
+    display: none;
+  }
+  
+}
