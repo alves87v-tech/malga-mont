@@ -1297,7 +1297,7 @@ body.menu-open .mobile-menu {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 
-   box-shadow: #1d1d1b 0 0 .8px;
+  box-shadow: #1d1d1b 0 0 .8px;
 
 }
 
@@ -1336,14 +1336,16 @@ body.menu-open .mobile-menu {
   font-weight: 700;
 }
 
+
+/* =========================
+   ROUTE MARKERS - DEFAULT
+========================= */
+
+g[class^="route-icon"] {
+  display: none;
+}
+
 /* Colori per route (decidi tu i codici) */
-.route-icon  {display: none;}
-.route-icon-2 {display: none;}
-.route-icon-3 {display: none;}
-.route-icon-4 {display: none;}
-.route-icon-5 {display: none;}
-.route-icon-6 {display: none;}
-.route-icon-7 {display: none;}
 
 .route-pill--giallo{ background: #f3d44b; }
 .route-pill--blu{ background: #2aa7ff; }
@@ -1462,6 +1464,97 @@ body.menu-open .mobile-menu {
 
 .routes-group__title {
   display: none;
+}
+
+/* =========================
+   MAP FULLSCREEN - BASE
+========================= */
+
+.map-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100dvh;
+
+  padding:
+    max(10px, env(safe-area-inset-top))
+    10px
+    max(10px, env(safe-area-inset-bottom));
+
+  background: #dcd7c5;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.map-fullscreen.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.map-fullscreen__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  flex: 0 0 auto;
+  min-height: 48px;
+}
+
+.map-fullscreen__title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.map-fullscreen__close {
+  display: grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.map-fullscreen__content {
+  position: relative;
+
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+body.map-is-open {
+  overflow: hidden;
 }
 
 /* =========================
